@@ -1,0 +1,336 @@
+[
+  {
+    "id": "evans_2007_map",
+    "path": "manuscripts/evans_2007_comprehensive_archaeological_map.pdf",
+    "source_url": "https://static1.squarespace.com/static/5a692c9d0abd04c6c4e144ba/t/68711cddc744515cd155cd70/1752243862787/Evans%2Bet%2Bal%2C%2BA%2BComprehensive%2BArchaeological%2BMap",
+    "retrieved_utc": "2026-10-19T12:59:41.684122Z",
+    "acquisition": "downloaded",
+    "http_result": "200\nhttps://static1.squarespace.com/static/5a692c9d0abd04c6c4e144ba/t/68711cddc744515cd155cd70/1752243862787/Evans%2Bet%2Bal%2C%2BA%2BComprehensive%2BArchaeological%2BMap",
+    "status": "available",
+    "bytes": 1548240,
+    "sha256": "6c262932588758359a751cbc845e5d9367b970ccc24e52ee78b5a70f1702d1e7",
+    "previous_attempts": [
+      {
+        "id": "evans_2007_map",
+        "path": "manuscripts/evans_2007_comprehensive_archaeological_map.pdf",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1964867/pdf/zpq14277.pdf",
+        "retrieved_utc": "2026-10-19T12:58:01.178191Z",
+        "http_result": "200\nhttps://pmc.ncbi.nlm.nih.gov/articles/PMC1964867/pdf/zpq14277.pdf",
+        "acquisition": "downloaded",
+        "status": "failed",
+        "error": "Response is not a PDF: \n\n\n\n<html>\n  <head>\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <"
+      }
+    ],
+    "other_attempts": [
+      {
+        "id": "evans_2007_map",
+        "path": "manuscripts/evans_2007_comprehensive_archaeological_map.pdf",
+        "source_url": "https://europepmc.org/articles/PMC1964867?pdf=render",
+        "retrieved_utc": "2026-10-19T12:59:16.977312Z",
+        "acquisition": "downloaded",
+        "http_result": "403\nhttps://europepmc.org/articles/PMC1964867?pdf=render",
+        "status": "failed",
+        "error": "d   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (22) The requested URL returned error: 403"
+      }
+    ]
+  },
+  {
+    "id": "fletcher_2008_network",
+    "path": "manuscripts/fletcher_2008_water_management_provisional_model.pdf",
+    "source_url": "https://journals.lib.washington.edu/index.php/BIPPA/article/download/12016/10641",
+    "retrieved_utc": "2026-10-19T12:58:01.178666Z",
+    "http_result": "200\nhttps://journals.lib.washington.edu/index.php/BIPPA/article/download/12016/10641",
+    "acquisition": "downloaded",
+    "status": "available",
+    "bytes": 469082,
+    "sha256": "11fcd48836ed7d906e3f6a948274a82ce45f2a995f10b825ec175f3873109e02"
+  },
+  {
+    "id": "evans_2013_lidar",
+    "path": "manuscripts/evans_2013_uncovering_archaeological_landscapes_lidar.pdf",
+    "source_url": "https://cdn.angkordatabase.asia/libs/docs/2013_Uncovering_archaeological_landscape.pdf",
+    "retrieved_utc": "2026-10-19T12:59:16.977848Z",
+    "acquisition": "downloaded",
+    "http_result": "200\nhttps://cdn.angkordatabase.asia/libs/docs/2013_Uncovering_archaeological_landscape.pdf",
+    "status": "available",
+    "bytes": 785201,
+    "sha256": "304685c97b7c8d4061037538f9520eee373ab761072749df03f4cf5e5a1d227c",
+    "previous_attempts": [
+      {
+        "id": "evans_2013_lidar",
+        "path": "manuscripts/evans_2013_uncovering_archaeological_landscapes_lidar.pdf",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3732978/pdf/pnas.201306539.pdf",
+        "retrieved_utc": "2026-10-19T12:58:01.182116Z",
+        "http_result": "200\nhttps://pmc.ncbi.nlm.nih.gov/articles/PMC3732978/pdf/pnas.201306539.pdf",
+        "acquisition": "downloaded",
+        "status": "failed",
+        "error": "Response is not a PDF: \n\n\n\n<html>\n  <head>\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <"
+      }
+    ]
+  },
+  {
+    "id": "evans_fletcher_2015_landscape",
+    "path": "manuscripts/evans_fletcher_2015_landscape_angkor_wat_redefined.pdf",
+    "source_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/F3F0731A514E338A76DA8A906458A890/S0003598X1500157Xa.pdf/div-class-title-the-landscape-of-angkor-wat-redefined-div.pdf",
+    "retrieved_utc": "2026-10-19T12:58:01.183522Z",
+    "http_result": "200\nhttps://www.cambridge.org/core/services/aop-cambridge-core/content/view/F3F0731A514E338A76DA8A906458A890/S0003598X1500157Xa.pdf/div-class-title-the-landscape-of-angkor-wat-redefined-div.pdf",
+    "acquisition": "downloaded",
+    "status": "available",
+    "bytes": 2995257,
+    "sha256": "49f42b6080c5a36720eb934b4cdaa4701d208a4b69a91c1d21e2921a42c30542"
+  },
+  {
+    "id": "hanus_evans_2016_ponds",
+    "path": "manuscripts/hanus_evans_2016_imaging_waters_angkor.pdf",
+    "source_url": "https://i1.rgstatic.net/publication/284226603_Imaging_the_Waters_of_Angkor_A_Method_for_Semi-Automated_Pond_Extraction_from_LiDAR_Data/links/56962b6708aeab58a9a5b6f7/Imaging-the-Waters-of-Angkor-A-Method-for-Semi-Automated-Pond-Extraction-from-LiDAR-Data.pdf",
+    "retrieved_utc": "2026-10-19T13:01:45.715970Z",
+    "acquisition": "downloaded",
+    "http_result": "403\nhttps://i1.rgstatic.net/publication/284226603_Imaging_the_Waters_of_Angkor_A_Method_for_Semi-Automated_Pond_Extraction_from_LiDAR_Data/links/56962b6708aeab58a9a5b6f7/Imaging-the-Waters-of-Angkor-A-Method-for-Semi-Automated-Pond-Extraction-from-LiDAR-Data.pdf",
+    "status": "failed",
+    "error": "d   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (22) The requested URL returned error: 403",
+    "previous_attempts": [
+      {
+        "id": "hanus_evans_2016_ponds",
+        "path": "manuscripts/hanus_evans_2016_imaging_waters_angkor.pdf",
+        "source_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/arp.1530",
+        "retrieved_utc": "2026-10-19T12:58:01.190593Z",
+        "http_result": "403\nhttps://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/arp.1530",
+        "acquisition": "downloaded",
+        "status": "failed",
+        "error": "% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (22) The requested URL returned error: 403"
+      },
+      {
+        "id": "hanus_evans_2016_ponds",
+        "path": "manuscripts/hanus_evans_2016_imaging_waters_angkor.pdf",
+        "source_url": "https://onlinelibrary.wiley.com/doi/pdf/10.1002/arp.1530",
+        "retrieved_utc": "2026-10-19T12:59:41.687962Z",
+        "acquisition": "downloaded",
+        "http_result": "403\nhttps://onlinelibrary.wiley.com/doi/pdf/10.1002/arp.1530",
+        "status": "failed",
+        "error": "d   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (22) The requested URL returned error: 403"
+      },
+      {
+        "id": "hanus_evans_2016_ponds",
+        "path": "manuscripts/hanus_evans_2016_imaging_waters_angkor.pdf",
+        "source_url": "https://www.researchgate.net/profile/Damian-Evans-3/publication/284226603_Imaging_the_Waters_of_Angkor_A_Method_for_Semi-Automated_Pond_Extraction_from_LiDAR_Data/links/56962b6708aeab58a9a5b6f7/Imaging-the-Waters-of-Angkor-A-Method-for-Semi-Automated-Pond-Extraction-from-LiDAR-Data.pdf",
+        "retrieved_utc": "2026-10-19T13:00:19.166866Z",
+        "acquisition": "downloaded",
+        "http_result": "403\nhttps://www.researchgate.net/profile/Damian-Evans-3/publication/284226603_Imaging_the_Waters_of_Angkor_A_Method_for_Semi-Automated_Pond_Extraction_from_LiDAR_Data/links/56962b6708aeab58a9a5b6f7/Imaging-the-Waters-of-Angkor-A-Method-for-Semi-Automated-Pond-Extraction-from-LiDAR-Data.pdf",
+        "status": "failed",
+        "error": "d   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (22) The requested URL returned error: 403"
+      }
+    ],
+    "access_note": "Publisher and author-upload endpoints returned HTTP 403."
+  },
+  {
+    "id": "klassen_2022_provisioning",
+    "path": "manuscripts/klassen_2022_provisioning_early_city.pdf",
+    "source_url": "https://link.springer.com/content/pdf/10.1007/s10816-021-09535-5.pdf",
+    "retrieved_utc": "2026-10-19T12:58:01.239582Z",
+    "http_result": "200\nhttps://link.springer.com/content/pdf/10.1007/s10816-021-09535-5.pdf?error=cookies_not_supported&code=45098e37-961f-437b-a4b7-20af23223da9",
+    "acquisition": "downloaded",
+    "status": "available",
+    "bytes": 2591183,
+    "sha256": "5df865609867d8a1978cdebd3ee5f3e734a033ca96c4ae003b121083c04b0006"
+  },
+  {
+    "id": "penny_2018_main",
+    "path": "manuscripts/penny_2018_demise_angkor.pdf",
+    "source_url": "https://doi.org/10.1126/sciadv.aau4029",
+    "retrieved_utc": "2026-10-19T12:58:01.403588Z",
+    "acquisition": "copied_existing",
+    "copied_from": "resources/Penny et al. - 2018 - The demise of Angkor Systemic vulnerability of urban infrastructure to climatic variations.pdf",
+    "status": "available",
+    "bytes": 2160101,
+    "sha256": "be15d263547a163515ccb73a3313eabfbbc9eb9050d38e0bfb132092bd437d71"
+  },
+  {
+    "id": "penny_2018_supplement",
+    "path": "manuscripts/penny_2018_demise_angkor_supplement.pdf",
+    "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6192684/",
+    "retrieved_utc": "2026-10-19T12:58:01.409484Z",
+    "acquisition": "copied_existing",
+    "copied_from": "resources/Penny et al. 2018 - Supplemental.pdf",
+    "status": "available",
+    "bytes": 940538,
+    "sha256": "11616e4d665ef0b2f3501b5c87eb7c1572d85c5736c9191793fd8538a0bed603"
+  },
+  {
+    "id": "kummu_2009_hydrology",
+    "path": "manuscripts/kummu_2009_water_management_angkor.pdf",
+    "source_url": "https://aaltodoc.aalto.fi/server/api/core/bitstreams/5c04c4ad-ac51-4f0f-b75e-f78cb6929431/content",
+    "retrieved_utc": "2026-10-19T12:58:01.435601Z",
+    "acquisition": "copied_existing",
+    "copied_from": "/tmp/qmodel_kummu.pdf",
+    "status": "available",
+    "bytes": 1171011,
+    "sha256": "ae95e8509ba1ede0cb47439ff3ebd56d26970aa0cd18b3174f22e02637b842c0"
+  },
+  {
+    "id": "siavb_sdgera",
+    "path": "documentation/siavb_sdgera_angkor_hydra_brochure.pdf",
+    "source_url": "https://www.siavb.fr/download00010002.aspx?f=.%2Fiso_album%2F8_pages_angkor-version_definitive-27oct-4.pdf",
+    "retrieved_utc": "2026-10-19T12:58:01.441885Z",
+    "acquisition": "copied_existing",
+    "copied_from": "/tmp/qmodel_siavb.pdf",
+    "status": "available",
+    "bytes": 2729076,
+    "sha256": "f00b856cdcb96d460fa77862c2df3698da9aef05aaa5832ce2fe67cd9a8ce45c"
+  },
+  {
+    "id": "sophia_hydraulic_city",
+    "path": "manuscripts/sophia_special33_hydraulic_city_angkor.pdf",
+    "source_url": "https://dept.sophia.ac.jp/is/angkor/publication/pdf/bunka/bunka33_special.pdf",
+    "retrieved_utc": "2026-10-19T12:58:01.459737Z",
+    "acquisition": "copied_existing",
+    "copied_from": "/tmp/qmodel_sophia.pdf",
+    "status": "available",
+    "bytes": 20400010,
+    "sha256": "3288e124edcae4723bfa21514bcf18f2af19cced133ffc0c4d36fe6cfe620e47"
+  },
+  {
+    "id": "peou_2014_sacred_water",
+    "path": "metadata/peou_2014_article.html",
+    "source_url": "https://ijih.org/volumes/article/461",
+    "retrieved_utc": "2026-10-19T12:58:01.486797Z",
+    "http_result": "200\nhttps://ijih.org/volumes/article/461",
+    "acquisition": "downloaded",
+    "status": "available",
+    "bytes": 30506,
+    "sha256": "9d412935798ee4d43d8f8f801c3f7635d696b9ddefdebb1f3be6ee69fd1e8ff4"
+  },
+  {
+    "id": "lustig_2018_koh_ker",
+    "path": "manuscripts/lustig_2018_breakdown_angkorian_hydraulic_system.pdf",
+    "source_url": "https://researchnow-admin.flinders.edu.au/ws/files/35851711/1_s2.0_S2352409X17303619_main.pdf",
+    "retrieved_utc": "2026-10-19T12:58:01.662460Z",
+    "http_result": "200\nhttps://researchnow-admin.flinders.edu.au/ws/files/35851711/1_s2.0_S2352409X17303619_main.pdf",
+    "acquisition": "downloaded",
+    "status": "available",
+    "bytes": 3245379,
+    "sha256": "a371864ace1bb869545eda792789258cdef1741fc50b165944c4c982a994ce84"
+  },
+  {
+    "id": "perron_2024_archaeoscape",
+    "path": "manuscripts/perron_2024_archaeoscape.pdf",
+    "source_url": "https://arxiv.org/pdf/2412.05203",
+    "retrieved_utc": "2026-10-19T12:58:01.665331Z",
+    "http_result": "200\nhttps://arxiv.org/pdf/2412.05203",
+    "acquisition": "downloaded",
+    "status": "available",
+    "bytes": 8927450,
+    "sha256": "601a87d73d57ae49347ed304f5523d13a8bce8a5500bb5a22755f3ae4efdf71d"
+  },
+  {
+    "id": "archaeoscape_access",
+    "path": "metadata/archaeoscape_dataset_access.html",
+    "source_url": "https://archaeoscape.ai/data/2024/",
+    "retrieved_utc": "2026-10-19T12:58:02.122064Z",
+    "http_result": "200\nhttps://archaeoscape.ai/data/2024/",
+    "acquisition": "downloaded",
+    "status": "available",
+    "bytes": 8007,
+    "sha256": "28decd0cf707a13d9146a1b65cf26320c44d37e49b673435e255fcfee4b5aa98"
+  },
+  {
+    "id": "social_reactors_access",
+    "path": "metadata/social_reactors_dataset_access.html",
+    "source_url": "https://core.tdar.org/project/392021/social-reactors-project-datasets",
+    "retrieved_utc": "2026-10-19T12:58:02.638761Z",
+    "http_result": "403\nhttps://core.tdar.org/project/392021/social-reactors-project-datasets",
+    "acquisition": "downloaded",
+    "status": "failed",
+    "error": "% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (22) The requested URL returned error: 403",
+    "access_note": "tDAR endpoints returned HTTP 403; underlying dataset files not obtained."
+  },
+  {
+    "id": "peou_2014_pdf",
+    "path": "manuscripts/peou_2014_sacred_water.pdf",
+    "source_url": "https://ijih.org/retrieve/volumeDtl/461",
+    "retrieved_utc": "2026-10-19T13:00:19.166244Z",
+    "acquisition": "downloaded",
+    "http_result": "200\nhttps://ijih.org/retrieve/volumeDtl/461",
+    "status": "available",
+    "bytes": 14928981,
+    "sha256": "c41769e85d45ff801f18ddcef750cd73e9f0dba970153ff7bfc65fc78be7cc92",
+    "previous_attempts": [
+      {
+        "id": "peou_2014_pdf",
+        "path": "manuscripts/peou_2014_sacred_water.pdf",
+        "source_url": "https://ijih.org/retrieve/volumeDtl/461",
+        "retrieved_utc": "2026-10-19T12:59:16.980817Z",
+        "acquisition": "downloaded",
+        "http_result": "200\nhttps://ijih.org/retrieve/volumeDtl/461",
+        "status": "failed",
+        "error": "9M    0     0   298k      0  0:00:48  0:00:44  0:00:04  469k\n 93 14.2M   93 13.2M    0     0   301k      0  0:00:48  0:00:45  0:00:03  479k\ncurl: (28) Operation timed out after 45000 milliseconds with 13887016 out of 14928981 bytes received"
+      }
+    ]
+  },
+  {
+    "id": "archaeoscape_code",
+    "path": "models/archaeoscape_source_main.zip",
+    "source_url": "https://codeload.github.com/archaeoscape-ai/archaeoscape/zip/459b087f3753037490f3927d9db4120727840d9e",
+    "retrieved_utc": "2026-10-19T13:00:19.170585Z",
+    "acquisition": "downloaded",
+    "http_result": "200\nhttps://codeload.github.com/archaeoscape-ai/archaeoscape/zip/459b087f3753037490f3927d9db4120727840d9e",
+    "status": "available",
+    "bytes": 4398222,
+    "sha256": "2e8f0d8922be2a6f73998636810d98eb9aa996ac76a7261cc111a304eb39e81a",
+    "previous_attempts": [
+      {
+        "id": "archaeoscape_code",
+        "path": "models/archaeoscape_source_main.zip",
+        "source_url": "https://codeload.github.com/archaeoscape-ai/archaeoscape/zip/refs/heads/main",
+        "retrieved_utc": "2026-10-19T12:59:16.984411Z",
+        "acquisition": "downloaded",
+        "http_result": "200\nhttps://codeload.github.com/archaeoscape-ai/archaeoscape/zip/refs/heads/main",
+        "status": "available",
+        "bytes": 4389078,
+        "sha256": "3d2986460ff2f2b3e9bc5910849fafc2d77c6e5d1560ca9460e2b4ace99c3cfe"
+      }
+    ]
+  },
+  {
+    "id": "archaeoscape_repo_metadata",
+    "path": "metadata/archaeoscape_repository.json",
+    "source_url": "https://api.github.com/repos/archaeoscape-ai/archaeoscape",
+    "retrieved_utc": "2026-10-19T12:59:16.988549Z",
+    "acquisition": "downloaded",
+    "http_result": "200\nhttps://api.github.com/repos/archaeoscape-ai/archaeoscape",
+    "status": "available",
+    "bytes": 6800,
+    "sha256": "97bfe4a7f4221c74dd250200f6f2fb8346692e21cfab9d5bdee58acf796b9a8c"
+  },
+  {
+    "id": "hanus_author_copy",
+    "path": "metadata/hanus_evans_2016_researchgate.html",
+    "source_url": "https://www.researchgate.net/publication/284226603_Imaging_the_Waters_of_Angkor_A_Method_for_Semi-Automated_Pond_Extraction_from_LiDAR_Data",
+    "retrieved_utc": "2026-10-19T12:59:17.045347Z",
+    "acquisition": "downloaded",
+    "http_result": "403\nhttps://www.researchgate.net/publication/284226603_Imaging_the_Waters_of_Angkor_A_Method_for_Semi-Automated_Pond_Extraction_from_LiDAR_Data",
+    "status": "failed",
+    "error": "d   Total   Spent    Left  Speed\n\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (22) The requested URL returned error: 403"
+  },
+  {
+    "id": "klassen_2022_supplement",
+    "path": "manuscripts/klassen_2022_provisioning_supplement.docx",
+    "source_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1007%2Fs10816-021-09535-5/MediaObjects/10816_2021_9535_MOESM1_ESM.docx",
+    "retrieved_utc": "2026-10-19T13:00:42.477814Z",
+    "acquisition": "downloaded",
+    "http_result": "200\nhttps://media.springernature.com/original/springer-static/esm/art%3A10.1007%2Fs10816-021-09535-5/MediaObjects/10816_2021_9535_MOESM1_ESM.docx",
+    "status": "available",
+    "bytes": 98977,
+    "sha256": "7aa2f213f7f34afaf81a9c240150f3e48bce33eaf4d9cc5a875773d92cf432c1"
+  },
+  {
+    "id": "hanus_evans_2016_metadata",
+    "path": "metadata/hanus_evans_2016_crossref.json",
+    "source_url": "https://api.crossref.org/works/10.1002/arp.1530",
+    "retrieved_utc": "2026-10-19T13:01:32.716199Z",
+    "acquisition": "downloaded",
+    "http_result": "200\nhttps://api.crossref.org/works/10.1002/arp.1530",
+    "status": "available",
+    "bytes": 9094,
+    "sha256": "240e1810e1218aefc8510b0708c2e1cfe055028e8213cd45de2b558a574e9755"
+  }
+]

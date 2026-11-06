@@ -1,0 +1,56 @@
+[
+  {
+    "id": "angkor_hydra_project",
+    "status": "public_download_not_located",
+    "custodians": "APSARA / SIAVB / Hydratec",
+    "documentation": "documentation/siavb_sdgera_angkor_hydra_brochure.pdf",
+    "missing": [
+      "project geometry",
+      "model configuration",
+      "calibration report"
+    ]
+  },
+  {
+    "id": "penny_graph_gis_code",
+    "status": "public_download_not_verified",
+    "source": "https://doi.org/10.1126/sciadv.aau4029",
+    "access_route": "Additional data may be requested from authors."
+  },
+  {
+    "id": "channel_incision_model",
+    "status": "public_download_not_located",
+    "source": "https://doi.org/10.1016/j.jenvman.2008.08.007"
+  },
+  {
+    "id": "koh_ker_hec_ras_project",
+    "status": "public_download_not_located",
+    "source": "https://doi.org/10.1016/j.jasrep.2017.11.014"
+  },
+  {
+    "id": "kalc_cali_georeferenced_terrain_gis",
+    "status": "unrestricted_download_not_verified",
+    "access_route": "Custodian permission/access required."
+  },
+  {
+    "id": "archaeoscape_dataset",
+    "status": "credentialed_access_required",
+    "source": "https://archaeoscape.ai/data/2024/",
+    "constraints": "No registration submitted. Released dataset is not georeferenced; licence prohibits localization and redistribution."
+  },
+  {
+    "id": "archaeoscape_trained_checkpoints",
+    "status": "not_released_in_repository",
+    "evidence": "models/archaeoscape/README.md: Pretrained models - Coming soon"
+  },
+  {
+    "id": "social_reactors_dataset",
+    "status": "automated_access_blocked",
+    "source": "https://core.tdar.org/project/392021/social-reactors-project-datasets"
+  },
+  {
+    "id": "hanus_evans_2016_manuscript",
+    "status": "pdf_download_blocked",
+    "doi": "10.1002/arp.1530",
+    "metadata": "metadata/hanus_evans_2016_crossref.json"
+  }
+]

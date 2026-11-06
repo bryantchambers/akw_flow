@@ -1,0 +1,10 @@
+.runtime/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+# Original input PDFs are preserved locally; canonical copies are in assets/.
+resources/

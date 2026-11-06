@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <link rel="icon" href="/static/image/logo.png" type="image/png">
+    <title>Dataset 2024 | archaeoscape.ai</title>
+    <link rel="stylesheet" href="/static/css/base.css">
+    
+<style>
+    .section {
+        margin-bottom: 30px;
+    }
+    
+    h1 {
+        color: #e16a00;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    h2 {
+        color: #008cba;
+        margin: 20px 0 10px 0;
+    }
+
+    .button-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 30px;
+        margin-bottom: 60px;
+    }
+    
+    .btn {
+        padding: 12px 24px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+    
+    .dataset-btn {
+        background-color: #0056b3;
+        color: white;
+    }
+    
+    .dataset-btn:hover {
+        background-color: #004494;
+        color: white; /* Ensure text color remains white on hover */
+    }
+
+    .description-section {
+        margin: 10px auto;
+        padding: 1px 20px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+    }
+    .description-section p {
+        color: #101010;
+        line-height: 1.2;
+    }
+
+    .license-text {
+        text-align: left;
+        margin: 20px auto;
+        padding: 5px 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        max-width: 1200px;
+        font-size: 0.9em;
+    }
+    .license-text p, .license-text ul, .checkboxes p {
+        margin: 10px 0;
+    }
+    .license-text ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    .license-text ul li {
+        margin: 10px 0;
+    }
+
+    .full-width-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto 20px auto;
+    }
+
+</style>
+
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="home-button">
+                <a href="/">
+                    <img src="/static/image/logo.png" alt="Home"> <span>archaeoscape.ai</span></a>
+            </div>
+            <div class="nav-items">
+                <a href="/data/2024/">Dataset</a>
+                <a href="/work/relay-tokens/">Relay tokens</a>
+                <a href="/">About us</a>
+            </div>
+        </nav>
+    </header>
+
+    
+
+    <div class="content">
+        
+<h1>Archaeoscape: LiDAR archaeology ML dataset</h1>
+
+
+<div class="button-container">
+    <a href="https://openreview.net/forum?id=QpF3DFP3Td" class="btn dataset-btn" target="_blank">Paper</a>
+    <a href="https://github.com/archaeoscape-ai/archaeoscape" class="btn dataset-btn" target="_blank">Code & models</a>
+    <a href="/data/2024/request" class="btn dataset-btn" target="_blank">Request data</a>
+</div>
+
+<div class="section">
+    <p>We present Archaeoscape, a novel open-access dataset for archaeological research, spanning 888 km² in Cambodia with 31,141 expert-annotated archaeological features from the Angkorian period. Archaeoscape is over four times larger than comparable datasets, and the first LiDAR archaeology resource with open-access data, annotations, and models.
+
+    <p>The imagery was collected during the KALC (2012) and CALI (2015) aerial LiDAR campaigns. The annotations are the product of systematic documentation and field verification spanning over 30 years, from initial pre-LiDAR surveys in 1993 through continuous mapping until 2024.</p>
+</div>
+
+<div class="section">
+    <h2>Description</h2>
+    <div class="full-width-image">
+        <img src="/static/image/dataset_overview2.png" alt="Dataset Overview">
+    </div>
+    <p>The 888 km² dataset is split into 23 non-overlapping parcels assigned to:</p>
+    <ul>
+        <li>Training set: 623 km², 16 parcels.</li>
+        <li>Validation set: 97 km², 3 parcels.</li>
+        <li>Test set: 168 km², 4 parcels.</li>
+    </ul>
+    <p>It includes high-resolution (0.5m) orthophotos and LiDAR-derived normalized Digital Terrain Models (nDTM), encompassing over 3.5 billion pixels with RGB values, elevation data, and polygonal annotations.</p>
+    <p>The annotations cover 5 classes:</p>
+    <ul>
+        <li><strong>Temple</strong> (827 instances, 0.2% pixels). From monumental complexes to small shrines.</li>
+        <li><strong>Mound</strong> (14,400, 8.6%). Earthen features indicating habitation, embankments, crafting sites.</li>
+        <li><strong>Hydrology</strong> (16,184, 10.4%). Hydro-engineering features like rivers, ponds, canals and reservoirs.</li>
+        <li><strong>Void</strong> (3,145, 2.5%). Ambiguous areas, excluded from evaluation.</li>
+        <li><strong>Background</strong> (78.3%). Regions lacking distinguishable archaeological features.</li>
+    </ul>
+    <p>To protect sensitive archaeological sites, the data is distributed without georeferencing and released through credentialized open access - users must provide their credentials and explicitly agree to the license terms prohibiting re-georeferencing, commercial use, and redistribution.</p>
+</div>
+
+<div class="section">
+    <h2>License</h2>
+    <p>The Archaeoscape dataset is distributed under a custom license, which prohibits redistribution and attempts at localizing the data. We provide the full text of the license below.</p>
+    <div class="license-text">
+    <p><i>The École française d'Extrême-Orient (EFEO) makes the Archaeoscape dataset (the “DATASET”) available for research and educational purposes to individuals or entities ("USER") that agree to the terms and conditions stated in this License.</i></p>
+    <ul>
+        <li><i>1. The USER may access, view, and use the DATASET without charge for lawful non-commercial research purposes only. Any commercial use, sale, or other monetization is prohibited. The USER may not use the DATASET for any unlawful activities, including but not limited to looting, vandalism, and disturbance of archaeological sites.</i></li>
+        <li><i>2. The USER may not attempt to identify the location of any part of the DATASET and must exercise all reasonable and prudent care to avoid the disclosure of the locations referenced in the DATASET in any publication or other communication.</i></li>
+        <li><i>3. The USER may not share access to the DATASET with anyone else. This includes distributing the download link or any portion of the DATASET. Other users must register separately and comply with all the terms of this License.</i></li>
+        <li><i>4. The USER must use the DATASET in a manner that respects the cultural heritage of Cambodia and its people, and in compliance with the relevant Cambodian authorities. Any use of the DATASET that could harm or exploit these cultural sites or their environment is strictly prohibited.</i></li>
+        <li><i>5. The USER must properly attribute the EFEO as the source of the data in any publications, presentations, or other forms of dissemination that make use of the DATASET.</i></li>
+        <li><i>6. This agreement may be terminated by either party at any time, but the USER's obligations with respect to the DATASET shall continue after termination. If the USER fails to comply with any of the above terms and conditions, their rights under this License shall terminate automatically and without notice.</i></li>
+    </ul>
+    <p><i>THE DATASET IS PROVIDED "AS IS," AND THE EFEO DOES NOT MAKE ANY WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. IN NO EVENT SHALL THE EFEO OR ITS COLLABORATORS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM THE USE OF THE DATASET.</i></p>
+    </div>
+</div>
+
+<div style="text-align: center; margin-top: 20px;">
+    &gt;&gt;&gt; <a href="/data/2024/request" class="btn dataset-btn" style="padding: 16px 28px; font-size: 1.1em;">Request data</a> &lt;&lt;&lt;
+</div>
+
+
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,101 @@
+{
+  "sha": "459b087f3753037490f3927d9db4120727840d9e",
+  "node_id": "C_kwDOMPXklNoAKDQ1OWIwODdmMzc1MzAzNzQ5MGYzOTI3ZDlkYjQxMjA3Mjc4NDBkOWU",
+  "commit": {
+    "author": {
+      "name": "YohannPerron",
+      "email": "73244423+YohannPerron@users.noreply.github.com",
+      "date": "2025-03-28T10:45:02Z"
+    },
+    "committer": {
+      "name": "GitHub",
+      "email": "noreply@github.com",
+      "date": "2025-03-28T10:45:02Z"
+    },
+    "message": "Update README.md",
+    "tree": {
+      "sha": "fb29abd4197eee09aa3a044c76060c78027b4e0f",
+      "url": "https://api.github.com/repos/archaeoscape-ai/archaeoscape/git/trees/fb29abd4197eee09aa3a044c76060c78027b4e0f"
+    },
+    "url": "https://api.github.com/repos/archaeoscape-ai/archaeoscape/git/commits/459b087f3753037490f3927d9db4120727840d9e",
+    "comment_count": 0,
+    "verification": {
+      "verified": true,
+      "reason": "valid",
+      "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJn5n2uCRC1aQ7uu5UhlAAAn08QAGToLmRKdfbVVXOpbxE9JpQP\nmIE7JdjGAg60WuX6/xNOE2BHHMmmmxw8dLjaH62Uvm6VC1zE/9ViFyIKCN86Q0MA\nrJNOq1praSkGXv1Kb5NIje9crMJnSxETUC1v3GfqoGbNyQsQVicMJAkZipYPSk5e\n1uaprjPReKVctB7RZBVcXRDkX+AR774x3nZAPcKOewnxqvpaTYMFRzoz2FsIRc8D\nbQ848Vi/mdJM0J4YQ05WMaEhYJiLT3JZPL+gpYruTlWVH9P8goDspt5gBdhtIPWo\nNkxffs3R8ggHXMIUu8SKzistCn92Xjf2tdYpvNjSHE42HH8eRnYDhrZP5yuDwR4N\naxwsV69LFk+Cb8pjEhCfsIPJH8F15fGJeHr93pbjI/l8AaVeXtwGwDMOXBzGVZOC\nzdpOuDiznp1NmCmmcF50WUAIwK0XYLUJ6gD1qEoHplRzYuaDhuj6dsfyO8EYwgrj\nptUEEjRcmgqVH84YaLaqy1ph29y7h2uXuxo1jJ7YbX0dP2SQj2vpKHuIhAy+3Xad\ngfxYLpe8YpXyce+VtIdXGrbMVpMzBD9QCJiOkvvoIU4mIwURik7D8qz5MA8r0Kcz\nBkKiEjFOhxCpm7aZVDx+kBt1J0HpREhOtieYnv8drHkXyOS2sCXMSZvYAdpuhmsm\n7hEeopjEjmL99XwGMWK+\n=42it\n-----END PGP SIGNATURE-----\n",
+      "payload": "tree fb29abd4197eee09aa3a044c76060c78027b4e0f\nparent 804eb018f87041d7524893662a5afc260dc68f90\nauthor YohannPerron <73244423+YohannPerron@users.noreply.github.com> 1743158702 +0100\ncommitter GitHub <noreply@github.com> 1743158702 +0100\n\nUpdate README.md",
+      "verified_at": "2025-03-28T10:50:04Z"
+    }
+  },
+  "url": "https://api.github.com/repos/archaeoscape-ai/archaeoscape/commits/459b087f3753037490f3927d9db4120727840d9e",
+  "html_url": "https://github.com/archaeoscape-ai/archaeoscape/commit/459b087f3753037490f3927d9db4120727840d9e",
+  "comments_url": "https://api.github.com/repos/archaeoscape-ai/archaeoscape/commits/459b087f3753037490f3927d9db4120727840d9e/comments",
+  "author": {
+    "login": "YohannPerron",
+    "id": 73244423,
+    "node_id": "MDQ6VXNlcjczMjQ0NDIz",
+    "avatar_url": "https://avatars.githubusercontent.com/u/73244423?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/YohannPerron",
+    "html_url": "https://github.com/YohannPerron",
+    "followers_url": "https://api.github.com/users/YohannPerron/followers",
+    "following_url": "https://api.github.com/users/YohannPerron/following{/other_user}",
+    "gists_url": "https://api.github.com/users/YohannPerron/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/YohannPerron/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/YohannPerron/subscriptions",
+    "organizations_url": "https://api.github.com/users/YohannPerron/orgs",
+    "repos_url": "https://api.github.com/users/YohannPerron/repos",
+    "events_url": "https://api.github.com/users/YohannPerron/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/YohannPerron/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "committer": {
+    "login": "web-flow",
+    "id": 19864447,
+    "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+    "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+    "gravatar_id": "",
+    "url": "https://api.github.com/users/web-flow",
+    "html_url": "https://github.com/web-flow",
+    "followers_url": "https://api.github.com/users/web-flow/followers",
+    "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+    "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+    "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+    "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+    "organizations_url": "https://api.github.com/users/web-flow/orgs",
+    "repos_url": "https://api.github.com/users/web-flow/repos",
+    "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+    "received_events_url": "https://api.github.com/users/web-flow/received_events",
+    "type": "User",
+    "user_view_type": "public",
+    "site_admin": false
+  },
+  "parents": [
+    {
+      "sha": "804eb018f87041d7524893662a5afc260dc68f90",
+      "url": "https://api.github.com/repos/archaeoscape-ai/archaeoscape/commits/804eb018f87041d7524893662a5afc260dc68f90",
+      "html_url": "https://github.com/archaeoscape-ai/archaeoscape/commit/804eb018f87041d7524893662a5afc260dc68f90"
+    }
+  ],
+  "stats": {
+    "total": 2,
+    "additions": 1,
+    "deletions": 1
+  },
+  "files": [
+    {
+      "sha": "673b9c7f64aa8dca7fa5838c233ddb03a9e04ff0",
+      "filename": "README.md",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 1,
+      "changes": 2,
+      "blob_url": "https://github.com/archaeoscape-ai/archaeoscape/blob/459b087f3753037490f3927d9db4120727840d9e/README.md",
+      "raw_url": "https://github.com/archaeoscape-ai/archaeoscape/raw/459b087f3753037490f3927d9db4120727840d9e/README.md",
+      "contents_url": "https://api.github.com/repos/archaeoscape-ai/archaeoscape/contents/README.md?ref=459b087f3753037490f3927d9db4120727840d9e",
+      "patch": "@@ -5,7 +5,7 @@\n </div>\n \n [![python](https://img.shields.io/badge/-Python_3.11+-blue?logo=python&logoColor=white)](https://www.python.org/)\n-[![pytorch](https://img.shields.io/badge/PyTorch_2.2+-ee4c2c?logo=pytorch&logoColor=white)](https://pytorch.org/get-started/locally/)\n+[![pytorch](https://img.shields.io/badge/PyTorch_2.0+-ee4c2c?logo=pytorch&logoColor=white)](https://pytorch.org/get-started/locally/)\n [![lightning](https://img.shields.io/badge/-Lightning_2.1-792ee5?logo=pytorchlightning&logoColor=white)](https://pytorchlightning.ai/)\n [![hydra](https://img.shields.io/badge/Config-Hydra_1.3-89b8cd)](https://hydra.cc/)\n [![license](https://img.shields.io/badge/License-MIT-green.svg?labelColor=gray)](https://github.com/ashleve/lightning-hydra-template#license)"
+    }
+  ]
+}

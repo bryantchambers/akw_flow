@@ -8,3 +8,6 @@ venv/
 !.env.example
 # Original input PDFs are preserved locally; canonical copies are in assets/.
 resources/
+# Large public source datasets can be reacquired with scripts/acquire_context.py.
+assets/data/context/*.tif
+assets/data/context/*.osm.pbf

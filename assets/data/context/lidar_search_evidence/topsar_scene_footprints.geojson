@@ -1,0 +1,355 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "scene": "ts1221",
+        "source_url": "https://airsar.asf.alaska.edu/data/ts/ts1221/ts1221_meta.airsar",
+        "status": "Metadata corner footprint, not a coverage/height-quality mask"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.708801,
+              13.2428
+            ],
+            [
+              103.606918,
+              13.278267
+            ],
+            [
+              103.797501,
+              13.790944
+            ],
+            [
+              103.899345,
+              13.755535
+            ],
+            [
+              103.708801,
+              13.2428
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "scene": "ts1227",
+        "source_url": "https://airsar.asf.alaska.edu/data/ts/ts1227/ts1227_meta.airsar",
+        "status": "Metadata corner footprint, not a coverage/height-quality mask"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              104.136902,
+              13.6763
+            ],
+            [
+              104.238785,
+              13.640833
+            ],
+            [
+              104.048386,
+              13.12862
+            ],
+            [
+              103.946533,
+              13.164029
+            ],
+            [
+              104.136902,
+              13.6763
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "scene": "ts1255",
+        "source_url": "https://airsar.asf.alaska.edu/data/ts/ts1255/ts1255_meta.airsar",
+        "status": "Metadata corner footprint, not a coverage/height-quality mask"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.793999,
+              13.2162
+            ],
+            [
+              103.692116,
+              13.251668
+            ],
+            [
+              103.8825,
+              13.763838
+            ],
+            [
+              103.984352,
+              13.728429
+            ],
+            [
+              103.793999,
+              13.2162
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "scene": "ts1257",
+        "source_url": "https://airsar.asf.alaska.edu/data/ts/ts1257/ts1257_meta.airsar",
+        "status": "Metadata corner footprint, not a coverage/height-quality mask"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              104.215103,
+              13.6402
+            ],
+            [
+              104.31694,
+              13.604748
+            ],
+            [
+              104.126495,
+              13.092408
+            ],
+            [
+              104.024689,
+              13.127802
+            ],
+            [
+              104.215103,
+              13.6402
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "scene": "ts1260",
+        "source_url": "https://airsar.asf.alaska.edu/data/ts/ts1260/ts1260_meta.airsar",
+        "status": "Metadata corner footprint, not a coverage/height-quality mask"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.973,
+              13.7369
+            ],
+            [
+              104.074837,
+              13.701448
+            ],
+            [
+              103.884201,
+              13.188601
+            ],
+            [
+              103.782394,
+              13.223996
+            ],
+            [
+              103.973,
+              13.7369
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "scene": "ts1303",
+        "source_url": "https://airsar.asf.alaska.edu/data/ts/ts1303/ts1303_meta.airsar",
+        "status": "Metadata corner footprint, not a coverage/height-quality mask"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.525101,
+              12.7445
+            ],
+            [
+              103.424805,
+              12.780365
+            ],
+            [
+              103.61499,
+              13.290953
+            ],
+            [
+              103.715248,
+              13.255146
+            ],
+            [
+              103.525101,
+              12.7445
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "scene": "ts1304",
+        "source_url": "https://airsar.asf.alaska.edu/data/ts/ts1304/ts1304_meta.airsar",
+        "status": "Metadata corner footprint, not a coverage/height-quality mask"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.628403,
+              13.2742
+            ],
+            [
+              103.526474,
+              13.310081
+            ],
+            [
+              103.717064,
+              13.821765
+            ],
+            [
+              103.818962,
+              13.785942
+            ],
+            [
+              103.628403,
+              13.2742
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "scene": "ts1310",
+        "source_url": "https://airsar.asf.alaska.edu/data/ts/ts1310/ts1310_meta.airsar",
+        "status": "Metadata corner footprint, not a coverage/height-quality mask"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.362,
+              12.8055
+            ],
+            [
+              103.261749,
+              12.840952
+            ],
+            [
+              103.451462,
+              13.351305
+            ],
+            [
+              103.551682,
+              13.315911
+            ],
+            [
+              103.362,
+              12.8055
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "scene": "ts1332",
+        "source_url": "https://airsar.asf.alaska.edu/data/ts/ts1332/ts1332_meta.airsar",
+        "status": "Metadata corner footprint, not a coverage/height-quality mask"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.545403,
+              13.3033
+            ],
+            [
+              103.443565,
+              13.338753
+            ],
+            [
+              103.633728,
+              13.850331
+            ],
+            [
+              103.735542,
+              13.814936
+            ],
+            [
+              103.545403,
+              13.3033
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "scene": "ts1334",
+        "source_url": "https://airsar.asf.alaska.edu/data/ts/ts1334/ts1334_meta.airsar",
+        "status": "Metadata corner footprint, not a coverage/height-quality mask"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.445099,
+              12.776
+            ],
+            [
+              103.344765,
+              12.81188
+            ],
+            [
+              103.535316,
+              13.32348
+            ],
+            [
+              103.63562,
+              13.287658
+            ],
+            [
+              103.445099,
+              12.776
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

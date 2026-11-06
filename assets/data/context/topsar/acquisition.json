@@ -1,0 +1,10 @@
+{
+  "retrieved_utc": "2026-11-06T12:55:33.968727+00:00",
+  "source_url": "https://airsar.asf.alaska.edu/data/ts/ts1260/ts1260_c.demi2",
+  "bytes": 56572400,
+  "sha256": "bff1b1b13d63d8f1a82121a67458b6d423ec321652d7ed841d55ca992b8f679f",
+  "http_status": 200,
+  "access": "Independently published raw endpoint; no credentials or packaged ZIP used.",
+  "product": "AIRSAR TOPSAR C-band DEM; radar, not LiDAR.",
+  "packaged_zip_status": "ts1260_DEM.zip redirects to Earthdata OAuth; not acquired."
+}

@@ -38,3 +38,7 @@ sha256sum -c SHA256SUMS
 ```
 
 Checksums verify the collected files; they do not establish archaeological or hydraulic accuracy. Source code in the research archive has not been installed or executed.
+
+## Geospatial context and 3D view — 6 November 2026
+
+A modern starter package now adds two Copernicus GLO-30 elevation tiles and 1,524 OSM water features. These are georeferenced context, not the missing high-resolution archaeological LiDAR/GIS. Open `/model-view` from the dashboard for 3D terrain, waterways, a provisional study fence, exploratory drainage screening and browser-local model-output import. See [context provenance and limitations](assets/data/context/README.md).

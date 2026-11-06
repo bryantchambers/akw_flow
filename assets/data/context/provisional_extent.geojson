@@ -1,0 +1,1 @@
+{"type": "FeatureCollection", "features": [{"type": "Feature", "properties": {"status": "Provisional search rectangle, not a watershed"}, "geometry": {"type": "Polygon", "coordinates": [[[103.6, 13.2], [104.2, 13.2], [104.2, 13.8], [103.6, 13.8], [103.6, 13.2]]]}}]}

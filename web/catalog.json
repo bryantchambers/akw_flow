@@ -1,31 +1,328 @@
 {
-  "updated": "2026-10-19",
+  "updated": "2026-11-06",
   "resources": [
-    {"id":"evans_2007_map","title":"The archaeological network","citation":"Evans et al. · 2007","category":"Mapping","scope":"Greater Angkor","kind":"Manuscript","description":"Comprehensive archaeological mapping of settlement and water-management features across Greater Angkor.","supports":"Locate channels, reservoirs and embankments; establish the spatial foundation of a reconstructed network.","limitation":"We have the published map and paper, not the original georeferenced GIS layers.","related":[]},
-    {"id":"fletcher_2008_network","title":"How the water system developed","citation":"Fletcher et al. · 2008","category":"Mapping","scope":"Greater Angkor","kind":"Manuscript","description":"A provisional archaeological reconstruction of successive changes to Angkor’s water-management system.","supports":"Choose a historical configuration and interpret the function and chronology of connections.","limitation":"A developmental interpretation rather than a calibrated hydraulic simulation.","related":[]},
-    {"id":"evans_2013_lidar","title":"Landscape beneath the canopy","citation":"Evans et al. · 2013","category":"Terrain","scope":"Angkor and other survey blocks","kind":"Manuscript","description":"Airborne LiDAR reveals channels, ponds, embankments and urban features obscured by vegetation.","supports":"Guide extraction of surviving hydraulic geometry from high-resolution terrain.","limitation":"The manuscript is local; the original georeferenced terrain and point clouds are not.","related":[]},
-    {"id":"evans_fletcher_2015_landscape","title":"Angkor Wat’s local landscape","citation":"Evans & Fletcher · 2015","category":"Mapping","scope":"Angkor Wat","kind":"Manuscript","description":"LiDAR, archives and ground investigation reinterpret the temple enclosure and its surrounding landscape.","supports":"Constrain local waterways and distinguish historical features from later modifications.","limitation":"The present northeastern moat inlet dates to 1916; modern connectivity cannot simply represent medieval conditions.","related":[]},
-    {"id":"klassen_2022_provisioning","title":"Estimating water storage","citation":"Klassen et al. · 2021 / 2022","category":"Storage","scope":"Greater Angkor; agricultural communities","kind":"Manuscript","description":"Estimates reservoir and moat capacities using LiDAR elevation ranges and area–depth regressions.","supports":"Provide initial storage estimates and a published method for filling gaps in terrain coverage.","limitation":"Storage proxies are not surveyed bathymetry or operational stage–storage curves. Main analysis excludes the civic-ceremonial core.","related":["klassen_2022_supplement"]},
-    {"id":"penny_2018_main","title":"Cascading failure in the network","citation":"Penny et al. · 2018","category":"Failure models","scope":"Greater Angkor","kind":"Manuscript","description":"A 617-node, 1,013-edge network explores how erosion and sedimentation can concentrate flow and disrupt distribution.","supports":"Define diversion, flow-starvation and coupled erosion–sedimentation failure scenarios.","limitation":"Normalized flows and capacity updates do not supply historical volumes, travel times or bacterial concentrations.","related":["penny_2018_supplement"]},
-    {"id":"kummu_2009_hydrology","title":"Hydrology and channel incision","citation":"Kummu · 2009","category":"Failure models","scope":"Greater Angkor / Siem Reap channel","kind":"Manuscript","description":"Examines modified catchments, sediment transport and a mathematical reconstruction of channel incision.","supports":"Constrain alternative bed profiles and understand changes to the regional drainage system.","limitation":"The channel-evolution model is described in the paper; runnable code and inputs were not located.","related":[]},
-    {"id":"siavb_sdgera","title":"The operational Hydra model","citation":"SIAVB · SDGERA brochure","category":"Operations","scope":"Modern Angkor–Siem Reap","kind":"Documentation","description":"Documents a detailed hydraulic model built from topographic surveys and monitoring, calibrated in Hydra (Hydratec).","supports":"Identify the most promising source of existing hydraulic geometry, storage and calibration data.","limitation":"Only documentation is acquired. Native project files, geometry exports and calibration performance remain unavailable.","related":[]},
-    {"id":"sophia_hydraulic_city","title":"The hydraulic city of Angkor","citation":"Sophia University · Special issue 33","category":"Operations","scope":"Angkor / Angkor Wat","kind":"Proceedings","description":"A complete symposium volume on hydraulic infrastructure and Angkor Wat, including Hang Peou’s water-management chapter.","supports":"Trace archaeological interpretations, restoration history and the institutional context of SDGERA.","limitation":"A published volume, not a downloadable hydraulic project. Modern restoration must be distinguished from historical conditions.","related":[]},
-    {"id":"peou_2014_pdf","title":"Restoring the ancient system","citation":"Peou Hang · 2014","category":"Operations","scope":"Angkor","kind":"Manuscript","description":"Describes traditional water knowledge, hydraulic structures and rehabilitation of reservoirs and supply channels.","supports":"Identify operational knowledge, storage figures and documented changes during restoration.","limitation":"Restored inlets and canal dimensions can differ from ancient arrangements. The PDF is scanned.","related":[]},
-    {"id":"lustig_2018_koh_ker","title":"A hydraulic failure reconstruction","citation":"Lustig et al. · 2018","category":"Failure models","scope":"Koh Ker — outside Angkor Wat","kind":"Manuscript","description":"Combines archaeological evidence, terrain and hydraulic modelling to investigate reservoir and embankment failure at Koh Ker.","supports":"Provide a methodological precedent for archaeological HEC-RAS reconstruction and failure analysis.","limitation":"A different site. The paper is local; the HEC-RAS project is not.","related":[]},
-    {"id":"perron_2024_archaeoscape","title":"Learning to extract archaeological features","citation":"Perron et al. · 2024","category":"Extraction methods","scope":"Cambodian archaeological landscapes","kind":"Manuscript","description":"Introduces a LiDAR-derived benchmark and methods for identifying archaeological features, including hydrological features.","supports":"Evaluate methods for assisted extraction of water-management features.","limitation":"The paper does not provide an unrestricted georeferenced terrain dataset.","related":["archaeoscape_code"]},
-    {"id":"archaeoscape_code","title":"Archaeoscape source code","citation":"Repository snapshot · 459b087f3753","category":"Extraction methods","scope":"Feature segmentation","kind":"Source code","description":"Pinned source code for reproducing archaeological feature-segmentation experiments; includes configuration and training workflows.","supports":"Develop an extraction workflow when appropriate terrain and annotations become available.","limitation":"Not a hydraulic model. Trained Archaeoscape checkpoints are listed as coming soon. Code has not been installed or executed.","related":[]},
-    {"id":"penny_2018_supplement","title":"Failure-model equations and rules","citation":"Penny et al. · 2018 · Supplement","category":"Failure models","scope":"Greater Angkor / generic networks","kind":"Supplement","description":"Defines initialization, perturbations, capacity updates, the damage metric and generic-network experiments.","supports":"Reproduce the published conceptual failure mechanism and audit its assumptions.","limitation":"Equations and illustrations do not substitute for the original graph or a dimensional hydraulic model.","related":[]},
-    {"id":"klassen_2022_supplement","title":"Provisioning study supplement","citation":"Klassen et al. · Publisher supplement","category":"Storage","scope":"Agricultural analysis","kind":"Supplement","description":"Supporting information accompanying the agricultural-economy and water-storage study.","supports":"Review the study’s supplementary evidence alongside the manuscript.","limitation":"This document does not replace the underlying tDAR data tables or the LiDAR terrain.","related":[]}
+    {
+      "id": "evans_2007_map",
+      "title": "The archaeological network",
+      "citation": "Evans et al. · 2007",
+      "category": "Mapping",
+      "scope": "Greater Angkor",
+      "kind": "Manuscript",
+      "description": "Comprehensive archaeological mapping of settlement and water-management features across Greater Angkor.",
+      "supports": "Locate channels, reservoirs and embankments; establish the spatial foundation of a reconstructed network.",
+      "limitation": "We have the published map and paper, not the original georeferenced GIS layers.",
+      "related": []
+    },
+    {
+      "id": "fletcher_2008_network",
+      "title": "How the water system developed",
+      "citation": "Fletcher et al. · 2008",
+      "category": "Mapping",
+      "scope": "Greater Angkor",
+      "kind": "Manuscript",
+      "description": "A provisional archaeological reconstruction of successive changes to Angkor’s water-management system.",
+      "supports": "Choose a historical configuration and interpret the function and chronology of connections.",
+      "limitation": "A developmental interpretation rather than a calibrated hydraulic simulation.",
+      "related": []
+    },
+    {
+      "id": "evans_2013_lidar",
+      "title": "Landscape beneath the canopy",
+      "citation": "Evans et al. · 2013",
+      "category": "Terrain",
+      "scope": "Angkor and other survey blocks",
+      "kind": "Manuscript",
+      "description": "Airborne LiDAR reveals channels, ponds, embankments and urban features obscured by vegetation.",
+      "supports": "Guide extraction of surviving hydraulic geometry from high-resolution terrain.",
+      "limitation": "The manuscript is local; the original georeferenced terrain and point clouds are not.",
+      "related": []
+    },
+    {
+      "id": "evans_fletcher_2015_landscape",
+      "title": "Angkor Wat’s local landscape",
+      "citation": "Evans & Fletcher · 2015",
+      "category": "Mapping",
+      "scope": "Angkor Wat",
+      "kind": "Manuscript",
+      "description": "LiDAR, archives and ground investigation reinterpret the temple enclosure and its surrounding landscape.",
+      "supports": "Constrain local waterways and distinguish historical features from later modifications.",
+      "limitation": "The present northeastern moat inlet dates to 1916; modern connectivity cannot simply represent medieval conditions.",
+      "related": []
+    },
+    {
+      "id": "klassen_2022_provisioning",
+      "title": "Estimating water storage",
+      "citation": "Klassen et al. · 2021 / 2022",
+      "category": "Storage",
+      "scope": "Greater Angkor; agricultural communities",
+      "kind": "Manuscript",
+      "description": "Estimates reservoir and moat capacities using LiDAR elevation ranges and area–depth regressions.",
+      "supports": "Provide initial storage estimates and a published method for filling gaps in terrain coverage.",
+      "limitation": "Storage proxies are not surveyed bathymetry or operational stage–storage curves. Main analysis excludes the civic-ceremonial core.",
+      "related": [
+        "klassen_2022_supplement"
+      ]
+    },
+    {
+      "id": "penny_2018_main",
+      "title": "Cascading failure in the network",
+      "citation": "Penny et al. · 2018",
+      "category": "Failure models",
+      "scope": "Greater Angkor",
+      "kind": "Manuscript",
+      "description": "A 617-node, 1,013-edge network explores how erosion and sedimentation can concentrate flow and disrupt distribution.",
+      "supports": "Define diversion, flow-starvation and coupled erosion–sedimentation failure scenarios.",
+      "limitation": "Normalized flows and capacity updates do not supply historical volumes, travel times or bacterial concentrations.",
+      "related": [
+        "penny_2018_supplement"
+      ]
+    },
+    {
+      "id": "kummu_2009_hydrology",
+      "title": "Hydrology and channel incision",
+      "citation": "Kummu · 2009",
+      "category": "Failure models",
+      "scope": "Greater Angkor / Siem Reap channel",
+      "kind": "Manuscript",
+      "description": "Examines modified catchments, sediment transport and a mathematical reconstruction of channel incision.",
+      "supports": "Constrain alternative bed profiles and understand changes to the regional drainage system.",
+      "limitation": "The channel-evolution model is described in the paper; runnable code and inputs were not located.",
+      "related": []
+    },
+    {
+      "id": "siavb_sdgera",
+      "title": "The operational Hydra model",
+      "citation": "SIAVB · SDGERA brochure",
+      "category": "Operations",
+      "scope": "Modern Angkor–Siem Reap",
+      "kind": "Documentation",
+      "description": "Documents a detailed hydraulic model built from topographic surveys and monitoring, calibrated in Hydra (Hydratec).",
+      "supports": "Identify the most promising source of existing hydraulic geometry, storage and calibration data.",
+      "limitation": "Only documentation is acquired. Native project files, geometry exports and calibration performance remain unavailable.",
+      "related": []
+    },
+    {
+      "id": "sophia_hydraulic_city",
+      "title": "The hydraulic city of Angkor",
+      "citation": "Sophia University · Special issue 33",
+      "category": "Operations",
+      "scope": "Angkor / Angkor Wat",
+      "kind": "Proceedings",
+      "description": "A complete symposium volume on hydraulic infrastructure and Angkor Wat, including Hang Peou’s water-management chapter.",
+      "supports": "Trace archaeological interpretations, restoration history and the institutional context of SDGERA.",
+      "limitation": "A published volume, not a downloadable hydraulic project. Modern restoration must be distinguished from historical conditions.",
+      "related": []
+    },
+    {
+      "id": "peou_2014_pdf",
+      "title": "Restoring the ancient system",
+      "citation": "Peou Hang · 2014",
+      "category": "Operations",
+      "scope": "Angkor",
+      "kind": "Manuscript",
+      "description": "Describes traditional water knowledge, hydraulic structures and rehabilitation of reservoirs and supply channels.",
+      "supports": "Identify operational knowledge, storage figures and documented changes during restoration.",
+      "limitation": "Restored inlets and canal dimensions can differ from ancient arrangements. The PDF is scanned.",
+      "related": []
+    },
+    {
+      "id": "lustig_2018_koh_ker",
+      "title": "A hydraulic failure reconstruction",
+      "citation": "Lustig et al. · 2018",
+      "category": "Failure models",
+      "scope": "Koh Ker — outside Angkor Wat",
+      "kind": "Manuscript",
+      "description": "Combines archaeological evidence, terrain and hydraulic modelling to investigate reservoir and embankment failure at Koh Ker.",
+      "supports": "Provide a methodological precedent for archaeological HEC-RAS reconstruction and failure analysis.",
+      "limitation": "A different site. The paper is local; the HEC-RAS project is not.",
+      "related": []
+    },
+    {
+      "id": "perron_2024_archaeoscape",
+      "title": "Learning to extract archaeological features",
+      "citation": "Perron et al. · 2024",
+      "category": "Extraction methods",
+      "scope": "Cambodian archaeological landscapes",
+      "kind": "Manuscript",
+      "description": "Introduces a LiDAR-derived benchmark and methods for identifying archaeological features, including hydrological features.",
+      "supports": "Evaluate methods for assisted extraction of water-management features.",
+      "limitation": "The paper does not provide an unrestricted georeferenced terrain dataset.",
+      "related": [
+        "archaeoscape_code"
+      ]
+    },
+    {
+      "id": "archaeoscape_code",
+      "title": "Archaeoscape source code",
+      "citation": "Repository snapshot · 459b087f3753",
+      "category": "Extraction methods",
+      "scope": "Feature segmentation",
+      "kind": "Source code",
+      "description": "Pinned source code for reproducing archaeological feature-segmentation experiments; includes configuration and training workflows.",
+      "supports": "Develop an extraction workflow when appropriate terrain and annotations become available.",
+      "limitation": "Not a hydraulic model. Trained Archaeoscape checkpoints are listed as coming soon. Code has not been installed or executed.",
+      "related": []
+    },
+    {
+      "id": "penny_2018_supplement",
+      "title": "Failure-model equations and rules",
+      "citation": "Penny et al. · 2018 · Supplement",
+      "category": "Failure models",
+      "scope": "Greater Angkor / generic networks",
+      "kind": "Supplement",
+      "description": "Defines initialization, perturbations, capacity updates, the damage metric and generic-network experiments.",
+      "supports": "Reproduce the published conceptual failure mechanism and audit its assumptions.",
+      "limitation": "Equations and illustrations do not substitute for the original graph or a dimensional hydraulic model.",
+      "related": []
+    },
+    {
+      "id": "klassen_2022_supplement",
+      "title": "Provisioning study supplement",
+      "citation": "Klassen et al. · Publisher supplement",
+      "category": "Storage",
+      "scope": "Agricultural analysis",
+      "kind": "Supplement",
+      "description": "Supporting information accompanying the agricultural-economy and water-storage study.",
+      "supports": "Review the study’s supplementary evidence alongside the manuscript.",
+      "limitation": "This document does not replace the underlying tDAR data tables or the LiDAR terrain.",
+      "related": []
+    },
+    {
+      "id": "copernicus_context",
+      "title": "Modern elevation context",
+      "citation": "Copernicus GLO-30 Public · AWS 2021 release",
+      "category": "Terrain",
+      "scope": "Provisional Angkor rectangle; two 1° tiles",
+      "kind": "Raster dataset",
+      "description": "Georeferenced modern digital surface elevation at approximately 30 m spacing. Both source tiles are local; the viewer uses an aggregated mesh.",
+      "supports": "Locate the study area, inspect regional relief and run clearly labelled terrain-drainage screening.",
+      "limitation": "Includes vegetation and structures. It cannot resolve original canal beds, control elevations or historical bathymetry. This card downloads one tile; both are in assets/data/context.",
+      "related": []
+    },
+    {
+      "id": "osm_context",
+      "title": "Modern mapped water features",
+      "citation": "OpenStreetMap contributors / Geofabrik · November 2026",
+      "category": "Mapping",
+      "scope": "Provisional study rectangle",
+      "kind": "Vector dataset",
+      "description": "Waterway ways and water polygons extracted from a dated OpenStreetMap snapshot, retaining OSM identifiers and source tags.",
+      "supports": "Overlay current mapped canals and receiving waters on the terrain and identify places requiring archaeological verification.",
+      "limitation": "Modern mapping, not Penny’s graph or a verified medieval network. Topology, hydraulic connectivity and dimensions are unvalidated; relation-only polygons are not included.",
+      "related": []
+    },
+    {
+      "id": "topsar_raw",
+      "title": "Higher-resolution radar terrain candidate",
+      "citation": "NASA/JPL AIRSAR TOPSAR · ts1260 · 21 Sep 2000",
+      "category": "Terrain",
+      "scope": "Narrow survey strip covering Angkor Wat",
+      "kind": "Raw radar DEM",
+      "description": "A publicly acquired C-band radar DEM with 5 m post spacing, plus header metadata and a geographic footprint. This is radar terrain, not LiDAR.",
+      "supports": "A concrete candidate for finer terrain reconstruction after raw-format conversion, geolocation and height-reference checks.",
+      "limitation": "Not yet geocoded or validated for the viewer. The raw header reports UTM zone TBD; vertical reference and NoData interpretation remain unresolved. Post spacing does not establish accuracy.",
+      "related": []
+    }
   ],
   "needs": [
-    {"id":"kalc_cali_georeferenced_terrain_gis","title":"Georeferenced terrain and archaeological GIS","priority":"Critical","owner":"APSARA Documentation Centre + EFEO Siem Reap","description":"Absolute-elevation bare-earth DTM, channel and embankment vectors, reservoir polygons, and original feature IDs.","why":"Recover cross-sections, bed slopes, basin geometry and physically meaningful connections.","request":"Start with a coverage index and a pilot-area GeoTIFF/GeoPackage. Include horizontal and vertical datums, acquisition dates, accuracy, phase assignments and restoration history.","state":"Access route to confirm","source":"https://www.efeo.fr/centre/siem-reap/?lang=en"},
-    {"id":"angkor_hydra_project","title":"Hydra project and hydraulic geometry","priority":"Critical","owner":"APSARA water-management department + SIAVB / Hydratec","description":"Native project plus neutral exports of cross-sections, structures, storage curves and hydraulic connections.","why":"Reuse surveyed geometry and understand existing flow routing before rebuilding it.","request":"Ask for the model inventory, coverage, software version, a sample export and one complete runnable scenario. Request gate rules and calibration documentation.","state":"Public project files not located","source":"https://apsaraauthority.gov.kh/contact-us/"},
-    {"id":"penny_graph_gis_code","title":"Penny’s original graph and code","priority":"Critical","owner":"Penny et al. / corresponding author","description":"Node and edge tables, coordinates, original GIS layers, width classes and simulation implementation.","why":"Connect published failure scenarios to archaeological features and dimensional geometry.","request":"Request stable feature IDs, source-map lineage, graph conversion rules and the exact model version used in the paper.","state":"Author request needed","source":"https://doi.org/10.1126/sciadv.aau4029"},
-    {"id":"forcing_observations","title":"Water levels, inflows and calibration observations","priority":"Critical","owner":"APSARA / hydraulic-model custodians","description":"Inflow hydrographs, rainfall, downstream water levels, discharge measurements and operating records.","why":"Geometry needs a water balance to produce water volumes, travel times and dilution under wet, dry and failure conditions.","request":"Request time series with units, time zones, quality flags, station coordinates and a representative calibration event. Historical forcing will require separate scenarios.","state":"Not yet acquired","source":"https://apsaraauthority.gov.kh/apsara-authority-main/departments-and-units/"},
-    {"id":"historical_beds","title":"Historical beds and control elevations","priority":"Critical","owner":"Archaeological teams / archives","description":"Cores, excavation sections, old surveys and evidence for infilling, incision, dredging and inlet changes.","why":"Reconstruct a chosen medieval time slice rather than accidentally model the modern restored landscape.","request":"Prioritize pilot-area original beds, sill elevations and dated changes. Preserve alternative reconstructions where evidence is uncertain.","state":"Evidence to assemble","source":"https://doi.org/10.15184/aqy.2015.157"},
-    {"id":"bacterial_inputs","title":"Organism, sources and fate parameters","priority":"Next stage","owner":"Research team + microbiological literature / observations","description":"Target bacterium, source locations and loads, inactivation, attachment, sediment exchange and any justified growth.","why":"Distinguish bacteria per litre, transported load and sediment-associated storage.","request":"Choose the organism and habitat first. Build a conservative tracer baseline before organism-specific processes; propagate uncertain parameters.","state":"Research definition needed","source":null},
-    {"id":"social_reactors_dataset","title":"Underlying storage and community tables","priority":"Supporting","owner":"Klassen et al. / tDAR","description":"Original feature tables underlying published storage estimates and archaeological associations.","why":"Use published estimates as checks and priors for reconstructed storage.","request":"Try authorized browser access or request the relevant tables from the authors; the automated tDAR endpoint returned HTTP 403.","state":"Automated access blocked","source":"https://core.tdar.org/project/392021/social-reactors-project-datasets"},
-    {"id":"archaeoscape_dataset","title":"Archaeoscape terrain and annotations","priority":"Supporting","owner":"Archaeoscape data custodians","description":"Credentialed feature-extraction benchmark; its release has no georeferencing and prohibits attempts to locate the data.","why":"Useful for generic segmentation research, not direct spatial alignment with Penny’s network under the published licence.","request":"For this reconstruction, seek separately authorized georeferenced data. No benchmark registration or agreement has been submitted.","state":"Credentialed and restricted","source":"https://archaeoscape.ai/data/2024/"},
-    {"id":"other_projects","title":"Related model files and missing paper","priority":"Supporting","owner":"Kummu / Lustig collaborators; Hanus & Evans","description":"Siem Reap incision model, Koh Ker HEC-RAS project, and Hanus & Evans’s pond-extraction PDF.","why":"Provide methods and comparison cases; none substitutes for the target network geometry.","request":"Request runnable model inputs where possible. Hanus & Evans citation metadata is local, but PDF endpoints returned HTTP 403.","state":"Files not obtained","source":"https://doi.org/10.1002/arp.1530"}
+    {
+      "id": "kalc_cali_georeferenced_terrain_gis",
+      "title": "Georeferenced terrain and archaeological GIS",
+      "priority": "Critical",
+      "owner": "APSARA Documentation Centre + EFEO Siem Reap",
+      "description": "Absolute-elevation bare-earth DTM, channel and embankment vectors, reservoir polygons, and original feature IDs.",
+      "why": "Recover cross-sections, bed slopes, basin geometry and physically meaningful connections.",
+      "request": "Start with a coverage index and a pilot-area GeoTIFF/GeoPackage. Include horizontal and vertical datums, acquisition dates, accuracy, phase assignments and restoration history.",
+      "state": "Access route to confirm",
+      "source": "https://www.efeo.fr/centre/siem-reap/?lang=en"
+    },
+    {
+      "id": "angkor_hydra_project",
+      "title": "Hydra project and hydraulic geometry",
+      "priority": "Critical",
+      "owner": "APSARA water-management department + SIAVB / Hydratec",
+      "description": "Native project plus neutral exports of cross-sections, structures, storage curves and hydraulic connections.",
+      "why": "Reuse surveyed geometry and understand existing flow routing before rebuilding it.",
+      "request": "Ask for the model inventory, coverage, software version, a sample export and one complete runnable scenario. Request gate rules and calibration documentation.",
+      "state": "Public project files not located",
+      "source": "https://apsaraauthority.gov.kh/contact-us/"
+    },
+    {
+      "id": "penny_graph_gis_code",
+      "title": "Penny’s original graph and code",
+      "priority": "Critical",
+      "owner": "Penny et al. / corresponding author",
+      "description": "Node and edge tables, coordinates, original GIS layers, width classes and simulation implementation.",
+      "why": "Connect published failure scenarios to archaeological features and dimensional geometry.",
+      "request": "Request stable feature IDs, source-map lineage, graph conversion rules and the exact model version used in the paper.",
+      "state": "Author request needed",
+      "source": "https://doi.org/10.1126/sciadv.aau4029"
+    },
+    {
+      "id": "forcing_observations",
+      "title": "Water levels, inflows and calibration observations",
+      "priority": "Critical",
+      "owner": "APSARA / hydraulic-model custodians",
+      "description": "Inflow hydrographs, rainfall, downstream water levels, discharge measurements and operating records.",
+      "why": "Geometry needs a water balance to produce water volumes, travel times and dilution under wet, dry and failure conditions.",
+      "request": "Request time series with units, time zones, quality flags, station coordinates and a representative calibration event. Historical forcing will require separate scenarios.",
+      "state": "Not yet acquired",
+      "source": "https://apsaraauthority.gov.kh/apsara-authority-main/departments-and-units/"
+    },
+    {
+      "id": "historical_beds",
+      "title": "Historical beds and control elevations",
+      "priority": "Critical",
+      "owner": "Archaeological teams / archives",
+      "description": "Cores, excavation sections, old surveys and evidence for infilling, incision, dredging and inlet changes.",
+      "why": "Reconstruct a chosen medieval time slice rather than accidentally model the modern restored landscape.",
+      "request": "Prioritize pilot-area original beds, sill elevations and dated changes. Preserve alternative reconstructions where evidence is uncertain.",
+      "state": "Evidence to assemble",
+      "source": "https://doi.org/10.15184/aqy.2015.157"
+    },
+    {
+      "id": "bacterial_inputs",
+      "title": "Organism, sources and fate parameters",
+      "priority": "Next stage",
+      "owner": "Research team + microbiological literature / observations",
+      "description": "Target bacterium, source locations and loads, inactivation, attachment, sediment exchange and any justified growth.",
+      "why": "Distinguish bacteria per litre, transported load and sediment-associated storage.",
+      "request": "Choose the organism and habitat first. Build a conservative tracer baseline before organism-specific processes; propagate uncertain parameters.",
+      "state": "Research definition needed",
+      "source": null
+    },
+    {
+      "id": "social_reactors_dataset",
+      "title": "Underlying storage and community tables",
+      "priority": "Supporting",
+      "owner": "Klassen et al. / tDAR",
+      "description": "Original feature tables underlying published storage estimates and archaeological associations.",
+      "why": "Use published estimates as checks and priors for reconstructed storage.",
+      "request": "Try authorized browser access or request the relevant tables from the authors; the automated tDAR endpoint returned HTTP 403.",
+      "state": "Automated access blocked",
+      "source": "https://core.tdar.org/project/392021/social-reactors-project-datasets"
+    },
+    {
+      "id": "archaeoscape_dataset",
+      "title": "Archaeoscape terrain and annotations",
+      "priority": "Supporting",
+      "owner": "Archaeoscape data custodians",
+      "description": "Credentialed feature-extraction benchmark; its release has no georeferencing and prohibits attempts to locate the data.",
+      "why": "Useful for generic segmentation research, not direct spatial alignment with Penny’s network under the published licence.",
+      "request": "For this reconstruction, seek separately authorized georeferenced data. No benchmark registration or agreement has been submitted.",
+      "state": "Credentialed and restricted",
+      "source": "https://archaeoscape.ai/data/2024/"
+    },
+    {
+      "id": "other_projects",
+      "title": "Related model files and missing paper",
+      "priority": "Supporting",
+      "owner": "Kummu / Lustig collaborators; Hanus & Evans",
+      "description": "Siem Reap incision model, Koh Ker HEC-RAS project, and Hanus & Evans’s pond-extraction PDF.",
+      "why": "Provide methods and comparison cases; none substitutes for the target network geometry.",
+      "request": "Request runnable model inputs where possible. Hanus & Evans citation metadata is local, but PDF endpoints returned HTTP 403.",
+      "state": "Files not obtained",
+      "source": "https://doi.org/10.1002/arp.1530"
+    }
   ]
 }

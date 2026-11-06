@@ -1,0 +1,14 @@
+[
+  {
+    "endpoint": "https://overpass-api.de/api/interpreter",
+    "error": "HTTP Error 502: Bad Gateway"
+  },
+  {
+    "endpoint": "https://overpass.kumi.systems/api/interpreter",
+    "error": "The read operation timed out"
+  },
+  {
+    "endpoint": "https://overpass.private.coffee/api/interpreter",
+    "error": "The read operation timed out"
+  }
+]

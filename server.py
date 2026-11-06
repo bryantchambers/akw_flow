@@ -18,6 +18,16 @@ def catalog():
     data = json.loads((WEB / 'catalog.json').read_text())
     manifest = json.loads((ASSETS / 'metadata/acquisition_manifest.json').read_text())
     records = {r['id']: r for r in manifest}
+    context = ASSETS / 'data/context/provenance.json'
+    if context.is_file():
+        entries = json.loads(context.read_text()).get('records', [])
+        for entry in entries:
+            key = 'copernicus_context' if entry.get('dataset') == 'copernicus_glo30' else 'osm_context'
+            records[key] = dict(entry, status='available', path=entry.get('derived_path', entry['path']), sha256=entry.get('derived_sha256', entry['sha256']))
+    topsar = ASSETS / 'data/context/topsar/acquisition.json'
+    if topsar.is_file():
+        entry = json.loads(topsar.read_text())
+        records['topsar_raw'] = dict(entry, status='available', path='data/context/topsar/ts1260_c.demi2')
     pages = {r['path']: r.get('pages') for r in json.loads((ASSETS / 'metadata/pdf_validation.json').read_text())}
     def artifact(key):
         r = records.get(key, {})
@@ -34,7 +44,7 @@ def catalog():
     data['stats'] = {'pdfs': sum(r['path'].endswith('.pdf') for r in acquired),
                      'supplements': sum(r['path'].endswith('.docx') for r in acquired),
                      'source_archives': sum(r['path'].endswith('.zip') for r in acquired),
-                     'geospatial_datasets': 0, 'hydraulic_projects': 0,
+                     'geospatial_datasets': 0, 'context_datasets': sum(k in records and (ASSETS / records[k]['path']).is_file() for k in ('copernicus_context','osm_context')), 'hydraulic_projects': 0,
                      'total_bytes': sum((ASSETS / r['path']).stat().st_size for r in acquired),
                      'resources': len(data['resources']),
                      'critical_needs': sum(r['priority'] == 'Critical' for r in data['needs'])}
@@ -66,8 +76,14 @@ class Handler(BaseHTTPRequestHandler):
             if not head:
                 self.wfile.write(body)
             return
-        if path in ('/', '/index.html', '/style.css', '/app.js'):
-            file = WEB / ('index.html' if path == '/' else path.lstrip('/'))
+        if path == '/model-view':
+            file = WEB / 'viewer.html'
+            attachment = False
+        elif path in ('/', '/index.html') or path.endswith(('.css', '.js', '.json', '.txt')) and not path.startswith('/assets/'):
+            file = (WEB / ('index.html' if path == '/' else path.lstrip('/'))).resolve()
+            if not file.is_relative_to(WEB.resolve()):
+                self.send_error(403)
+                return
             attachment = False
         elif path.startswith('/assets/'):
             file = (ASSETS / path[len('/assets/'):]).resolve()

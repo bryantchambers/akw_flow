@@ -1,0 +1,40 @@
+{
+  "generated_utc": "2026-11-06T12:47:30.186068+00:00",
+  "script": "scripts/build_viewer_scene.py",
+  "source_files": [
+    {
+      "path": "assets/data/context/Copernicus_DSM_COG_10_N13_00_E103_00_DEM.tif",
+      "sha256": "3d5306154e0bcf1f8110a7682f390bb3bc3790055ff5cb468a8bcc596f826530"
+    },
+    {
+      "path": "assets/data/context/Copernicus_DSM_COG_10_N13_00_E104_00_DEM.tif",
+      "sha256": "5d52daa39fbf1656ad38133387918f215084a60f25335533f5fba711d93ceaa4"
+    }
+  ],
+  "scene_sha256": "086cded179c281ea4dd7c0372cfdb4ab14fd3b5669c71a05dba4050cbbbfc52e",
+  "native_shape": [
+    2160,
+    2160
+  ],
+  "display_shape": [
+    240,
+    240
+  ],
+  "modern_water_features": 1524,
+  "screening": {
+    "method": "D8 steepest-descent contributing area",
+    "metric": "Upstream contributing area",
+    "unit": "km\u00b2",
+    "status": "Exploratory terrain screening; not calibrated flow or bacterial output",
+    "assumptions": [
+      "Uniform unit area contribution; no rainfall or runoff coefficient specified.",
+      "Strictly downhill routing on the modern DSM; no pit filling or flat resolution.",
+      "Canals, controls, storage, infiltration and sediment transport are not represented.",
+      "Upstream supply outside the fence is omitted; mapped hotspots depend on the selected domain.",
+      "Local sinks retain contributing area. This is not water depth, discharge, residence time or bacterial concentration."
+    ],
+    "native_cells": 4665600,
+    "local_sinks": 405327,
+    "mass_balance_check": "Sum of contributing area at all sinks equals total domain pixel area."
+  }
+}

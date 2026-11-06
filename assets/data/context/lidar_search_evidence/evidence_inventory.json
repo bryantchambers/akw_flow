@@ -1,0 +1,121 @@
+{
+  "checked": "2026-11-06",
+  "source_search": "https://airsar.jpl.nasa.gov/cgi-bin/search.plex?sitename=angkor&proc_type=ts%25&nav=SEARCH",
+  "records": [
+    {
+      "path": "assets/data/context/lidar_search_evidence/asf_dem_search.geojson",
+      "bytes": 52,
+      "sha256": "b3049ad7a1062091e169bd352424d59721a26b8b6229942aef26d11b0c6a96e1"
+    },
+    {
+      "path": "assets/data/context/lidar_search_evidence/hd1221.log",
+      "bytes": 6806,
+      "sha256": "4cb89c1cb6043e5e21a3c085575956c8413a627a1f98050001fa92b8b9a022c8"
+    },
+    {
+      "path": "assets/data/context/lidar_search_evidence/hd1227.log",
+      "bytes": 6909,
+      "sha256": "ae1ac406ae7923eae19d1e65ff78aa03d0812b9514f7dd4ab244eb63c77cf585"
+    },
+    {
+      "path": "assets/data/context/lidar_search_evidence/hd1255.log",
+      "bytes": 6908,
+      "sha256": "79f0493bd2fb08b4dc97b9ee3823c2924c4f830a6de64f3999fc2fd3a2e7a9da"
+    },
+    {
+      "path": "assets/data/context/lidar_search_evidence/hd1257.log",
+      "bytes": 6909,
+      "sha256": "3981c4df39f6b2a6ea2ae56ea5cd094d609f62d5071e6c85c5b6ff20a148b26a"
+    },
+    {
+      "path": "assets/data/context/lidar_search_evidence/hd1260.log",
+      "bytes": 6909,
+      "sha256": "a01ce59c85418a223c4bc79440a5ca716ad20e1bb0fce8f064f4996e473f7378"
+    },
+    {
+      "path": "assets/data/context/lidar_search_evidence/hd1303.log",
+      "bytes": 6908,
+      "sha256": "a8604a4526175f59f720b89d06e040df3150e65c079f015fe82d4ec7bd00737f"
+    },
+    {
+      "path": "assets/data/context/lidar_search_evidence/hd1304.log",
+      "bytes": 6908,
+      "sha256": "31aa0d9074f8e59f40096472db9a6019a5bc9cf3576716233e4a96dfb339d211"
+    },
+    {
+      "path": "assets/data/context/lidar_search_evidence/hd1310.log",
+      "bytes": 6908,
+      "sha256": "237dc46d5fe170b597930a3f8c9199e24dedc7b157140d34f898b3233c34fe50"
+    },
+    {
+      "path": "assets/data/context/lidar_search_evidence/hd1332.log",
+      "bytes": 6908,
+      "sha256": "5413738a7e4ad9304d45ec8bc8724b018c11a7083f21dcd420e8c1bdbaebd992"
+    },
+    {
+      "path": "assets/data/context/lidar_search_evidence/hd1334.log",
+      "bytes": 6908,
+      "sha256": "6161a823f44019241a81a1215a301a1a0fc7deb17cc27f2081d0ba7bca21b020"
+    },
+    {
+      "path": "assets/data/context/lidar_search_evidence/topsar_inventory.json",
+      "bytes": 32927,
+      "sha256": "6813c4edbe93951637a1cca9ce15c9e85ca25eef66ff3a491e79e724930ea1f3"
+    },
+    {
+      "path": "assets/data/context/lidar_search_evidence/topsar_scene_footprints.geojson",
+      "bytes": 7742,
+      "sha256": "22da72bdcf81d1ac8ae572683a38f300c8a801129a8600fac84d845a5fd0d285"
+    },
+    {
+      "path": "assets/data/context/lidar_search_evidence/ts1221_meta.airsar",
+      "bytes": 2691,
+      "sha256": "b9b6d46f808d4ba2dc8069941229ce343611d10f07ad42a9449bd14af604d66d"
+    },
+    {
+      "path": "assets/data/context/lidar_search_evidence/ts1227_meta.airsar",
+      "bytes": 2694,
+      "sha256": "674d6bfa25b04a9a7437c74b7ba9db0054b5610b67bbd0106377db81e1736bfd"
+    },
+    {
+      "path": "assets/data/context/lidar_search_evidence/ts1255_meta.airsar",
+      "bytes": 2688,
+      "sha256": "9db4f2b3dc03bcc2f23993e772be4b4d9d0446287a9fd4ad06299a45800df634"
+    },
+    {
+      "path": "assets/data/context/lidar_search_evidence/ts1257_meta.airsar",
+      "bytes": 2692,
+      "sha256": "a190d23132e253eaa605ffd0111cf40e2ff5344a6628bc57a4b3509bca1b3153"
+    },
+    {
+      "path": "assets/data/context/lidar_search_evidence/ts1260_meta.airsar",
+      "bytes": 2689,
+      "sha256": "325eb30d6959b58237c9cc56e1118fa838930c2283a8a4be70a33ce2d4a19ba1"
+    },
+    {
+      "path": "assets/data/context/lidar_search_evidence/ts1303_meta.airsar",
+      "bytes": 2692,
+      "sha256": "78772db9dcc65fa122be019b31eed516cfcffcdf639d971b6a82a324bcf58ac5"
+    },
+    {
+      "path": "assets/data/context/lidar_search_evidence/ts1304_meta.airsar",
+      "bytes": 2691,
+      "sha256": "14458e51a59463959a92feda49f70017cc91ecf990f7d20236180258b5dc09d8"
+    },
+    {
+      "path": "assets/data/context/lidar_search_evidence/ts1310_meta.airsar",
+      "bytes": 2689,
+      "sha256": "4ec95ff3ace4194212388f0274c2a93e38315106143c88b7df8b450b0e08e6d7"
+    },
+    {
+      "path": "assets/data/context/lidar_search_evidence/ts1332_meta.airsar",
+      "bytes": 2690,
+      "sha256": "54992219f5057bea449560d0c7445c47f6a750812d40e50aac30db716a576c81"
+    },
+    {
+      "path": "assets/data/context/lidar_search_evidence/ts1334_meta.airsar",
+      "bytes": 2688,
+      "sha256": "315066d1d724064d376f8f2f90fba577eac3fa4bdfca25d589515677f88adddf"
+    }
+  ]
+}

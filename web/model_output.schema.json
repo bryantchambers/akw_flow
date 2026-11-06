@@ -1,0 +1,11 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Angkor spatial model output (WGS84 longitude/latitude)",
+  "description":"A declared model/scenario/metric/unit and finite numeric values are required. Imported output is user-supplied and not independently validated. This schema contains no simulated results.",
+  "type":"object","required":["type","model","features"],
+  "properties":{
+    "type":{"const":"FeatureCollection"},
+    "model":{"type":"object","required":["name","scenario","metric","unit"],"properties":{"name":{"type":"string","minLength":1},"scenario":{"type":"string","minLength":1},"metric":{"type":"string","minLength":1},"unit":{"type":"string","minLength":1}}},
+    "features":{"type":"array","minItems":1,"maxItems":10000,"items":{"type":"object","required":["type","geometry","properties"],"properties":{"type":{"const":"Feature"},"geometry":{"type":"object","required":["type","coordinates"],"properties":{"type":{"enum":["Point","LineString"]},"coordinates":{"type":"array"}}},"properties":{"type":"object","required":["value"],"properties":{"value":{"type":"number"},"name":{"type":"string"}}}}}}
+  }
+}

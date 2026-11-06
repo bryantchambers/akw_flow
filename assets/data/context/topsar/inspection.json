@@ -1,0 +1,69 @@
+{
+  "raw_shape": [
+    12136,
+    2330
+  ],
+  "header_bytes": 18640,
+  "payload_dtype_assumed": ">i2 (big-endian signed16; confirm against processing docs before final conversion)",
+  "raw_min": -16384,
+  "raw_max": 16384,
+  "frequent_subsample_values": [
+    {
+      "DN": 4494,
+      "count": 304
+    },
+    {
+      "DN": 4462,
+      "count": 305
+    },
+    {
+      "DN": 4474,
+      "count": 311
+    },
+    {
+      "DN": 4456,
+      "count": 311
+    },
+    {
+      "DN": 4536,
+      "count": 311
+    },
+    {
+      "DN": 4542,
+      "count": 313
+    },
+    {
+      "DN": 4429,
+      "count": 317
+    },
+    {
+      "DN": -16384,
+      "count": 10866
+    }
+  ],
+  "header_records": [
+    "NAME OF HEADER                                 DEM",
+    "ELLIPSOID MODEL =                            WGS84",
+    "PLANIMETRIC REFERENCE SYSTEM =                 UTM",
+    "UTM ZONE CODE =                                TBD",
+    "X-DIRECTION POST SPACING (M) =                 5.0",
+    "Y-DIRECTION POST SPACING (M) =                 5.0",
+    "ELEVATION INCREMENT (M) =                   .03765",
+    "ELEVATION OFFSET (M) =                      -161.3",
+    "LATITUDE OF CORNER 1 =                    13.73698",
+    "LONGITUDE OF CORNER 1 =                  103.97304",
+    "LATITUDE OF CORNER 2 =                    13.70117",
+    "LONGITUDE OF CORNER 2 =                  104.07427",
+    "LATITUDE OF CORNER 3 =                    13.18543",
+    "LONGITUDE OF CORNER 3 =                  103.88372",
+    "LATITUDE OF CORNER 4 =                    13.22116",
+    "LONGITUDE OF CORNER 4 =                  103.78268",
+    "LATITUDE OF PEG POINT =                 13.4925251",
+    "LONGITUDE OF PEG POINT =               103.8435593",
+    "HEADING AT PEG POINT (DEGREES) =      -160.1500854",
+    "ALONG-TRACK OFFSET S0 (M) =               -30196.9"
+  ],
+  "gdal_open": "Rasterio/GDAL did not recognize raw DEM directly; requires an AIRSAR-aware conversion or explicit raw decoding/geolocation.",
+  "vertical_datum": "Header identifies WGS84 ellipsoid model but does not unambiguously establish geoid/orthometric vs ellipsoidal output height. Do not equate to Copernicus EGM2008 without verification.",
+  "nodata": "Not established from header; frequent DN values must not be masked without format documentation."
+}

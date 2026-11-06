@@ -1,0 +1,40 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "scene": "ts1260",
+        "source": "DEM header, WGS84 corner coordinates",
+        "status": "Header footprint only; raw raster has not been geocoded or accuracy-validated."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.97304,
+              13.73698
+            ],
+            [
+              104.07427,
+              13.70117
+            ],
+            [
+              103.88372,
+              13.18543
+            ],
+            [
+              103.78268,
+              13.22116
+            ],
+            [
+              103.97304,
+              13.73698
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

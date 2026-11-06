@@ -1,0 +1,50 @@
+[
+  {
+    "file": "Copernicus_DSM_COG_10_N13_00_E103_00_DEM.tif",
+    "crs": "EPSG:4326",
+    "bounds": [
+      102.99986111111112,
+      13.00013888888889,
+      103.99986111111112,
+      14.00013888888889
+    ],
+    "width": 3600,
+    "height": 3600,
+    "resolution_degrees": [
+      0.0002777777777777778,
+      0.0002777777777777778
+    ],
+    "nodata": null,
+    "dtype": "float32",
+    "tags": {
+      "AREA_OR_POINT": "Point"
+    },
+    "min_elevation_m": -1.8878072500228882,
+    "max_elevation_m": 415.7641296386719,
+    "valid_fraction": 1.0
+  },
+  {
+    "file": "Copernicus_DSM_COG_10_N13_00_E104_00_DEM.tif",
+    "crs": "EPSG:4326",
+    "bounds": [
+      103.99986111111112,
+      13.00013888888889,
+      104.99986111111112,
+      14.00013888888889
+    ],
+    "width": 3600,
+    "height": 3600,
+    "resolution_degrees": [
+      0.0002777777777777778,
+      0.0002777777777777778
+    ],
+    "nodata": null,
+    "dtype": "float32",
+    "tags": {
+      "AREA_OR_POINT": "Point"
+    },
+    "min_elevation_m": 0.17831745743751526,
+    "max_elevation_m": 637.7055053710938,
+    "valid_fraction": 1.0
+  }
+]

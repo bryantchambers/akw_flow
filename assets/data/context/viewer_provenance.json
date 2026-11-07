@@ -11,7 +11,7 @@
       "sha256": "5d52daa39fbf1656ad38133387918f215084a60f25335533f5fba711d93ceaa4"
     }
   ],
-  "scene_sha256": "086cded179c281ea4dd7c0372cfdb4ab14fd3b5669c71a05dba4050cbbbfc52e",
+  "scene_sha256": "53382b1c5a680d611512b4a708a059c7e4f9a26f1452677d449bde3b5f072d19",
   "native_shape": [
     2160,
     2160
@@ -36,5 +36,6 @@
     "native_cells": 4665600,
     "local_sinks": 405327,
     "mass_balance_check": "Sum of contributing area at all sinks equals total domain pixel area."
-  }
+  },
+  "display_grid_reference": "Pixel-centre coordinates; outer extent retained separately for fence."
 }

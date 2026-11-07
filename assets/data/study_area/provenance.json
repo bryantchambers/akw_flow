@@ -1,0 +1,62 @@
+{
+  "generated_by": "assets/data/study_area/build_boundary.py",
+  "sources": [
+    {
+      "id": "apsara_angkor_wat",
+      "url": "https://apsaraauthority.gov.kh/2021/06/14/angkor-wat/",
+      "title": "Angkor Wat — APSARA National Authority",
+      "evidence": "Moated temple complex approximately 1500 by 1300 metres with 190 m wide moat; search index read 2026-11-06, direct page returned HTTP403. General extent evidence only."
+    },
+    {
+      "id": "evans_fletcher_2015",
+      "url": "https://doi.org/10.15184/aqy.2015.157",
+      "title": "The landscape of Angkor Wat redefined",
+      "evidence": "Archaeological study distinguishes moated precinct, internal pond/mound grid, and external eastern enclosure. Article consulted 2026-11-06. No coordinates digitized from figures."
+    },
+    {
+      "id": "osm",
+      "url": "https://www.openstreetmap.org/copyright",
+      "title": "OpenStreetMap contributors",
+      "evidence": "Modern mapped water footprints provide spatial context, not archaeological dating, bathymetry, or validated connections."
+    }
+  ],
+  "source_osm_sha256": "4c71800019004d507d39fd7d291cf455b369ff21e7ec7fb4f269b01b5d757379",
+  "source_scene_sha256": "0b191b173def68482b5e9298e03b71f5be90790f87e00ef9a1fe179bd3e1fdae",
+  "method": "Regional search bounds reused from existing Copernicus viewer scene to include Angkor Wat and both barays. Prior core clip retained separately for current TOPSAR extraction. No reservoir outlines or underwater elevations inferred.",
+  "bbox_wsen": [
+    103.6,
+    13.2,
+    104.2,
+    13.8
+  ],
+  "limitations": [
+    "Regional rectangle is deliberately broad and is not a watershed or surveyed archaeological boundary.",
+    "West and East Baray water polygons are absent from the current OSM water extract; both remain explicit study targets.",
+    "TOPSAR detail coverage is limited to the Angkor Wat core. The overview is a sampled survey strip with masked holes, not complete regional coverage.",
+    "TOPSAR surface heights cannot supply reservoir bathymetry or establish hydraulic connections.",
+    "Current candidate/flow artifacts cover the prior Angkor Wat core only; they do not simulate either baray.",
+    "External discharge, stage, rainfall, evaporation and seepage boundary conditions remain unset."
+  ],
+  "core_bbox_wsen": [
+    103.8594,
+    13.4062,
+    103.8738,
+    13.4185
+  ],
+  "core_terrain_coverage": {
+    "cells_in_boundary": 85214,
+    "valid_cells": 77416,
+    "valid_fraction": 0.908489215387143,
+    "missing_cells": 7798
+  },
+  "regional_context_sha256": "53382b1c5a680d611512b4a708a059c7e4f9a26f1452677d449bde3b5f072d19",
+  "regional_topsar_overview_coverage": {
+    "source_sha256": "033abf0d3c269d6d3f678cd6511615fd875e8b4f48931df1c3088e9e8c6bfdb1",
+    "sampled_grid_centres_in_region": 295460,
+    "valid_centres": 106644,
+    "masked_centres": 188816,
+    "valid_fraction_within_available_grid": 0.3609422595275164,
+    "region_fully_within_available_grid": false,
+    "warning": "Fraction excludes regional area outside the available strip; no bathymetric interpretation."
+  }
+}

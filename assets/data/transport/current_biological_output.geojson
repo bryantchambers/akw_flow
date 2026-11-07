@@ -1,0 +1,810 @@
+{
+  "type": "FeatureCollection",
+  "model": {
+    "name": "Finite-volume biological transport",
+    "scenario": "Saved terrain-candidate hydraulics; arbitrary conservative tracer",
+    "metric": "Water concentration",
+    "unit": "viable-count/m3"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8694141854826,
+          13.416579773625584
+        ]
+      },
+      "properties": {
+        "id": "n43452",
+        "value": 0.46461015308442327,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86946036044417,
+          13.416534858066834
+        ]
+      },
+      "properties": {
+        "id": "n43853",
+        "value": 1.0000000000000073,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.87172293356124,
+          13.415816209126842
+        ]
+      },
+      "properties": {
+        "id": "n50302",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.87176910852283,
+          13.415771293568092
+        ]
+      },
+      "properties": {
+        "id": "n50703",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8718152834844,
+          13.415771293568092
+        ]
+      },
+      "properties": {
+        "id": "n50704",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.87186145844598,
+          13.415771293568092
+        ]
+      },
+      "properties": {
+        "id": "n50705",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.87190763340755,
+          13.415726378009342
+        ]
+      },
+      "properties": {
+        "id": "n51106",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.87190763340755,
+          13.415681462450593
+        ]
+      },
+      "properties": {
+        "id": "n51506",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.87195380836911,
+          13.415636546891843
+        ]
+      },
+      "properties": {
+        "id": "n51907",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.87195380836911,
+          13.415591631333095
+        ]
+      },
+      "properties": {
+        "id": "n52307",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8719999833307,
+          13.415546715774346
+        ]
+      },
+      "properties": {
+        "id": "n52708",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.87204615829226,
+          13.415501800215596
+        ]
+      },
+      "properties": {
+        "id": "n53109",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8719999833307,
+          13.415456884656846
+        ]
+      },
+      "properties": {
+        "id": "n53508",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86959888532888,
+          13.41491789795185
+        ]
+      },
+      "properties": {
+        "id": "n58256",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86955271036732,
+          13.414872982393101
+        ]
+      },
+      "properties": {
+        "id": "n58655",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86156444201515,
+          13.414244164570608
+        ]
+      },
+      "properties": {
+        "id": "n64082",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86156444201515,
+          13.414199249011858
+        ]
+      },
+      "properties": {
+        "id": "n64482",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86156444201515,
+          13.414154333453109
+        ]
+      },
+      "properties": {
+        "id": "n64882",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86765953694281,
+          13.413795008983113
+        ]
+      },
+      "properties": {
+        "id": "n68214",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86770571190439,
+          13.413750093424364
+        ]
+      },
+      "properties": {
+        "id": "n68615",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86775188686596,
+          13.413750093424364
+        ]
+      },
+      "properties": {
+        "id": "n68616",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.87024533479091,
+          13.413390768954367
+        ]
+      },
+      "properties": {
+        "id": "n71870",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.87029150975248,
+          13.413390768954367
+        ]
+      },
+      "properties": {
+        "id": "n71871",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86858303617427,
+          13.413256022278118
+        ]
+      },
+      "properties": {
+        "id": "n73034",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86862921113585,
+          13.413256022278118
+        ]
+      },
+      "properties": {
+        "id": "n73035",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86876773602057,
+          13.413256022278118
+        ]
+      },
+      "properties": {
+        "id": "n73038",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86867538609742,
+          13.413211106719368
+        ]
+      },
+      "properties": {
+        "id": "n73436",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86872156105899,
+          13.413211106719368
+        ]
+      },
+      "properties": {
+        "id": "n73437",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86793658671225,
+          13.412851782249373
+        ]
+      },
+      "properties": {
+        "id": "n76620",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86798276167383,
+          13.412851782249373
+        ]
+      },
+      "properties": {
+        "id": "n76621",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86724396228865,
+          13.411594146604385
+        ]
+      },
+      "properties": {
+        "id": "n87805",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86729013725022,
+          13.411549231045635
+        ]
+      },
+      "properties": {
+        "id": "n88206",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86433493970955,
+          13.411504315486885
+        ]
+      },
+      "properties": {
+        "id": "n88542",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86433493970955,
+          13.411459399928136
+        ]
+      },
+      "properties": {
+        "id": "n88942",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86438111467112,
+          13.411414484369386
+        ]
+      },
+      "properties": {
+        "id": "n89343",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86465816444056,
+          13.411279737693137
+        ]
+      },
+      "properties": {
+        "id": "n90549",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86470433940212,
+          13.411279737693137
+        ]
+      },
+      "properties": {
+        "id": "n90550",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86465816444056,
+          13.411234822134388
+        ]
+      },
+      "properties": {
+        "id": "n90949",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8647505143637,
+          13.411234822134388
+        ]
+      },
+      "properties": {
+        "id": "n90951",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8697374102136,
+          13.410606004311894
+        ]
+      },
+      "properties": {
+        "id": "n96659",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86978358517518,
+          13.410561088753145
+        ]
+      },
+      "properties": {
+        "id": "n97060",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86401171497853,
+          13.41020176428315
+        ]
+      },
+      "properties": {
+        "id": "n100135",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8640578899401,
+          13.41020176428315
+        ]
+      },
+      "properties": {
+        "id": "n100136",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.86678221267292,
+          13.408360226374418
+        ]
+      },
+      "properties": {
+        "id": "n116595",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8668283876345,
+          13.408315310815668
+        ]
+      },
+      "properties": {
+        "id": "n116996",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8668283876345,
+          13.408270395256919
+        ]
+      },
+      "properties": {
+        "id": "n117396",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8668283876345,
+          13.408225479698169
+        ]
+      },
+      "properties": {
+        "id": "n117796",
+        "value": 0.0,
+        "bed_mass": 0.0,
+        "time_s": 30.0,
+        "status": "unvalidated prescribed-flow simulation"
+      }
+    }
+  ]
+}

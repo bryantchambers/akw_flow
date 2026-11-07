@@ -42,6 +42,7 @@ function resourceCard(r) {
   } else foot.append(el('span', 'file-size', 'File not acquired'));
   if (a.source_url) foot.append(link('Source ↗', a.source_url, 'source-link'));
   card.append(foot);
+  if(r.viewer_url)card.append(link('Open 5 m terrain preview ↗',r.viewer_url,'file-link related'));
   if (r.related_artifacts.some(a => a.available)) {
     const related = el('div', 'related');
     for (const a of r.related_artifacts.filter(a => a.available)) related.append(link(a.path.endsWith('.zip') ? 'Related source code ↗' : 'Supplement ↗', a.url));

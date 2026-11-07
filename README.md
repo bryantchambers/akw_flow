@@ -42,3 +42,5 @@ Checksums verify the collected files; they do not establish archaeological or hy
 ## Geospatial context and 3D view — 6 November 2026
 
 A modern starter package now adds two Copernicus GLO-30 elevation tiles and 1,524 OSM water features. These are georeferenced context, not the missing high-resolution archaeological LiDAR/GIS. Open `/model-view` from the dashboard for 3D terrain, waterways, a provisional study fence, exploratory drainage screening and browser-local model-output import. See [context provenance and limitations](assets/data/context/README.md).
+
+The terrain selector also provides a separate ~5 m TOPSAR detail tile around Angkor Wat and a lighter survey-strip overview. See [TOPSAR conversion and limitations](assets/data/context/topsar/CONVERSION.md); the native post spacing is not a claim of independently validated accuracy, and no TOPSAR flow/hotspot simulation is inferred.

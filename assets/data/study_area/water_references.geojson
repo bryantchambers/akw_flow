@@ -1,0 +1,215 @@
+{
+  "type": "FeatureCollection",
+  "name": "Modern water references in Angkor Wat core",
+  "attribution": "© OpenStreetMap contributors, ODbL 1.0",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "way/39842237",
+      "properties": {
+        "addr:city": "Nokor Thom, Krong, Siem Reap, Siem Reap province",
+        "alt_name": "Angkor Wat Reflecting Pond, Angkor Wat North Pond",
+        "description": "The north pond is located after the Northern Library about 30m to the north of the main causeway leading to the main temple of Prasat Angkor Wat. The small pond measures about 80m x 50m and is identical to the southern pond.",
+        "name": "ប្រាសាទអង្គរវត្ត ស្រះខាងជើង",
+        "name:en": "Srah Khang Cheung",
+        "name:km": "ប្រាសាទអង្គរវត្ត ស្រះខាងជើង",
+        "natural": "water",
+        "note": "13.41301, 103.86455 Part of Prasat Angkor Wat, Yasodharapura II, Yasodharapura III, Angkor Builder Suryavarman II Art Style Angkor Wat Material Sandstone, Laterite Religion Hinduism Deity Vishnu",
+        "start_date": "First half of 12th Century",
+        "water": "reservoir",
+        "osm_type": "way",
+        "osm_id": 39842237,
+        "interpretation": "Modern OSM feature; historical age and hydraulic connectivity unverified"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.8642177,
+              13.4132261
+            ],
+            [
+              103.8649245,
+              13.4132274
+            ],
+            [
+              103.8649253,
+              13.4128072
+            ],
+            [
+              103.8642185,
+              13.4128059
+            ],
+            [
+              103.8642177,
+              13.4132261
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/39842238",
+      "properties": {
+        "addr:city": "Nokor Thom, Krong, Siem Reap, Siem Reap province",
+        "alt_name": "Angkor Wat Reflecting Pond, Angkor Wat South Pond",
+        "description": "The south pond is located after the Southern Library about 30m to the south of the main causeway leading to the main temple of Prasat Angkor Wat. The small pond measures about 80m x 50m and is identical to the northern pond.",
+        "image": "https://images.mapillary.com/OumFL8QbJzOvNUx-CZ6S7w/thumb-2048.jpg",
+        "mapillary": "266129551867059",
+        "name": "ប្រាសាទអង្គរវត្ត ស្រះខាងត្បូង",
+        "name:en": "Srah Khang Tboung",
+        "name:km": "ប្រាសាទអង្គរវត្ត ស្រះខាងត្បូង",
+        "natural": "water",
+        "note": "13.41198, 103.86454 Part of Prasat Angkor Wat, Yasodharapura II, Yasodharapura III, Angkor Builder Suryavarman II Art Style Angkor Wat Material Sandstone, Laterite Religion Hinduism Deity Vishnu",
+        "start_date": "First half of 12th Century",
+        "water": "reservoir",
+        "osm_type": "way",
+        "osm_id": 39842238,
+        "interpretation": "Modern OSM feature; historical age and hydraulic connectivity unverified"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.8642164,
+              13.4122033
+            ],
+            [
+              103.8649057,
+              13.4122007
+            ],
+            [
+              103.8649039,
+              13.4117521
+            ],
+            [
+              103.8642146,
+              13.4117547
+            ],
+            [
+              103.8642164,
+              13.4122033
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "way/160675481",
+      "properties": {
+        "natural": "water",
+        "water": "moat",
+        "osm_type": "way",
+        "osm_id": 160675481,
+        "interpretation": "Modern OSM feature; historical age and hydraulic connectivity unverified"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.8605073,
+              13.4126843
+            ],
+            [
+              103.8606102,
+              13.4126834
+            ],
+            [
+              103.8606092,
+              13.4125763
+            ],
+            [
+              103.8614423,
+              13.4125688
+            ],
+            [
+              103.8614429,
+              13.4126274
+            ],
+            [
+              103.8614433,
+              13.4127801
+            ],
+            [
+              103.8614512,
+              13.4136255
+            ],
+            [
+              103.8614818,
+              13.4165902
+            ],
+            [
+              103.8717309,
+              13.4164844
+            ],
+            [
+              103.8717429,
+              13.412735
+            ],
+            [
+              103.8718781,
+              13.4126834
+            ],
+            [
+              103.8725795,
+              13.4126782
+            ],
+            [
+              103.8734704,
+              13.4126757
+            ],
+            [
+              103.8734874,
+              13.4141425
+            ],
+            [
+              103.8734767,
+              13.4155912
+            ],
+            [
+              103.8734729,
+              13.4177984
+            ],
+            [
+              103.8734723,
+              13.4181846
+            ],
+            [
+              103.8697189,
+              13.4182302
+            ],
+            [
+              103.866515,
+              13.4182706
+            ],
+            [
+              103.8602613,
+              13.4183346
+            ],
+            [
+              103.8597032,
+              13.4183396
+            ],
+            [
+              103.8596697,
+              13.4125981
+            ],
+            [
+              103.8605064,
+              13.4125905
+            ],
+            [
+              103.8605073,
+              13.4126843
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

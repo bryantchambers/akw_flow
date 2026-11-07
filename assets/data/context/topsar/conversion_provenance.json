@@ -1,0 +1,116 @@
+{
+  "generated_utc": "2026-11-06T14:53:29.708464+00:00",
+  "script": "scripts/build_topsar_scenes.py",
+  "source_sha256": "bff1b1b13d63d8f1a82121a67458b6d423ec321652d7ed841d55ca992b8f679f",
+  "source_file": "assets/data/context/topsar/ts1260_c.demi2",
+  "byte_order": "Big-endian signed 16-bit (SUN-compatible documented product)",
+  "raw_shape": [
+    12136,
+    2330
+  ],
+  "header_offset_bytes": 18640,
+  "sphere_height_formula": "DN * 0.03765 + (-161.3)",
+  "horizontal_source_crs_wkt": "PROJCRS[\"unknown\",BASEGEOGCRS[\"unknown\",DATUM[\"Unknown based on WGS 84 ellipsoid\",ELLIPSOID[\"WGS 84\",6378137,298.257223563,LENGTHUNIT[\"metre\",1],ID[\"EPSG\",7030]]],PRIMEM[\"Greenwich\",0,ANGLEUNIT[\"degree\",0.0174532925199433],ID[\"EPSG\",8901]]],CONVERSION[\"unknown\",METHOD[\"Spherical Cross-Track Height\"],PARAMETER[\"Peg point latitude\",13.4925251,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9122]]],PARAMETER[\"Peg point longitude\",103.8435593,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9122]]],PARAMETER[\"Peg point heading\",-160.1500854,ANGLEUNIT[\"degree\",0.0174532925199433,ID[\"EPSG\",9122]]],PARAMETER[\"Peg point height\",0,LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]],CS[Cartesian,2],AXIS[\"(E)\",east,ORDER[1],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]],AXIS[\"(N)\",north,ORDER[2],LENGTHUNIT[\"metre\",1,ID[\"EPSG\",9001]]]]",
+  "horizontal_source_crs": "+proj=sch +plat_0=13.4925251 +plon_0=103.8435593 +phdg_0=-160.1500854 +ellps=WGS84 +units=m",
+  "horizontal_pixel_transform": [
+    0.0,
+    5.0,
+    -30199.4,
+    5.0,
+    0.0,
+    3984.3
+  ],
+  "height_conversion": "AIRSAR sphere -> WGS84 ellipsoidal height via PROJ SCH; no orthometric/geoid conversion or empirical offset applied.",
+  "suspected_fill_dn": -16384,
+  "suspected_fill_count": 1121933,
+  "mask_policy_is_provisional": true,
+  "corner_checks": [
+    {
+      "corner": 1,
+      "computed_lon": 103.97303444786898,
+      "computed_lat": 13.736978374506648,
+      "header_lon": 103.97304,
+      "header_lat": 13.73698,
+      "residual_m": 0.6268462822672534
+    },
+    {
+      "corner": 2,
+      "computed_lon": 104.07427129040039,
+      "computed_lat": 13.70116492376206,
+      "header_lon": 104.07427,
+      "header_lat": 13.70117,
+      "residual_m": 0.5787041596983891
+    },
+    {
+      "corner": 3,
+      "computed_lon": 103.88372429265327,
+      "computed_lat": 13.185425602267443,
+      "header_lon": 103.88372,
+      "header_lat": 13.18543,
+      "residual_m": 0.6732401896730885
+    },
+    {
+      "corner": 4,
+      "computed_lon": 103.78267518873228,
+      "computed_lat": 13.221162461074172,
+      "header_lon": 103.78268,
+      "header_lat": 13.22116,
+      "residual_m": 0.5882840192223631
+    }
+  ],
+  "roundtrip_max_error_m": 3.725290298461914e-09,
+  "references": [
+    "https://airsar.jpl.nasa.gov/data/data_format.pdf",
+    "https://airsar.jpl.nasa.gov/data/getting_started.html",
+    "https://ntrs.nasa.gov/api/citations/19980045325/downloads/19980045325.pdf",
+    "https://proj.org/en/stable/operations/projections/sch.html"
+  ],
+  "products": [
+    {
+      "path": "data/context/topsar/viewer_topsar_detail.json",
+      "sha256": "0b191b173def68482b5e9298e03b71f5be90790f87e00ef9a1fe179bd3e1fdae",
+      "bytes": 943774,
+      "shape": [
+        400,
+        400
+      ],
+      "bbox_wsen": [
+        103.85775500768537,
+        13.403486888250091,
+        103.87622499231463,
+        13.42145311174991
+      ],
+      "valid_fraction": 0.947,
+      "display_spacing_m": [
+        4.994382260355036,
+        4.99438226035531
+      ]
+    },
+    {
+      "path": "data/context/topsar/viewer_topsar_overview.json",
+      "sha256": "033abf0d3c269d6d3f678cd6511615fd875e8b4f48931df1c3088e9e8c6bfdb1",
+      "bytes": 2575130,
+      "shape": [
+        768,
+        395
+      ],
+      "bbox_wsen": [
+        103.78268,
+        13.18543,
+        104.07427,
+        13.73698
+      ],
+      "valid_fraction": 0.3523997890295359,
+      "display_spacing_m": [
+        79.82933495131834,
+        79.85620024844589
+      ]
+    }
+  ],
+  "limitations": [
+    "Header agreement is not an independent ground-control accuracy test.",
+    "No hydrological screening computed from this provisional TOPSAR preview.",
+    "No Copernicus heights or EGM2008 datum blended into TOPSAR.",
+    "Preview gaps remain holes; source quality/outliers are not comprehensively corrected."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "valid_cells": 77416,
+  "candidate_edges": 33,
+  "cell_area_m2": 24.999999997313033,
+  "threshold_m2": 2500,
+  "stride": 1,
+  "source": "assets/data/context/topsar/viewer_topsar_detail.json",
+  "source_sha256": "0b191b173def68482b5e9298e03b71f5be90790f87e00ef9a1fe179bd3e1fdae",
+  "requested_bbox": [
+    103.8594,
+    13.4062,
+    103.8738,
+    13.4185
+  ],
+  "available_bbox": [
+    103.85775500768537,
+    13.403486888250091,
+    103.87622499231463,
+    13.42145311174991
+  ],
+  "coverage_note": "Only finite source grid cells are used; unobserved West Baray and interconnecting channels are excluded."
+}

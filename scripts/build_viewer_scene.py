@@ -73,7 +73,7 @@ def main():
     raw=json.loads((DATA/'osm_water_raw.json').read_text()) if (DATA/'osm_water_raw.json').exists() else {}
     scene={'generated_utc':datetime.now(timezone.utc).isoformat(), 'bbox_wsen':BBOX,
       'fence_description':'Provisional rectangular search area; not an archaeological boundary or delineated catchment.',
-      'width':width,'height':height,'elevation_m':terrain,'screening_area_km2':screen,
+      'width':width,'height':height,'grid_bbox_wsen':[west+(east-west)/width/2,south+(north-south)/height/2,east-(east-west)/width/2,north-(north-south)/height/2],'elevation_m':terrain,'screening_area_km2':screen,
       'terrain':{'source':'Copernicus GLO-30 Public (AWS 2021 release)','horizontal_crs':'EPSG:4326',
         'vertical_reference':'EGM2008 orthometric height, metres (product documentation)',
         'native_pixel_metres_approx':[dx,dy],'display_pixel_metres_approx':[dx*stride,dy*stride],

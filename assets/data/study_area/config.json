@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "angkor_wat_west_east_baray_provisional",
+  "name": "Angkor Wat, West Baray and East Baray — provisional regional search domain",
+  "bbox_wsen": [
+    103.6,
+    13.2,
+    104.2,
+    13.8
+  ],
+  "horizontal_crs": "EPSG:4326",
+  "working_projected_crs": "EPSG:32648",
+  "boundary_geojson": "assets/data/study_area/boundary.geojson",
+  "water_reference_geojson": "assets/data/study_area/water_references.geojson",
+  "terrain_scene": "assets/data/context/viewer_scene.json",
+  "clip_policy": "retain only geometry inside boundary; trim crossing reaches; preserve crossing points as external boundary candidates",
+  "reservoir_assumption": "West Baray and East Baray are in study scope; geometry, bathymetry and connections unresolved",
+  "excluded_features": [],
+  "boundary_conditions": {
+    "status": "unset",
+    "inflow": null,
+    "downstream_stage": null,
+    "rainfall": null,
+    "evaporation": null,
+    "seepage": null
+  },
+  "horizontal_boundary_accuracy_m": null,
+  "waterbody_depths_m": null,
+  "validation_status": "provisional regional search rectangle; not surveyed reservoir outlines or a catchment",
+  "extraction_bbox_wsen": [
+    103.8594,
+    13.4062,
+    103.8738,
+    13.4185
+  ],
+  "included_features": [
+    "Angkor Wat temple, moat and internal ponds",
+    "West Baray",
+    "East Baray"
+  ],
+  "extraction_terrain_scene": "assets/data/context/topsar/viewer_topsar_detail.json"
+}

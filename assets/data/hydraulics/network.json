@@ -1,0 +1,746 @@
+{
+  "nodes": [
+    {
+      "id": "n43452",
+      "coordinates": [
+        103.8694141854826,
+        13.416579773625584
+      ],
+      "bed_elevation_m": 11.44,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 4824.999999481415
+    },
+    {
+      "id": "n43853",
+      "coordinates": [
+        103.86946036044417,
+        13.416534858066834
+      ],
+      "bed_elevation_m": 12.19,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 3399.9999996345723
+    },
+    {
+      "id": "n50302",
+      "coordinates": [
+        103.87172293356124,
+        13.415816209126842
+      ],
+      "bed_elevation_m": 11.81,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 2524.9999997286163
+    },
+    {
+      "id": "n50703",
+      "coordinates": [
+        103.87176910852283,
+        13.415771293568092
+      ],
+      "bed_elevation_m": 9.18,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 2599.9999997205555
+    },
+    {
+      "id": "n50704",
+      "coordinates": [
+        103.8718152834844,
+        13.415771293568092
+      ],
+      "bed_elevation_m": 7.03,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 2624.9999997178684
+    },
+    {
+      "id": "n50705",
+      "coordinates": [
+        103.87186145844598,
+        13.415771293568092
+      ],
+      "bed_elevation_m": 5.11,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 2799.9999996990596
+    },
+    {
+      "id": "n51106",
+      "coordinates": [
+        103.87190763340755,
+        13.415726378009342
+      ],
+      "bed_elevation_m": 3.31,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 3024.9999996748766
+    },
+    {
+      "id": "n51506",
+      "coordinates": [
+        103.87190763340755,
+        13.415681462450593
+      ],
+      "bed_elevation_m": 1.72,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 3749.9999995969547
+    },
+    {
+      "id": "n51907",
+      "coordinates": [
+        103.87195380836911,
+        13.415636546891843
+      ],
+      "bed_elevation_m": 1.69,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 3974.9999995727717
+    },
+    {
+      "id": "n52307",
+      "coordinates": [
+        103.87195380836911,
+        13.415591631333095
+      ],
+      "bed_elevation_m": 0.63,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 4149.999999553963
+    },
+    {
+      "id": "n52708",
+      "coordinates": [
+        103.8719999833307,
+        13.415546715774346
+      ],
+      "bed_elevation_m": 0.33,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 4224.999999545902
+    },
+    {
+      "id": "n53109",
+      "coordinates": [
+        103.87204615829226,
+        13.415501800215596
+      ],
+      "bed_elevation_m": -1.36,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 4274.999999540528
+    },
+    {
+      "id": "n53508",
+      "coordinates": [
+        103.8719999833307,
+        13.415456884656846
+      ],
+      "bed_elevation_m": -3.85,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 5124.999999449172
+    },
+    {
+      "id": "n58256",
+      "coordinates": [
+        103.86959888532888,
+        13.41491789795185
+      ],
+      "bed_elevation_m": 22.09,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 4199.999999548589
+    },
+    {
+      "id": "n58655",
+      "coordinates": [
+        103.86955271036732,
+        13.414872982393101
+      ],
+      "bed_elevation_m": 21.76,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 4724.999999492163
+    },
+    {
+      "id": "n64082",
+      "coordinates": [
+        103.86156444201515,
+        13.414244164570608
+      ],
+      "bed_elevation_m": 14.57,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 4549.999999510972
+    },
+    {
+      "id": "n64482",
+      "coordinates": [
+        103.86156444201515,
+        13.414199249011858
+      ],
+      "bed_elevation_m": 14.6,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 3699.999999602329
+    },
+    {
+      "id": "n64882",
+      "coordinates": [
+        103.86156444201515,
+        13.414154333453109
+      ],
+      "bed_elevation_m": 14.9,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 2724.9999997071204
+    },
+    {
+      "id": "n68214",
+      "coordinates": [
+        103.86765953694281,
+        13.413795008983113
+      ],
+      "bed_elevation_m": 14.83,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 3324.999999642633
+    },
+    {
+      "id": "n68615",
+      "coordinates": [
+        103.86770571190439,
+        13.413750093424364
+      ],
+      "bed_elevation_m": 14.79,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 3374.9999996372594
+    },
+    {
+      "id": "n68616",
+      "coordinates": [
+        103.86775188686596,
+        13.413750093424364
+      ],
+      "bed_elevation_m": 14.6,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 4299.999999537841
+    },
+    {
+      "id": "n71870",
+      "coordinates": [
+        103.87024533479091,
+        13.413390768954367
+      ],
+      "bed_elevation_m": 20.14,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 3949.999999575459
+    },
+    {
+      "id": "n71871",
+      "coordinates": [
+        103.87029150975248,
+        13.413390768954367
+      ],
+      "bed_elevation_m": 20.51,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 2874.9999996909983
+    },
+    {
+      "id": "n73034",
+      "coordinates": [
+        103.86858303617427,
+        13.413256022278118
+      ],
+      "bed_elevation_m": 14.49,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 5649.999999392746
+    },
+    {
+      "id": "n73035",
+      "coordinates": [
+        103.86862921113585,
+        13.413256022278118
+      ],
+      "bed_elevation_m": 14.71,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 3974.9999995727726
+    },
+    {
+      "id": "n73038",
+      "coordinates": [
+        103.86876773602057,
+        13.413256022278118
+      ],
+      "bed_elevation_m": 15.24,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 3499.999999623825
+    },
+    {
+      "id": "n73436",
+      "coordinates": [
+        103.86867538609742,
+        13.413211106719368
+      ],
+      "bed_elevation_m": 14.83,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 3899.9999995808334
+    },
+    {
+      "id": "n73437",
+      "coordinates": [
+        103.86872156105899,
+        13.413211106719368
+      ],
+      "bed_elevation_m": 15.09,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 3749.999999596955
+    },
+    {
+      "id": "n76620",
+      "coordinates": [
+        103.86793658671225,
+        13.412851782249373
+      ],
+      "bed_elevation_m": 15.84,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 2599.9999997205555
+    },
+    {
+      "id": "n76621",
+      "coordinates": [
+        103.86798276167383,
+        13.412851782249373
+      ],
+      "bed_elevation_m": 15.69,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 2749.999999704434
+    },
+    {
+      "id": "n87805",
+      "coordinates": [
+        103.86724396228865,
+        13.411594146604385
+      ],
+      "bed_elevation_m": 15.84,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 2974.9999996802508
+    },
+    {
+      "id": "n88206",
+      "coordinates": [
+        103.86729013725022,
+        13.411549231045635
+      ],
+      "bed_elevation_m": 15.47,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 3974.999999572772
+    },
+    {
+      "id": "n88542",
+      "coordinates": [
+        103.86433493970955,
+        13.411504315486885
+      ],
+      "bed_elevation_m": 14.11,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 4124.99999955665
+    },
+    {
+      "id": "n88942",
+      "coordinates": [
+        103.86433493970955,
+        13.411459399928136
+      ],
+      "bed_elevation_m": 14.26,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 2749.9999997044333
+    },
+    {
+      "id": "n89343",
+      "coordinates": [
+        103.86438111467112,
+        13.411414484369386
+      ],
+      "bed_elevation_m": 14.49,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 2574.999999723242
+    },
+    {
+      "id": "n90549",
+      "coordinates": [
+        103.86465816444056,
+        13.411279737693137
+      ],
+      "bed_elevation_m": 16.0,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 2899.999999688312
+    },
+    {
+      "id": "n90550",
+      "coordinates": [
+        103.86470433940212,
+        13.411279737693137
+      ],
+      "bed_elevation_m": 16.56,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 2674.9999997124946
+    },
+    {
+      "id": "n90949",
+      "coordinates": [
+        103.86465816444056,
+        13.411234822134388
+      ],
+      "bed_elevation_m": 15.88,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 3424.999999631885
+    },
+    {
+      "id": "n90951",
+      "coordinates": [
+        103.8647505143637,
+        13.411234822134388
+      ],
+      "bed_elevation_m": 17.13,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 2599.9999997205555
+    },
+    {
+      "id": "n96659",
+      "coordinates": [
+        103.8697374102136,
+        13.410606004311894
+      ],
+      "bed_elevation_m": 18.74,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 2949.999999682938
+    },
+    {
+      "id": "n97060",
+      "coordinates": [
+        103.86978358517518,
+        13.410561088753145
+      ],
+      "bed_elevation_m": 19.95,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 2674.9999997124946
+    },
+    {
+      "id": "n100135",
+      "coordinates": [
+        103.86401171497853,
+        13.41020176428315
+      ],
+      "bed_elevation_m": 19.84,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 2924.9999996856245
+    },
+    {
+      "id": "n100136",
+      "coordinates": [
+        103.8640578899401,
+        13.41020176428315
+      ],
+      "bed_elevation_m": 19.91,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 2849.9999996936854
+    },
+    {
+      "id": "n116595",
+      "coordinates": [
+        103.86678221267292,
+        13.408360226374418
+      ],
+      "bed_elevation_m": 10.12,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 2599.999999720555
+    },
+    {
+      "id": "n116996",
+      "coordinates": [
+        103.8668283876345,
+        13.408315310815668
+      ],
+      "bed_elevation_m": 8.58,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 2749.9999997044333
+    },
+    {
+      "id": "n117396",
+      "coordinates": [
+        103.8668283876345,
+        13.408270395256919
+      ],
+      "bed_elevation_m": 5.34,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 2799.9999996990596
+    },
+    {
+      "id": "n117796",
+      "coordinates": [
+        103.8668283876345,
+        13.408225479698169
+      ],
+      "bed_elevation_m": 3.99,
+      "storage_area_m2": 24.999999997313033,
+      "contributing_area_m2": 3849.999999586207
+    }
+  ],
+  "edges": [
+    {
+      "id": "e43853",
+      "from": "n43853",
+      "to": "n43452",
+      "length_m": 7.071067811485481,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e50302",
+      "from": "n50302",
+      "to": "n50703",
+      "length_m": 7.071067811485481,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e50703",
+      "from": "n50703",
+      "to": "n50704",
+      "length_m": 4.9999999994530855,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e50704",
+      "from": "n50704",
+      "to": "n50705",
+      "length_m": 4.9999999994530855,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e50705",
+      "from": "n50705",
+      "to": "n51106",
+      "length_m": 7.071067811485481,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e51106",
+      "from": "n51106",
+      "to": "n51506",
+      "length_m": 5.000000000009521,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e51506",
+      "from": "n51506",
+      "to": "n51907",
+      "length_m": 7.071067811485481,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e51907",
+      "from": "n51907",
+      "to": "n52307",
+      "length_m": 5.000000000009521,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e52307",
+      "from": "n52307",
+      "to": "n52708",
+      "length_m": 7.071067811485481,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e52708",
+      "from": "n52708",
+      "to": "n53109",
+      "length_m": 7.071067811485481,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e53109",
+      "from": "n53109",
+      "to": "n53508",
+      "length_m": 7.071067811485481,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e58256",
+      "from": "n58256",
+      "to": "n58655",
+      "length_m": 7.071067811485481,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e64482",
+      "from": "n64482",
+      "to": "n64082",
+      "length_m": 5.000000000009521,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e64882",
+      "from": "n64882",
+      "to": "n64482",
+      "length_m": 5.000000000009521,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e68214",
+      "from": "n68214",
+      "to": "n68615",
+      "length_m": 7.071067811485481,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e68615",
+      "from": "n68615",
+      "to": "n68616",
+      "length_m": 4.9999999994530855,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e71871",
+      "from": "n71871",
+      "to": "n71870",
+      "length_m": 4.9999999994530855,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e73035",
+      "from": "n73035",
+      "to": "n73034",
+      "length_m": 4.9999999994530855,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e73038",
+      "from": "n73038",
+      "to": "n73437",
+      "length_m": 7.071067811485481,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e73436",
+      "from": "n73436",
+      "to": "n73035",
+      "length_m": 7.071067811485481,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e73437",
+      "from": "n73437",
+      "to": "n73436",
+      "length_m": 4.9999999994530855,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e76620",
+      "from": "n76620",
+      "to": "n76621",
+      "length_m": 4.9999999994530855,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e87805",
+      "from": "n87805",
+      "to": "n88206",
+      "length_m": 7.071067811485481,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e88942",
+      "from": "n88942",
+      "to": "n88542",
+      "length_m": 5.000000000009521,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e89343",
+      "from": "n89343",
+      "to": "n88942",
+      "length_m": 7.071067811485481,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e90549",
+      "from": "n90549",
+      "to": "n90949",
+      "length_m": 5.000000000009521,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e90550",
+      "from": "n90550",
+      "to": "n90549",
+      "length_m": 4.9999999994530855,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e90951",
+      "from": "n90951",
+      "to": "n90550",
+      "length_m": 7.071067811485481,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e97060",
+      "from": "n97060",
+      "to": "n96659",
+      "length_m": 7.071067811485481,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e100136",
+      "from": "n100136",
+      "to": "n100135",
+      "length_m": 4.9999999994530855,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e116595",
+      "from": "n116595",
+      "to": "n116996",
+      "length_m": 7.071067811485481,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e116996",
+      "from": "n116996",
+      "to": "n117396",
+      "length_m": 5.000000000009521,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    },
+    {
+      "id": "e117396",
+      "from": "n117396",
+      "to": "n117796",
+      "length_m": 5.000000000009521,
+      "width_m": 2.0,
+      "geometry_status": "hypothetical 2 m width; terrain-derived bed proxy"
+    }
+  ],
+  "assumptions": [
+    "Strict-downhill D8 candidates are not archaeological channel identifications.",
+    "Radar elevations are unvalidated surface proxies, not measured channel beds.",
+    "2 m width and 0.1 m initial depth are illustrative; not inferred bathymetry.",
+    "Closed extraction domain; sinks retain water and no reservoir connectivity is inferred."
+  ]
+}

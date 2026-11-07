@@ -97,3 +97,7 @@ Please advise the research licence, citation and publication conditions, permiss
 2. In parallel, convert and quality-check the acquired TOPSAR raw scene with explicit metadata handling. Keep its radar-derived interpretation separate from bare-earth LiDAR.
 3. Only after reference/height checks, compare it with Copernicus and assess whether it provides meaningful additional channel/embankment information.
 4. Acquire more TOPSAR strips only if the pilot’s reference, accuracy and coverage prove useful; do not build an unverified 5 m mosaic simply because files exist.
+
+## Subsequent preview conversion — 6 November 2026
+
+After the acquisition assessment above, `scripts/build_topsar_scenes.py` implemented metadata-based SCH conversion. The viewer now offers a native-spacing ~5 m Angkor Wat detail and an ~80 m full-strip overview. This resolves preview placement and mathematical height decoding; it does not establish independent ground accuracy, a fully verified NoData policy or suitability for hydraulic simulation. See [conversion notes](topsar/CONVERSION.md). Earlier raw-stage observations above are retained for provenance.

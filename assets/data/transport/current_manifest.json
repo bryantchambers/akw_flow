@@ -1,0 +1,112 @@
+{
+  "status": "Uncalibrated conservative demonstrations; no fitted reaction rates",
+  "hydraulic_source": "assets/data/hydraulics/simulation.json",
+  "hydraulic_sha256": "8885d9b67689c1c677d90c2702ab2ebbdda4bdfca906d35baa1f1bc5bb495beb",
+  "initial_condition": "Arbitrary unit tracer in the first edge source cell",
+  "results": {
+    "biological": {
+      "mass_budget": {
+        "boundary_input": 0.0,
+        "local_input": 0.0,
+        "production_or_atmospheric_input": 0.0,
+        "boundary_export": 0.0,
+        "irreversible_loss_or_export": 0.0,
+        "initial": 2.4999999997313034,
+        "final": 2.49999999973132,
+        "residual": 1.6431300764452317e-14
+      },
+      "water_budget": {
+        "initial_volume_m3": 117.49999998737124,
+        "final_volume_m3": 117.49999998737125,
+        "external_net_m3": 0.0,
+        "residual_m3": 1.4210854715202004e-14,
+        "intervals": [
+          {
+            "start_s": 0.0,
+            "end_s": 4.99999999999999,
+            "max_cell_residual_m3": 3.552713678800501e-15
+          },
+          {
+            "start_s": 4.99999999999999,
+            "end_s": 10.0,
+            "max_cell_residual_m3": 3.1086244689504383e-15
+          },
+          {
+            "start_s": 10.0,
+            "end_s": 15.0,
+            "max_cell_residual_m3": 4.440892098500626e-15
+          },
+          {
+            "start_s": 15.0,
+            "end_s": 20.0,
+            "max_cell_residual_m3": 2.6645352591003757e-15
+          },
+          {
+            "start_s": 20.0,
+            "end_s": 25.0,
+            "max_cell_residual_m3": 5.329070518200751e-15
+          },
+          {
+            "start_s": 25.0,
+            "end_s": 30.0,
+            "max_cell_residual_m3": 5.329070518200751e-15
+          }
+        ]
+      },
+      "steps": 605,
+      "time_s": 30.0
+    },
+    "chemical": {
+      "mass_budget": {
+        "boundary_input": 0.0,
+        "local_input": 0.0,
+        "production_or_atmospheric_input": 0.0,
+        "boundary_export": 0.0,
+        "irreversible_loss_or_export": 0.0,
+        "initial": 2.4999999997313034,
+        "final": 2.49999999973132,
+        "residual": 1.6431300764452317e-14
+      },
+      "water_budget": {
+        "initial_volume_m3": 117.49999998737124,
+        "final_volume_m3": 117.49999998737125,
+        "external_net_m3": 0.0,
+        "residual_m3": 1.4210854715202004e-14,
+        "intervals": [
+          {
+            "start_s": 0.0,
+            "end_s": 4.99999999999999,
+            "max_cell_residual_m3": 3.552713678800501e-15
+          },
+          {
+            "start_s": 4.99999999999999,
+            "end_s": 10.0,
+            "max_cell_residual_m3": 3.1086244689504383e-15
+          },
+          {
+            "start_s": 10.0,
+            "end_s": 15.0,
+            "max_cell_residual_m3": 4.440892098500626e-15
+          },
+          {
+            "start_s": 15.0,
+            "end_s": 20.0,
+            "max_cell_residual_m3": 2.6645352591003757e-15
+          },
+          {
+            "start_s": 20.0,
+            "end_s": 25.0,
+            "max_cell_residual_m3": 5.329070518200751e-15
+          },
+          {
+            "start_s": 25.0,
+            "end_s": 30.0,
+            "max_cell_residual_m3": 5.329070518200751e-15
+          }
+        ]
+      },
+      "steps": 605,
+      "time_s": 30.0
+    }
+  }
+}

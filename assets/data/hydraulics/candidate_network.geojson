@@ -1,0 +1,704 @@
+{
+  "type": "FeatureCollection",
+  "model": {
+    "name": "TOPSAR drainage candidates",
+    "scenario": "Unconditioned strict-downhill D8",
+    "metric": "terrain contributing area",
+    "unit": "m2"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.86946036044417,
+            13.416534858066834
+          ],
+          [
+            103.8694141854826,
+            13.416579773625584
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e43853",
+        "value": 3399.9999996345723,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.87172293356124,
+            13.415816209126842
+          ],
+          [
+            103.87176910852283,
+            13.415771293568092
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e50302",
+        "value": 2524.9999997286163,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.87176910852283,
+            13.415771293568092
+          ],
+          [
+            103.8718152834844,
+            13.415771293568092
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e50703",
+        "value": 2599.9999997205555,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.8718152834844,
+            13.415771293568092
+          ],
+          [
+            103.87186145844598,
+            13.415771293568092
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e50704",
+        "value": 2624.9999997178684,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.87186145844598,
+            13.415771293568092
+          ],
+          [
+            103.87190763340755,
+            13.415726378009342
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e50705",
+        "value": 2799.9999996990596,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.87190763340755,
+            13.415726378009342
+          ],
+          [
+            103.87190763340755,
+            13.415681462450593
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e51106",
+        "value": 3024.9999996748766,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.87190763340755,
+            13.415681462450593
+          ],
+          [
+            103.87195380836911,
+            13.415636546891843
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e51506",
+        "value": 3749.9999995969547,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.87195380836911,
+            13.415636546891843
+          ],
+          [
+            103.87195380836911,
+            13.415591631333095
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e51907",
+        "value": 3974.9999995727717,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.87195380836911,
+            13.415591631333095
+          ],
+          [
+            103.8719999833307,
+            13.415546715774346
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e52307",
+        "value": 4149.999999553963,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.8719999833307,
+            13.415546715774346
+          ],
+          [
+            103.87204615829226,
+            13.415501800215596
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e52708",
+        "value": 4224.999999545902,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.87204615829226,
+            13.415501800215596
+          ],
+          [
+            103.8719999833307,
+            13.415456884656846
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e53109",
+        "value": 4274.999999540528,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.86959888532888,
+            13.41491789795185
+          ],
+          [
+            103.86955271036732,
+            13.414872982393101
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e58256",
+        "value": 4199.999999548589,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.86156444201515,
+            13.414199249011858
+          ],
+          [
+            103.86156444201515,
+            13.414244164570608
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e64482",
+        "value": 3699.999999602329,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.86156444201515,
+            13.414154333453109
+          ],
+          [
+            103.86156444201515,
+            13.414199249011858
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e64882",
+        "value": 2724.9999997071204,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.86765953694281,
+            13.413795008983113
+          ],
+          [
+            103.86770571190439,
+            13.413750093424364
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e68214",
+        "value": 3324.999999642633,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.86770571190439,
+            13.413750093424364
+          ],
+          [
+            103.86775188686596,
+            13.413750093424364
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e68615",
+        "value": 3374.9999996372594,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.87029150975248,
+            13.413390768954367
+          ],
+          [
+            103.87024533479091,
+            13.413390768954367
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e71871",
+        "value": 2874.9999996909983,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.86862921113585,
+            13.413256022278118
+          ],
+          [
+            103.86858303617427,
+            13.413256022278118
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e73035",
+        "value": 3974.9999995727726,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.86876773602057,
+            13.413256022278118
+          ],
+          [
+            103.86872156105899,
+            13.413211106719368
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e73038",
+        "value": 3499.999999623825,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.86867538609742,
+            13.413211106719368
+          ],
+          [
+            103.86862921113585,
+            13.413256022278118
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e73436",
+        "value": 3899.9999995808334,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.86872156105899,
+            13.413211106719368
+          ],
+          [
+            103.86867538609742,
+            13.413211106719368
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e73437",
+        "value": 3749.999999596955,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.86793658671225,
+            13.412851782249373
+          ],
+          [
+            103.86798276167383,
+            13.412851782249373
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e76620",
+        "value": 2599.9999997205555,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.86724396228865,
+            13.411594146604385
+          ],
+          [
+            103.86729013725022,
+            13.411549231045635
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e87805",
+        "value": 2974.9999996802508,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.86433493970955,
+            13.411459399928136
+          ],
+          [
+            103.86433493970955,
+            13.411504315486885
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e88942",
+        "value": 2749.9999997044333,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.86438111467112,
+            13.411414484369386
+          ],
+          [
+            103.86433493970955,
+            13.411459399928136
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e89343",
+        "value": 2574.999999723242,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.86465816444056,
+            13.411279737693137
+          ],
+          [
+            103.86465816444056,
+            13.411234822134388
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e90549",
+        "value": 2899.999999688312,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.86470433940212,
+            13.411279737693137
+          ],
+          [
+            103.86465816444056,
+            13.411279737693137
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e90550",
+        "value": 2674.9999997124946,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.8647505143637,
+            13.411234822134388
+          ],
+          [
+            103.86470433940212,
+            13.411279737693137
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e90951",
+        "value": 2599.9999997205555,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.86978358517518,
+            13.410561088753145
+          ],
+          [
+            103.8697374102136,
+            13.410606004311894
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e97060",
+        "value": 2674.9999997124946,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.8640578899401,
+            13.41020176428315
+          ],
+          [
+            103.86401171497853,
+            13.41020176428315
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e100136",
+        "value": 2849.9999996936854,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.86678221267292,
+            13.408360226374418
+          ],
+          [
+            103.8668283876345,
+            13.408315310815668
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e116595",
+        "value": 2599.999999720555,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.8668283876345,
+            13.408315310815668
+          ],
+          [
+            103.8668283876345,
+            13.408270395256919
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e116996",
+        "value": 2749.9999997044333,
+        "status": "unverified terrain drainage candidate"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            103.8668283876345,
+            13.408270395256919
+          ],
+          [
+            103.8668283876345,
+            13.408225479698169
+          ]
+        ]
+      },
+      "properties": {
+        "id": "e117396",
+        "value": 2799.9999996990596,
+        "status": "unverified terrain drainage candidate"
+      }
+    }
+  ]
+}

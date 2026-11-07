@@ -11,3 +11,5 @@ resources/
 # Large public source datasets can be reacquired with scripts/acquire_context.py.
 assets/data/context/*.tif
 assets/data/context/*.osm.pbf
+# Regenerable TOPSAR intermediate and geocoded rasters.
+assets/data/context/topsar/*.tif

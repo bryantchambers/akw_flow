@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "mass_unit": "mg",
+  "concentration_unit": "mg/m3",
+  "screening_only": true,
+  "presets": [
+    {
+      "id": "conservative_chloride",
+      "name": "Conservative dissolved tracer (chloride approximation)",
+      "cas": "16887-00-6",
+      "status": "idealized_tracer",
+      "description": "Dissolved conservative reference for dilution, connectivity and residence time. All chemical reactions disabled by construction. Chloride is only an approximation; evaporative concentration must come from water balance, and salinity-density coupling is not represented.",
+      "parameters": {},
+      "provenance": [{"source_type": "illustrative_model_assumption", "source_url": "https://www.epa.gov/hydrowq/water-quality-analysis-simulation-program-wasp", "note": "A conservative baseline is a modeling choice, not a chloride rate measured at Angkor."}],
+      "required_site_inputs": ["Hydraulic water balance and connectivity", "Tracer loading and background concentration"]
+    },
+    {
+      "id": "atrazine",
+      "name": "Atrazine (EPA property seed; kinetics unconfigured)",
+      "cas": "1912-24-9",
+      "status": "incomplete_site_parameterization",
+      "description": "Modern hypothetical organic-contaminant example, not evidence of atrazine at medieval or present-day Angkor. EPA legacy factsheet reports mean Koc from four soils; use only as an uncertain starting property. All processes remain disabled until site-specific coefficients and switches are supplied.",
+      "parameters": {"partition_mode": "koc_foc", "koc_l_kg_oc": 122.0},
+      "property_provenance": {
+        "koc_l_kg_oc": {
+          "value": 122.0,
+          "units": "L/kg organic carbon",
+          "source_type": "epa_reported_experimental_summary",
+          "source_url": "https://archive.epa.gov/water/archive/web/pdf/archived-technical-fact-sheet-on-atrazine.pdf",
+          "source_locator": "Environmental Fate and Chemical/Physical Properties, PDF pages 2-3",
+          "conditions": "Average for four soils; not Angkor sediment. Legacy fact sheet does not identify the individual soils or uncertainty interval.",
+          "uncertainty": "Unknown; test sensitivity and obtain original study or local sediment measurements before calibration.",
+          "accessed": "2026-11-06"
+        }
+      },
+      "provenance": [{"source_type": "epa_reported_context", "source_url": "https://archive.epa.gov/water/archive/web/pdf/archived-technical-fact-sheet-on-atrazine.pdf", "note": "Photolysis depends strongly on spectrum and sensitizers; published laboratory values are not copied into sunlight kinetics. Soil hydrolysis descriptions are not assigned to canal-water hydrolysis."}],
+      "required_site_inputs": ["Bed organic carbon fraction and active dry solids", "Kinetic exchange coefficient", "Condition-specific water and bed parent-transformation rates", "Light spectrum, shading, depth and turbidity for photolysis", "Temperature, pH and dissolved oxygen observations", "Contaminant loads and initial conditions"]
+    },
+    {
+      "id": "user_defined_chemical",
+      "name": "User-defined dissolved chemical",
+      "status": "incomplete_site_parameterization",
+      "description": "Empty configuration for measured site-specific chemical properties. All processes disabled; this is a conservative calculation until explicitly configured, not a claim that an arbitrary chemical is persistent.",
+      "parameters": {},
+      "provenance": [{"source_type": "user_required", "source_url": "https://comptox.epa.gov/dashboard/", "note": "Search by chemical identity and export property details. Keep each measurement or prediction, units, method, temperature, pH, study and uncertainty; no live database lookup has populated these coefficients."}],
+      "required_site_inputs": ["Verified chemical identity", "Measured fate properties or labeled screening predictions", "Site hydraulic, sediment, light and loading data"]
+    }
+  ],
+  "epa_resources": [
+    {"name": "WASP", "url": "https://www.epa.gov/hydrowq/water-quality-analysis-simulation-program-wasp", "use": "Established coupled surface-water water-quality modeling and hydrodynamic linkage; this code does not reproduce WASP."},
+    {"name": "EPI Suite", "url": "https://www.epa.gov/tsca-screening-tools/epi-suitetm-estimation-program-interface", "use": "Screening predictions, not measurements. EPA advises acceptable measured properties take precedence. WVOLWIN river/lake estimates embed assumed depth and wind conditions."},
+    {"name": "CompTox property details", "url": "https://www.epa.gov/comptox-tools/comptox-chemicals-dashboard-about", "use": "Chemical identities and measured or predicted environmental fate/transport properties. Preserve the provenance of each value."},
+    {"name": "ECOTOX", "url": "https://www.epa.gov/comptox-tools/ecotoxicology-ecotox-knowledgebase-resource-hub", "use": "Effects/hazard data for ecological comparisons; toxicity endpoints do not supply transport or degradation rates."},
+    {"name": "EXAMS overview", "url": "https://www.epa.gov/sites/default/files/2017-09/documents/ee-0108_1-4_acc.pdf", "use": "Historical EPA organic chemical exposure/fate modeling framework; environmental, chemical and loading data are all required."}
+  ]
+}

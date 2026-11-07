@@ -1,0 +1,54 @@
+{
+  "type": "FeatureCollection",
+  "name": "Angkor Wat, West Baray and East Baray — provisional regional search domain",
+  "bbox": [
+    103.6,
+    13.2,
+    104.2,
+    13.8
+  ],
+  "features": [
+    {
+      "type": "Feature",
+      "id": "angkor_wat_west_east_baray_provisional",
+      "properties": {
+        "name": "Angkor Wat, West Baray and East Baray — provisional regional search domain",
+        "boundary_role": "regional_search_clip_only",
+        "status": "provisional_context_bounds_pending_archaeological_review",
+        "included_features": [
+          "Angkor Wat temple, moat and internal ponds",
+          "West Baray",
+          "East Baray"
+        ],
+        "hydraulic_boundary_conditions_defined": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              103.6,
+              13.2
+            ],
+            [
+              104.2,
+              13.2
+            ],
+            [
+              104.2,
+              13.8
+            ],
+            [
+              103.6,
+              13.8
+            ],
+            [
+              103.6,
+              13.2
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

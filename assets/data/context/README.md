@@ -33,3 +33,7 @@ Run from the repository root. The acquisition script reuses existing TIFFs and a
 ## Still needed
 
 Separately authorized georeferenced KALC/CALI bare-earth DTM or classified point clouds; original archaeological GIS with feature IDs and phases; surveyed channel sections and control levels; storage curves; hydraulic forcing and calibration data. The credentialed Archaeoscape benchmark cannot supply a spatially aligned terrain layer under its published no-localization terms.
+
+## TOPSAR update — 6 November 2026
+
+A separate TOPSAR selector now provides a ~5 m display tile around Angkor Wat and an ~80 m full-strip display. Source coordinates are converted using the documented AIRSAR SCH operation; this is no longer merely a raw-file candidate. The preview remains provisional for ground accuracy, mask interpretation and hydraulic use. TOPSAR screening is intentionally disabled. See [conversion details](topsar/CONVERSION.md) and [processing provenance](topsar/conversion_provenance.json). The earlier raw inspection and search report are retained as acquisition-stage records.

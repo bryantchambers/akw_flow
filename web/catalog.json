@@ -213,15 +213,16 @@
     },
     {
       "id": "topsar_raw",
-      "title": "Higher-resolution radar terrain candidate",
+      "title": "TOPSAR terrain: 5 m detail preview",
       "citation": "NASA/JPL AIRSAR TOPSAR · ts1260 · 21 Sep 2000",
       "category": "Terrain",
       "scope": "Narrow survey strip covering Angkor Wat",
-      "kind": "Raw radar DEM",
-      "description": "A publicly acquired C-band radar DEM with 5 m post spacing, plus header metadata and a geographic footprint. This is radar terrain, not LiDAR.",
-      "supports": "A concrete candidate for finer terrain reconstruction after raw-format conversion, geolocation and height-reference checks.",
-      "limitation": "Not yet geocoded or validated for the viewer. The raw header reports UTM zone TBD; vertical reference and NoData interpretation remain unresolved. Post spacing does not establish accuracy.",
-      "related": []
+      "kind": "Radar DEM + preview",
+      "description": "The raw 5 m-post C-band survey now has metadata-georeferenced previews: a native-spacing Angkor Wat detail tile and an 80 m display of the full strip.",
+      "supports": "Inspect finer surface structure in the selectable 3D terrain view while retaining source metadata, gaps and processing provenance.",
+      "limitation": "Provisional placement is checked against header corners, not independent ground control. A suspected fill value is masked explicitly. WGS84 ellipsoidal heights are not EGM2008; this is not a validated bare-earth or hydraulic terrain model.",
+      "related": [],
+      "viewer_url": "/model-view?terrain=topsar_detail"
     }
   ],
   "needs": [

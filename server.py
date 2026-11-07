@@ -41,10 +41,11 @@ def catalog():
         r['artifact'] = artifact(r['id'])
         r['related_artifacts'] = [artifact(k) for k in r.get('related', [])]
     acquired = [r for r in manifest if r.get('status') == 'available' and (ASSETS / r['path']).is_file()]
+    topsar_ready = all((ASSETS / path).is_file() for path in ('data/context/topsar/viewer_topsar_detail.json','data/context/topsar/viewer_topsar_overview.json','data/context/topsar/conversion_provenance.json'))
     data['stats'] = {'pdfs': sum(r['path'].endswith('.pdf') for r in acquired),
                      'supplements': sum(r['path'].endswith('.docx') for r in acquired),
                      'source_archives': sum(r['path'].endswith('.zip') for r in acquired),
-                     'geospatial_datasets': 0, 'context_datasets': sum(k in records and (ASSETS / records[k]['path']).is_file() for k in ('copernicus_context','osm_context')), 'hydraulic_projects': 0,
+                     'geospatial_datasets': 0, 'context_datasets': sum(k in records and (ASSETS / records[k]['path']).is_file() for k in ('copernicus_context','osm_context')) + int(topsar_ready), 'hydraulic_projects': 0,
                      'total_bytes': sum((ASSETS / r['path']).stat().st_size for r in acquired),
                      'resources': len(data['resources']),
                      'critical_needs': sum(r['priority'] == 'Critical' for r in data['needs'])}
@@ -56,14 +57,44 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.respond(False)
 
+    def do_POST(self):
+        if urlsplit(self.path).path != '/api/transport/simulate':
+            self.send_error(404)
+            return
+        try:
+            size = int(self.headers.get('Content-Length', '0'))
+            if not 0 < size <= 2_000_000:
+                raise ValueError('Request must be 1 byte to 2 MB')
+            config = json.loads(self.rfile.read(size))
+            if not isinstance(config, dict) or len(config.get('cells', [])) > 500:
+                raise ValueError('Use an object with at most 500 cells')
+            config['max_steps'] = min(int(config.get('max_steps', 10000)), 10000)
+            from transport.core import simulate
+            result = simulate(config)
+            body = json.dumps(result, allow_nan=False).encode()
+            status = 200
+        except (ValueError, TypeError, KeyError, OverflowError) as exc:
+            body = json.dumps({'error': str(exc)}).encode()
+            status = 400
+        self.send_response(status)
+        self.send_header('Content-Type', 'application/json')
+        self.send_header('Content-Length', str(len(body)))
+        self.send_header('Cache-Control', 'no-store')
+        self.end_headers()
+        self.wfile.write(body)
+
     def do_HEAD(self):
         self.respond(True)
 
     def respond(self, head):
         path = unquote(urlsplit(self.path).path)
-        if path in ('/api/catalog', '/healthz'):
+        if path in ('/api/catalog', '/healthz', '/api/transport/models'):
             try:
-                result = catalog() if path == '/api/catalog' else {'status': 'ok', 'service': 'angkor-research-inventory'}
+                if path == '/api/transport/models':
+                    from transport.core import get_models
+                    result = get_models()
+                else:
+                    result = catalog() if path == '/api/catalog' else {'status': 'ok', 'service': 'angkor-research-inventory'}
                 body = json.dumps(result, ensure_ascii=False).encode()
             except (OSError, ValueError) as exc:
                 self.send_error(500, 'Inventory files could not be read')
@@ -76,7 +107,10 @@ class Handler(BaseHTTPRequestHandler):
             if not head:
                 self.wfile.write(body)
             return
-        if path == '/model-view':
+        if path == '/transport-model':
+            file = WEB / 'transport.html'
+            attachment = False
+        elif path == '/model-view':
             file = WEB / 'viewer.html'
             attachment = False
         elif path in ('/', '/index.html') or path.endswith(('.css', '.js', '.json', '.txt')) and not path.startswith('/assets/'):

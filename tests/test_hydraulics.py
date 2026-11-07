@@ -6,6 +6,15 @@ from scripts.build_channel_network import extract
 class HydraulicTests(unittest.TestCase):
     def network(self):
         return {'nodes':[{'id':'a','bed_elevation_m':0.,'storage_area_m2':100.,'initial_depth_m':1.,'coordinates':[103.86,13.41]},{'id':'b','bed_elevation_m':0.,'storage_area_m2':100.,'initial_depth_m':.5,'coordinates':[103.861,13.41]}],'edges':[{'id':'ab','from':'a','to':'b','width_m':2.,'length_m':100.}]}
+    def test_scenario_roughness_overrides_edge_default(self):
+        n=self.network();n['edges'][0]['manning_n']=.03
+        cfg={'duration_s':.01,'roughness':{'manning_n':.06}}
+        r=simulate(n,cfg)
+        self.assertAlmostEqual(r['samples'][0]['flows_m3_s'][0],discharge(1,2,.005,.06)['flow_m3_s'])
+        cfg['edge_overrides']={'ab':{'manning_n':.09}}
+        r=simulate(n,cfg)
+        self.assertAlmostEqual(r['samples'][0]['flows_m3_s'][0],discharge(1,2,.005,.09)['flow_m3_s'])
+
     def test_manning_known(self):
         d=discharge(1.,2.,.001,.03)
         self.assertAlmostEqual(d['flow_m3_s'],2*(.5**(2/3))*(.001**.5)/.03)

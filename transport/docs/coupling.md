@@ -28,3 +28,5 @@ Interval means preserve volume but cannot reconstruct reversals within an output
 interval; finer saved hydraulics are needed to assess that error. Positive mass
 and conservation are numerical checks, not field validation. These terrain
 candidates do not model either baray, and their geometry and forcing are uncalibrated.
+
+If supplied, `duration_s` must match the saved hydraulic record. Generate a new hydraulic record to change duration.

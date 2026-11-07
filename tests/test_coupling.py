@@ -15,6 +15,13 @@ def config(flow=1, source=(0, 0), volumes=((20, 10), (15, 15)), times=(0, 5)):
 
 
 class CouplingTests(unittest.TestCase):
+    def test_requested_duration_must_match_hydraulics(self):
+        c=config();c['duration_s']=10
+        with self.assertRaisesRegex(ValueError,'duration_s must match'):
+            simulate(c)
+        c['duration_s']=5
+        self.assertAlmostEqual(simulate(c)['time_s'],5)
+
     def test_closed_conservation_and_storage(self):
         for model in ('chemical', 'biological'):
             c = config(); c['model'] = model

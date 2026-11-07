@@ -58,7 +58,7 @@ def simulate(network, config):
         a,b=ix[e['from']],ix[e['to']]
         if a==b: raise ValueError('Self loop')
         endpoint.append((a,b))
-        p=dict(roughness); p.update(e);p.update(overrides.get(e['id'],{}))
+        p=dict(e); p.update(roughness);p.update(overrides.get(e['id'],{}))
         p['length_m']=positive(p['length_m'],'length'); p['width_m']=positive(p['width_m'],'width')
         p['manning_n']=positive(p.get('manning_n',0.035),'Manning n');params.append(p)
     def flux():

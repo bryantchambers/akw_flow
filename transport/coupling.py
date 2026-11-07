@@ -35,6 +35,10 @@ def simulate_coupled(config):
     times = np.asarray([sample['time_s'] for sample in samples], float)
     if not np.isfinite(times).all() or times[0] != 0 or (np.diff(times) <= 0).any():
         raise ValueError('Hydraulic times must start at zero and increase strictly')
+    if 'duration_s' in config:
+        requested = float(config['duration_s'])
+        if not np.isfinite(requested) or not np.isclose(requested, times[-1], rtol=0, atol=1e-9):
+            raise ValueError('duration_s must match the saved hydraulic duration; regenerate hydraulics for another duration')
     storage = [vector(s['volumes_m3'], n, 'storage') for s in samples]
     if any((v <= 0).any() for v in storage):
         raise ValueError('Dry hydraulic storage is unsupported by coupled transport')

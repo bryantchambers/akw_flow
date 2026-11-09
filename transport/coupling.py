@@ -12,6 +12,8 @@ from .core import simulate
 def simulate_coupled(config):
     config = copy.deepcopy(config)
     hydraulic = config.pop('hydraulic_result')
+    if 'groundwater_budget' in hydraulic:
+        raise ValueError('Groundwater solute exchange is not implemented; use surface-only hydraulics for transport')
     nodes, edges, samples = (hydraulic[k] for k in ('nodes', 'edges', 'samples'))
     ids = [node['id'] for node in nodes]
     if not nodes or len(nodes) > 500 or len(set(ids)) != len(ids):

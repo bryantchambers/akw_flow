@@ -1,0 +1,31 @@
+{
+  "input_directory": "assets/private/humanum_danish_edna",
+  "output_directory": "assets/private/humanum_channels",
+  "pilot_window_pixels": 512,
+  "target_lon_lat": [
+    103.86699,
+    13.41247
+  ],
+  "pixel_size_m": 0.5,
+  "elevation_scale_to_m": 1.0,
+  "elevation_units_status": "Provisional metre assumption; source units and vertical datum require confirmation",
+  "smoothing_sigma_m": 0.0,
+  "relief_radius_m": 5.0,
+  "minimum_downhill_slope": 0.0,
+  "minimum_component_length_m": 2.0,
+  "excluded_cells_rc": [],
+  "profiles": {
+    "sensitive": {
+      "minimum_contributing_area_m2": 10.0,
+      "minimum_relative_depression_m": 0.0
+    },
+    "balanced": {
+      "minimum_contributing_area_m2": 50.0,
+      "minimum_relative_depression_m": 0.01
+    },
+    "conservative": {
+      "minimum_contributing_area_m2": 200.0,
+      "minimum_relative_depression_m": 0.05
+    }
+  }
+}

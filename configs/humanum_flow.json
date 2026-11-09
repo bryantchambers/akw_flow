@@ -1,0 +1,35 @@
+{
+  "grid_spacing_m": 8.0,
+  "minimum_wet_fraction": 0.05,
+  "water_trace_width_m": 2.0,
+  "bed_incision_m": 0.5,
+  "initial_depth_m": 0.3,
+  "duration_s": 30.0,
+  "dt_max_s": 0.05,
+  "output_interval_s": 5.0,
+  "rainfall_mm_hr": 0.0,
+  "external_node_flows_m3_s": {},
+  "roughness": {
+    "manning_n": 0.035,
+    "closure": "manning",
+    "viscosity_m2_s": 1e-06
+  },
+  "edge_overrides": {},
+  "node_bed_offsets_m": {},
+  "max_steps": 10000,
+  "groundwater": {
+    "enabled": false,
+    "porosity": 0.3,
+    "specific_yield": 0.2,
+    "conductivity_mode": "hydraulic_conductivity",
+    "hydraulic_conductivity_m_s": 1e-06,
+    "intrinsic_permeability_m2": 1e-13,
+    "water_density_kg_m3": 1000,
+    "dynamic_viscosity_pa_s": 0.001,
+    "column_area_m2": 64,
+    "aquifer_base_depth_m": 5,
+    "initial_head_relative_to_bed_m": -0.3,
+    "bed_hydraulic_conductivity_m_s": 1e-07,
+    "bed_thickness_m": 0.5
+  }
+}

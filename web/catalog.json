@@ -1,10 +1,10 @@
 {
-  "updated": "2026-11-06",
+  "updated": "2026-11-09",
   "resources": [
     {
       "id": "evans_2007_map",
       "title": "The archaeological network",
-      "citation": "Evans et al. · 2007",
+      "citation": "Evans et al. \u00b7 2007",
       "category": "Mapping",
       "scope": "Greater Angkor",
       "kind": "Manuscript",
@@ -16,11 +16,11 @@
     {
       "id": "fletcher_2008_network",
       "title": "How the water system developed",
-      "citation": "Fletcher et al. · 2008",
+      "citation": "Fletcher et al. \u00b7 2008",
       "category": "Mapping",
       "scope": "Greater Angkor",
       "kind": "Manuscript",
-      "description": "A provisional archaeological reconstruction of successive changes to Angkor’s water-management system.",
+      "description": "A provisional archaeological reconstruction of successive changes to Angkor\u2019s water-management system.",
       "supports": "Choose a historical configuration and interpret the function and chronology of connections.",
       "limitation": "A developmental interpretation rather than a calibrated hydraulic simulation.",
       "related": []
@@ -28,7 +28,7 @@
     {
       "id": "evans_2013_lidar",
       "title": "Landscape beneath the canopy",
-      "citation": "Evans et al. · 2013",
+      "citation": "Evans et al. \u00b7 2013",
       "category": "Terrain",
       "scope": "Angkor and other survey blocks",
       "kind": "Manuscript",
@@ -39,8 +39,8 @@
     },
     {
       "id": "evans_fletcher_2015_landscape",
-      "title": "Angkor Wat’s local landscape",
-      "citation": "Evans & Fletcher · 2015",
+      "title": "Angkor Wat\u2019s local landscape",
+      "citation": "Evans & Fletcher \u00b7 2015",
       "category": "Mapping",
       "scope": "Angkor Wat",
       "kind": "Manuscript",
@@ -52,13 +52,13 @@
     {
       "id": "klassen_2022_provisioning",
       "title": "Estimating water storage",
-      "citation": "Klassen et al. · 2021 / 2022",
+      "citation": "Klassen et al. \u00b7 2021 / 2022",
       "category": "Storage",
       "scope": "Greater Angkor; agricultural communities",
       "kind": "Manuscript",
-      "description": "Estimates reservoir and moat capacities using LiDAR elevation ranges and area–depth regressions.",
+      "description": "Estimates reservoir and moat capacities using LiDAR elevation ranges and area\u2013depth regressions.",
       "supports": "Provide initial storage estimates and a published method for filling gaps in terrain coverage.",
-      "limitation": "Storage proxies are not surveyed bathymetry or operational stage–storage curves. Main analysis excludes the civic-ceremonial core.",
+      "limitation": "Storage proxies are not surveyed bathymetry or operational stage\u2013storage curves. Main analysis excludes the civic-ceremonial core.",
       "related": [
         "klassen_2022_supplement"
       ]
@@ -66,12 +66,12 @@
     {
       "id": "penny_2018_main",
       "title": "Cascading failure in the network",
-      "citation": "Penny et al. · 2018",
+      "citation": "Penny et al. \u00b7 2018",
       "category": "Failure models",
       "scope": "Greater Angkor",
       "kind": "Manuscript",
       "description": "A 617-node, 1,013-edge network explores how erosion and sedimentation can concentrate flow and disrupt distribution.",
-      "supports": "Define diversion, flow-starvation and coupled erosion–sedimentation failure scenarios.",
+      "supports": "Define diversion, flow-starvation and coupled erosion\u2013sedimentation failure scenarios.",
       "limitation": "Normalized flows and capacity updates do not supply historical volumes, travel times or bacterial concentrations.",
       "related": [
         "penny_2018_supplement"
@@ -80,7 +80,7 @@
     {
       "id": "kummu_2009_hydrology",
       "title": "Hydrology and channel incision",
-      "citation": "Kummu · 2009",
+      "citation": "Kummu \u00b7 2009",
       "category": "Failure models",
       "scope": "Greater Angkor / Siem Reap channel",
       "kind": "Manuscript",
@@ -92,9 +92,9 @@
     {
       "id": "siavb_sdgera",
       "title": "The operational Hydra model",
-      "citation": "SIAVB · SDGERA brochure",
+      "citation": "SIAVB \u00b7 SDGERA brochure",
       "category": "Operations",
-      "scope": "Modern Angkor–Siem Reap",
+      "scope": "Modern Angkor\u2013Siem Reap",
       "kind": "Documentation",
       "description": "Documents a detailed hydraulic model built from topographic surveys and monitoring, calibrated in Hydra (Hydratec).",
       "supports": "Identify the most promising source of existing hydraulic geometry, storage and calibration data.",
@@ -104,11 +104,11 @@
     {
       "id": "sophia_hydraulic_city",
       "title": "The hydraulic city of Angkor",
-      "citation": "Sophia University · Special issue 33",
+      "citation": "Sophia University \u00b7 Special issue 33",
       "category": "Operations",
       "scope": "Angkor / Angkor Wat",
       "kind": "Proceedings",
-      "description": "A complete symposium volume on hydraulic infrastructure and Angkor Wat, including Hang Peou’s water-management chapter.",
+      "description": "A complete symposium volume on hydraulic infrastructure and Angkor Wat, including Hang Peou\u2019s water-management chapter.",
       "supports": "Trace archaeological interpretations, restoration history and the institutional context of SDGERA.",
       "limitation": "A published volume, not a downloadable hydraulic project. Modern restoration must be distinguished from historical conditions.",
       "related": []
@@ -116,7 +116,7 @@
     {
       "id": "peou_2014_pdf",
       "title": "Restoring the ancient system",
-      "citation": "Peou Hang · 2014",
+      "citation": "Peou Hang \u00b7 2014",
       "category": "Operations",
       "scope": "Angkor",
       "kind": "Manuscript",
@@ -128,9 +128,9 @@
     {
       "id": "lustig_2018_koh_ker",
       "title": "A hydraulic failure reconstruction",
-      "citation": "Lustig et al. · 2018",
+      "citation": "Lustig et al. \u00b7 2018",
       "category": "Failure models",
-      "scope": "Koh Ker — outside Angkor Wat",
+      "scope": "Koh Ker \u2014 outside Angkor Wat",
       "kind": "Manuscript",
       "description": "Combines archaeological evidence, terrain and hydraulic modelling to investigate reservoir and embankment failure at Koh Ker.",
       "supports": "Provide a methodological precedent for archaeological HEC-RAS reconstruction and failure analysis.",
@@ -140,7 +140,7 @@
     {
       "id": "perron_2024_archaeoscape",
       "title": "Learning to extract archaeological features",
-      "citation": "Perron et al. · 2024",
+      "citation": "Perron et al. \u00b7 2024",
       "category": "Extraction methods",
       "scope": "Cambodian archaeological landscapes",
       "kind": "Manuscript",
@@ -154,7 +154,7 @@
     {
       "id": "archaeoscape_code",
       "title": "Archaeoscape source code",
-      "citation": "Repository snapshot · 459b087f3753",
+      "citation": "Repository snapshot \u00b7 459b087f3753",
       "category": "Extraction methods",
       "scope": "Feature segmentation",
       "kind": "Source code",
@@ -166,7 +166,7 @@
     {
       "id": "penny_2018_supplement",
       "title": "Failure-model equations and rules",
-      "citation": "Penny et al. · 2018 · Supplement",
+      "citation": "Penny et al. \u00b7 2018 \u00b7 Supplement",
       "category": "Failure models",
       "scope": "Greater Angkor / generic networks",
       "kind": "Supplement",
@@ -178,21 +178,21 @@
     {
       "id": "klassen_2022_supplement",
       "title": "Provisioning study supplement",
-      "citation": "Klassen et al. · Publisher supplement",
+      "citation": "Klassen et al. \u00b7 Publisher supplement",
       "category": "Storage",
       "scope": "Agricultural analysis",
       "kind": "Supplement",
       "description": "Supporting information accompanying the agricultural-economy and water-storage study.",
-      "supports": "Review the study’s supplementary evidence alongside the manuscript.",
+      "supports": "Review the study\u2019s supplementary evidence alongside the manuscript.",
       "limitation": "This document does not replace the underlying tDAR data tables or the LiDAR terrain.",
       "related": []
     },
     {
       "id": "copernicus_context",
       "title": "Modern elevation context",
-      "citation": "Copernicus GLO-30 Public · AWS 2021 release",
+      "citation": "Copernicus GLO-30 Public \u00b7 AWS 2021 release",
       "category": "Terrain",
-      "scope": "Provisional Angkor rectangle; two 1° tiles",
+      "scope": "Provisional Angkor rectangle; two 1\u00b0 tiles",
       "kind": "Raster dataset",
       "description": "Georeferenced modern digital surface elevation at approximately 30 m spacing. Both source tiles are local; the viewer uses an aggregated mesh.",
       "supports": "Locate the study area, inspect regional relief and run clearly labelled terrain-drainage screening.",
@@ -202,19 +202,19 @@
     {
       "id": "osm_context",
       "title": "Modern mapped water features",
-      "citation": "OpenStreetMap contributors / Geofabrik · November 2026",
+      "citation": "OpenStreetMap contributors / Geofabrik \u00b7 November 2026",
       "category": "Mapping",
       "scope": "Provisional study rectangle",
       "kind": "Vector dataset",
       "description": "Waterway ways and water polygons extracted from a dated OpenStreetMap snapshot, retaining OSM identifiers and source tags.",
       "supports": "Overlay current mapped canals and receiving waters on the terrain and identify places requiring archaeological verification.",
-      "limitation": "Modern mapping, not Penny’s graph or a verified medieval network. Topology, hydraulic connectivity and dimensions are unvalidated; relation-only polygons are not included.",
+      "limitation": "Modern mapping, not Penny\u2019s graph or a verified medieval network. Topology, hydraulic connectivity and dimensions are unvalidated; relation-only polygons are not included.",
       "related": []
     },
     {
       "id": "topsar_raw",
       "title": "TOPSAR terrain: 5 m detail preview",
-      "citation": "NASA/JPL AIRSAR TOPSAR · ts1260 · 21 Sep 2000",
+      "citation": "NASA/JPL AIRSAR TOPSAR \u00b7 ts1260 \u00b7 21 Sep 2000",
       "category": "Terrain",
       "scope": "Narrow survey strip covering Angkor Wat",
       "kind": "Radar DEM + preview",
@@ -223,6 +223,42 @@
       "limitation": "Provisional placement is checked against header corners, not independent ground control. A suspected fill value is masked explicitly. WGS84 ellipsoidal heights are not EGM2008; this is not a validated bare-earth or hydraulic terrain model.",
       "related": [],
       "viewer_url": "/model-view?terrain=topsar_detail"
+    },
+    {
+      "id": "usgs_cir1186",
+      "title": "Sustainability of Ground-Water Resources",
+      "citation": "Alley, Reilly & Franke \u00b7 1999",
+      "category": "Groundwater",
+      "scope": "General hydrological methods",
+      "kind": "Technical reference",
+      "description": "Groundwater storage, Darcy flow, soil hydraulic properties and interaction with surface water.",
+      "supports": "Explains concepts used in the optional groundwater pilot.",
+      "limitation": "No Angkor calibration. Local PDF unavailable: official download returned HTTP403.",
+      "related": []
+    },
+    {
+      "id": "usgs_cir1224",
+      "title": "Assessing Ground-Water Vulnerability to Contamination",
+      "citation": "Focazio et al. \u00b7 2002",
+      "category": "Groundwater",
+      "scope": "General hydrological methods",
+      "kind": "Technical reference",
+      "description": "Groundwater storage, Darcy flow, soil hydraulic properties and interaction with surface water.",
+      "supports": "Explains concepts used in the optional groundwater pilot.",
+      "limitation": "No Angkor calibration. Local PDF unavailable: official download returned HTTP403.",
+      "related": []
+    },
+    {
+      "id": "usace_groundwater1421",
+      "title": "Groundwater Hydrology",
+      "citation": "USACE \u00b7 EM 1110-2-1421 \u00b7 1999",
+      "category": "Groundwater",
+      "scope": "General hydrological methods",
+      "kind": "Technical reference",
+      "description": "Groundwater storage, Darcy flow, soil hydraulic properties and interaction with surface water.",
+      "supports": "Explains concepts used in the optional groundwater pilot.",
+      "limitation": "No Angkor calibration. Local PDF unavailable: official download returned HTTP403.",
+      "related": []
     }
   ],
   "needs": [
@@ -250,7 +286,7 @@
     },
     {
       "id": "penny_graph_gis_code",
-      "title": "Penny’s original graph and code",
+      "title": "Penny\u2019s original graph and code",
       "priority": "Critical",
       "owner": "Penny et al. / corresponding author",
       "description": "Node and edge tables, coordinates, original GIS layers, width classes and simulation implementation.",
@@ -309,7 +345,7 @@
       "priority": "Supporting",
       "owner": "Archaeoscape data custodians",
       "description": "Credentialed feature-extraction benchmark; its release has no georeferencing and prohibits attempts to locate the data.",
-      "why": "Useful for generic segmentation research, not direct spatial alignment with Penny’s network under the published licence.",
+      "why": "Useful for generic segmentation research, not direct spatial alignment with Penny\u2019s network under the published licence.",
       "request": "For this reconstruction, seek separately authorized georeferenced data. No benchmark registration or agreement has been submitted.",
       "state": "Credentialed and restricted",
       "source": "https://archaeoscape.ai/data/2024/"
@@ -319,7 +355,7 @@
       "title": "Related model files and missing paper",
       "priority": "Supporting",
       "owner": "Kummu / Lustig collaborators; Hanus & Evans",
-      "description": "Siem Reap incision model, Koh Ker HEC-RAS project, and Hanus & Evans’s pond-extraction PDF.",
+      "description": "Siem Reap incision model, Koh Ker HEC-RAS project, and Hanus & Evans\u2019s pond-extraction PDF.",
       "why": "Provide methods and comparison cases; none substitutes for the target network geometry.",
       "request": "Request runnable model inputs where possible. Hanus & Evans citation metadata is local, but PDF endpoints returned HTTP 403.",
       "state": "Files not obtained",

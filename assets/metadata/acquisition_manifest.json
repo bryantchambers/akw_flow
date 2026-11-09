@@ -332,5 +332,29 @@
     "status": "available",
     "bytes": 9094,
     "sha256": "240e1810e1218aefc8510b0708c2e1cfe055028e8213cd45de2b558a574e9755"
+  },
+  {
+    "id": "usgs_cir1186",
+    "path": "",
+    "source_url": "https://doi.org/10.3133/cir1186",
+    "status": "unavailable",
+    "acquisition": "HTTP403; external reference only",
+    "retrieved_utc": "2026-11-09"
+  },
+  {
+    "id": "usgs_cir1224",
+    "path": "",
+    "source_url": "https://doi.org/10.3133/cir1224",
+    "status": "unavailable",
+    "acquisition": "HTTP403; external reference only",
+    "retrieved_utc": "2026-11-09"
+  },
+  {
+    "id": "usace_groundwater1421",
+    "path": "",
+    "source_url": "https://www.publications.usace.army.mil/Portals/76/Publications/EngineerManuals/EM_1110-2-1421.pdf",
+    "status": "unavailable",
+    "acquisition": "HTTP403; external reference only",
+    "retrieved_utc": "2026-11-09"
   }
 ]

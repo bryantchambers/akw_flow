@@ -4,6 +4,7 @@ import argparse
 import json
 import mimetypes
 import shutil
+import threading
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -12,6 +13,7 @@ from urllib.parse import unquote, urlsplit
 ROOT = Path(__file__).resolve().parent
 ASSETS = ROOT / 'assets'
 WEB = ROOT / 'web'
+FLOW_LOCK = threading.Lock()
 
 
 def catalog():
@@ -58,7 +60,7 @@ class Handler(BaseHTTPRequestHandler):
         self.respond(False)
 
     def do_POST(self):
-        if urlsplit(self.path).path != '/api/transport/simulate':
+        if urlsplit(self.path).path not in ('/api/transport/simulate','/api/channel-flow/simulate'):
             self.send_error(404)
             return
         try:
@@ -70,7 +72,16 @@ class Handler(BaseHTTPRequestHandler):
                 raise ValueError('Use an object with at most 500 cells')
             config['max_steps'] = min(int(config.get('max_steps', 10000)), 10000)
             from transport.core import simulate
-            result = simulate(config)
+            if urlsplit(self.path).path == '/api/channel-flow/simulate':
+                from scripts.build_humanum_flow import build
+                if not FLOW_LOCK.acquire(blocking=False):
+                    raise ValueError('A flow scenario is already running; try again after it finishes')
+                try:
+                    result = build(config)
+                finally:
+                    FLOW_LOCK.release()
+            else:
+                result = simulate(config)
             body = json.dumps(result, allow_nan=False).encode()
             status = 200
         except (ValueError, TypeError, KeyError, OverflowError) as exc:
@@ -107,7 +118,17 @@ class Handler(BaseHTTPRequestHandler):
             if not head:
                 self.wfile.write(body)
             return
-        if path == '/transport-model':
+        if path.startswith('/api/channel-inspector/'):
+            name = path.rsplit('/', 1)[-1]
+            if name not in {'inspector.json', 'overview_height.png', 'overview_depression.png', 'detail_height.png', 'detail_depression.png', 'flow_model.json'}:
+                self.send_error(404)
+                return
+            file = ASSETS / ('private/humanum_flow' if name == 'flow_model.json' else 'private/channel_inspector') / name
+            attachment = False
+        elif path == '/channel-inspector':
+            file = WEB / 'channel-inspector.html'
+            attachment = False
+        elif path == '/transport-model':
             file = WEB / 'transport.html'
             attachment = False
         elif path == '/model-view':
@@ -122,6 +143,9 @@ class Handler(BaseHTTPRequestHandler):
         elif path.startswith('/assets/'):
             file = (ASSETS / path[len('/assets/'):]).resolve()
             if not file.is_relative_to(ASSETS.resolve()):
+                self.send_error(403)
+                return
+            if file.is_relative_to((ASSETS / 'private').resolve()):
                 self.send_error(403)
                 return
             attachment = file.suffix.lower() not in ('.pdf', '.json', '.txt', '.md')

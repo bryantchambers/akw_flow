@@ -61,6 +61,12 @@ def simulate(network, config):
         p=dict(e); p.update(roughness);p.update(overrides.get(e['id'],{}))
         p['length_m']=positive(p['length_m'],'length'); p['width_m']=positive(p['width_m'],'width')
         p['manning_n']=positive(p.get('manning_n',0.035),'Manning n');params.append(p)
+    groundwater_config=config.get('groundwater',{})
+    if not isinstance(groundwater_config.get('enabled',False),bool):raise ValueError('groundwater.enabled must be boolean')
+    gw=None
+    if groundwater_config.get('enabled',False):
+        from .groundwater import Groundwater
+        gw=Groundwater(nodes,[(a,b,p['length_m'],p['width_m']) for (a,b),p in zip(endpoint,params)],groundwater_config)
     def flux():
         stage=bed+v/area; qs=[]; ds=[]
         for (a,b),p in zip(endpoint,params):
@@ -72,8 +78,11 @@ def simulate(network, config):
     t=0.; step=0; initial=float(v.sum()); ext=0.; samples=[]; nextout=0.; flux_integral=np.zeros(len(edges)); last_output=0.
     while True:
         q,diag=flux()
+        if gw is not None:
+            gsurface,dg,gexchange,ghead,glimit=gw.tendencies(bed+v/area,v)
         if t>=nextout-1e-10 or t>=duration-1e-10:
             samples.append(dict(time_s=t,volumes_m3=v.tolist(),flows_m3_s=q.tolist(),cross_sections_m2=[d['area_m2'] for d in diag],preceding_interval_mean_flows_m3_s=(flux_integral/(t-last_output)).tolist() if t>last_output else q.tolist()))
+            if gw is not None:samples[-1].update(groundwater_head_m=ghead.tolist(),groundwater_drainable_storage_m3=gw.volume.tolist(),surface_to_groundwater_m3_s=gexchange.tolist())
             flux_integral[:]=0.;last_output=t
             nextout+=interval
         if t>=duration-1e-10: break
@@ -81,15 +90,31 @@ def simulate(network, config):
         for (a,b),flow in zip(endpoint,q):
             dv[a]-=flow;dv[b]+=flow
             outgoing[a if flow>=0 else b]+=abs(flow)
+        if gw is not None:
+            dv+=gsurface;outgoing+=np.maximum(-gsurface,0)
         active=outgoing>0
         if np.any(active & (v<=0)): raise ValueError('Outflow requested from dry storage')
         dt=min(dtmax,duration-t,nextout-t,float(np.min(0.15*v[active]/outgoing[active])) if active.any() else dtmax)
+        if gw is not None:
+            active_g=dg<0
+            dt=min(dt,glimit,float(np.min(.15*gw.volume[active_g]/-dg[active_g])) if active_g.any() else dtmax)
+            leaking=gw.bed_conductance>0
+            if leaking.any():dt=min(dt,float(np.min(.25*area[leaking]/gw.bed_conductance[leaking])))
         if dt<1e-12: raise ValueError('Step too small; revise boundary/geometry')
+        if gw is not None:
+            gw.volume+=dt*dg;gw.cumulative_net_exchange+=dt*float(gexchange.sum())
+            if not np.isfinite(gw.volume).all() or (gw.volume<0).any():raise ValueError('Invalid groundwater storage')
         flux_integral+=dt*q
         v+=dt*dv;ext+=dt*float(source.sum());t+=dt;step+=1
         if step>int(config.get('max_steps',200000)): raise ValueError('Maximum steps exceeded')
         if not np.isfinite(v).all() or (v<0).any(): raise ValueError('Invalid storage')
-    return dict(nodes=nodes,edges=edges,external_flows_m3_s=source.tolist(),model='diffusion-wave storage network',assumptions=network.get('assumptions',[]),node_ids=ids,edge_ids=[e['id'] for e in edges],samples=samples,final_diagnostics=diag,steps=step,budget={'initial_volume_m3':initial,'external_net_m3':ext,'final_volume_m3':float(v.sum()),'residual_m3':initial+ext-float(v.sum())})
+    result=dict(nodes=nodes,edges=edges,external_flows_m3_s=source.tolist(),model='diffusion-wave storage network',assumptions=network.get('assumptions',[]),node_ids=ids,edge_ids=[e['id'] for e in edges],samples=samples,final_diagnostics=diag,steps=step,budget={'initial_volume_m3':initial,'external_net_m3':ext,'final_volume_m3':float(v.sum()),'residual_m3':initial+ext-float(v.sum())})
+
+    if gw is not None:
+        result['groundwater_budget']={'initial_drainable_storage_m3':gw.initial,'final_drainable_storage_m3':float(gw.volume.sum()),'surface_to_groundwater_net_m3':gw.cumulative_net_exchange,'combined_residual_m3':initial+gw.initial+ext-float(v.sum())-float(gw.volume.sum())}
+        result['budget']['surface_to_groundwater_net_m3']=gw.cumulative_net_exchange
+        result['budget']['residual_m3']=initial+ext-gw.cumulative_net_exchange-float(v.sum())
+    return result
 
 
 def output_geojson(network,result):

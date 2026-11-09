@@ -16,3 +16,6 @@ assets/data/context/topsar/*.tif
 # Restricted Archaeoscape inputs AND parcel-derived outputs stay local.
 private_data/
 private_outputs/
+
+# Restricted survey downloads: never commit.
+assets/private/

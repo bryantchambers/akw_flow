@@ -120,10 +120,13 @@ class Handler(BaseHTTPRequestHandler):
             return
         if path.startswith('/api/channel-inspector/'):
             name = path.rsplit('/', 1)[-1]
-            if name not in {'inspector.json', 'overview_height.png', 'overview_depression.png', 'detail_height.png', 'detail_depression.png', 'flow_model.json'}:
+            if name not in {'inspector.json', 'overview_height.png', 'overview_depression.png', 'detail_height.png', 'detail_depression.png', 'flow_model.json', 'feature_graph.json', 'regional_flow.json', 'regional_manifest.json'}:
                 self.send_error(404)
                 return
-            file = ASSETS / ('private/humanum_flow' if name == 'flow_model.json' else 'private/channel_inspector') / name
+            if name in ('feature_graph.json','regional_flow.json','regional_manifest.json'):
+                file = ASSETS / 'private/regional_network' / ('manifest.json' if name == 'regional_manifest.json' else name)
+            else:
+                file = ASSETS / ('private/humanum_flow' if name == 'flow_model.json' else 'private/channel_inspector') / name
             attachment = False
         elif path == '/channel-inspector':
             file = WEB / 'channel-inspector.html'

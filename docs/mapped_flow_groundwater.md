@@ -32,3 +32,5 @@ Official PDF downloads returned HTTP403 on 2026-11-09; library entries retain ex
 ## Inspection layer order and network view
 
 Explicit Leaflet panes keep imagery below terrain, terrain below mapped features, and simulated depth and network links above both. The toolbar's Load / zoom to flow fits the bounded pilot rather than leaving it invisible in a regional overview. Network view hides background layers and shows the pilot's 393 storage nodes and 631 candidate links in geographic layout; Layered view restores chosen backgrounds. This is the computational pilot graph, not a reconstructed complete ancient-city network. Time controls update the same graph's discharge and depth values. Explicit panes preserve ordering after terrain changes and layer toggles.
+
+Regional feature/cell construction is documented in `docs/regional_feature_network.md`. The inspector now selects regional feature topology, preliminary regional hydraulic cells, or the original pilot.

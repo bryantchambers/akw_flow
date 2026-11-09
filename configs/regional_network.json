@@ -1,0 +1,30 @@
+{
+  "candidate_gap_m": 50.0,
+  "sensitivity_gap_m": [
+    0,
+    5,
+    15,
+    50
+  ],
+  "accepted_gap_links": [],
+  "rejected_links": [],
+  "water_trace_width_m": 2.0,
+  "reach_cell_size_m": 100.0,
+  "minimum_cell_area_m2": 5.0,
+  "maximum_cells": 20000,
+  "bed_incision_m": 0.5,
+  "initial_depth_m": 0.1,
+  "duration_s": 0.5,
+  "dt_max_s": 0.05,
+  "output_interval_s": 0.25,
+  "max_steps": 10000,
+  "roughness": {
+    "manning_n": 0.05,
+    "closure": "manning",
+    "viscosity_m2_s": 1e-06
+  },
+  "groundwater": {
+    "enabled": false
+  },
+  "minimum_terrain_sample_coverage": 0.8
+}

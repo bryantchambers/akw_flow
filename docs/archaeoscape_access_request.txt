@@ -1,0 +1,29 @@
+DRAFT ONLY — not submitted. Complete the placeholders and confirm each declaration personally before submitting. The format below follows EFEO's request generator inspected on 2026-11-09. Use the current official generator to produce the final message:
+https://archaeoscape.ai/data/2024/request
+Submit its output via:
+https://zenodo.org/records/14409524
+
+--- REQUEST DRAFT ---
+
+I am requesting permission to access the Archaeoscape dataset. For non-commercial archaeological methods research on extracting candidate waterway networks and evaluating local hydrological models within anonymous parcels.
+
+Full name: [Your full name];
+Email address: [Institutional email];
+Affiliation: Globe Institute, University of Copenhagen [confirm];
+Position: [Your position];
+Supervisor's name: [Supervisor or appropriate department head];
+Supervisor's email: [Their institutional email];
+
+1. I confirm that my institution is aware of and supports my request for access.
+2. I will use the data solely for lawful non-commercial research purposes.
+3. I promise not to actively seek, identify or disclose the locations of the data.
+4. I agree not to share or make available to others any portion of the dataset.
+5. I have read and agree to all terms and conditions stated in the Archaeoscape dataset licence agreement.
+
+Additional research information:
+
+We plan to investigate how extraction sensitivity affects candidate channels, embankments and storage features. We will compare parameter settings to represent uncertainty in preserved archaeological traces and develop preliminary water-flow networks in anonymous local coordinates. We will not attempt to identify parcel locations or connect them to named sites.
+
+Could you clarify how the normalized DTM was computed, including elevation units and encoding, and whether local elevation differences and slopes are preserved? This will determine which quantitative hydraulic analyses are appropriate. Please also advise the conditions for publishing derived network diagrams or figures.
+
+We can begin with one small parcel rather than downloading the complete archive. We would welcome guidance on the most suitable files for this methods pilot.

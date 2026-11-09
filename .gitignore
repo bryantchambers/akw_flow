@@ -13,3 +13,6 @@ assets/data/context/*.tif
 assets/data/context/*.osm.pbf
 # Regenerable TOPSAR intermediate and geocoded rasters.
 assets/data/context/topsar/*.tif
+# Restricted Archaeoscape inputs AND parcel-derived outputs stay local.
+private_data/
+private_outputs/

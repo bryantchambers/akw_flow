@@ -1,0 +1,19 @@
+{
+  "dtm_band": null,
+  "pixel_size_m": 0.5,
+  "elevation_scale_to_m": null,
+  "relative_elevations_verified": false,
+  "max_window_cells": 262144,
+  "window": {"row_off": 0, "col_off": 0, "height": 512, "width": 512},
+  "smoothing_sigma_m": 0.0,
+  "relief_radius_m": 5.0,
+  "minimum_relative_depression_m": 0.05,
+  "minimum_downhill_slope": 0.0,
+  "minimum_component_length_m": 2.0,
+  "excluded_cells_rc": [],
+  "profiles": {
+    "sensitive": {"minimum_contributing_area_m2": 100.0, "minimum_relative_depression_m": 0.0},
+    "balanced": {"minimum_contributing_area_m2": 250.0, "minimum_relative_depression_m": 0.05},
+    "conservative": {"minimum_contributing_area_m2": 1000.0, "minimum_relative_depression_m": 0.1}
+  }
+}

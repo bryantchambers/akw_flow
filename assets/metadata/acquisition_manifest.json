@@ -356,5 +356,25 @@
     "status": "unavailable",
     "acquisition": "HTTP403; external reference only",
     "retrieved_utc": "2026-11-09"
+  },
+  {
+    "id": "hec_ras_cross_sections",
+    "source_url": "https://www.hec.usace.army.mil/confluence/rasdocs/rmum/latest/geometry-data/cross-sections",
+    "path": "documentation/hec_ras_cross_sections.html",
+    "status": "available",
+    "retrieved_utc": "2026-11-09T14:41:46.996235+00:00",
+    "acquisition": "Official HTML reference archived",
+    "bytes": 102002,
+    "sha256": "cb7d9f798a61988b9d9091264227af7fa00f97c10198e882f446d478abc075f6"
+  },
+  {
+    "id": "usgs_hydro_flattening",
+    "source_url": "https://www.usgs.gov/ngp-standards-and-specifications/lidar-base-specification-appendix-2-hydro-flattening-reference",
+    "path": "documentation/usgs_hydro_flattening.html",
+    "status": "available",
+    "retrieved_utc": "2026-11-09T14:41:53.133774+00:00",
+    "acquisition": "Official HTML reference archived",
+    "bytes": 95380,
+    "sha256": "dc52a036c281b3cb8da1bc87f3c83715ed4e8f593bc6f46bdb4475886ceed59f"
   }
 ]

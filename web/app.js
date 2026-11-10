@@ -37,7 +37,7 @@ function resourceCard(r) {
   const foot = el('div', 'card-bottom');
   const a = r.artifact;
   if (a.available) {
-    const kind = a.path.endsWith('.pdf') ? 'Open PDF' : a.path.endsWith('.docx') ? 'Download DOCX' : a.path.endsWith('.tif') ? 'Download terrain' : a.path.endsWith('.geojson') ? 'Download GIS' : a.path.endsWith('.demi2') ? 'Download raw DEM' : 'Download code';
+    const kind = a.path.endsWith('.pdf') ? 'Open PDF' : a.path.endsWith('.html') ? 'Download reference HTML' : a.path.endsWith('.docx') ? 'Download DOCX' : a.path.endsWith('.tif') ? 'Download terrain' : a.path.endsWith('.geojson') ? 'Download GIS' : a.path.endsWith('.demi2') ? 'Download raw DEM' : 'Download code';
     foot.append(link(kind + ' ↗', a.url, 'file-link'), el('span', 'file-size', (a.pages ? a.pages + ' pp · ' : '') + size(a.bytes)));
   } else foot.append(el('span', 'file-size', 'File not acquired'));
   if (a.source_url) foot.append(link('Source ↗', a.source_url, 'source-link'));

@@ -46,3 +46,7 @@ Load / zoom to flow fits the selected model. Network view hides imagery/terrain 
 ## Validation
 
 Synthetic tests cover contact vs gaps, overlap ownership, disconnected geometry parts, point-touch exclusion and logged slivers. Browser verification covers all three views and proposal display without enabling solver links. Artifact verification checks finite positive storage areas, link endpoints, overlap and interval water balance. These are software checks, not archaeological or hydrological validation.
+
+## Interactive review and geometry work
+
+See `docs/connection_review_and_profiles.md` for the persistent review ledger, explicit rebuild step, terrain transects, editable feature-specific incision/roughness and uncertainty ranges. Saved decisions now take precedence over configuration review lists. Explicitly unresolved reviews disable their connection on rebuild; unreviewed contacts preserve the original unverified baseline. The model manifest records the applied review revision and feature assumptions.

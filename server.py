@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only Angkor research inventory. Run with python3.11 server.py --port 9090."""
+"""Angkor research dashboard with local review and simulation endpoints. Run with the GIS Python environment on port 9090."""
 import argparse
 import json
 import mimetypes
@@ -8,7 +8,7 @@ import threading
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import unquote, urlsplit
+from urllib.parse import unquote, urlsplit, parse_qs
 
 ROOT = Path(__file__).resolve().parent
 ASSETS = ROOT / 'assets'
@@ -60,7 +60,43 @@ class Handler(BaseHTTPRequestHandler):
         self.respond(False)
 
     def do_POST(self):
-        if urlsplit(self.path).path not in ('/api/transport/simulate','/api/channel-flow/simulate'):
+        origin = self.headers.get('Origin')
+        if origin and urlsplit(origin).netloc != self.headers.get('Host'):
+            self.send_error(403, 'Cross-origin writes are not allowed')
+            return
+        if urlsplit(self.path).path in ('/api/channel-review/save', '/api/channel-review/profile', '/api/channel-review/rebuild', '/api/channel-review/screen'):
+            try:
+                size = int(self.headers.get('Content-Length', '0'))
+                if not 0 < size <= 100000:
+                    raise ValueError('Review request must be 1..100000 bytes')
+                request = json.loads(self.rfile.read(size))
+                if not isinstance(request, dict):
+                    raise ValueError('Use a JSON object')
+                from hydraulics.channel_review import save, profile, screen
+                if urlsplit(self.path).path.endswith('/rebuild'):
+                    if not FLOW_LOCK.acquire(blocking=False):raise ValueError('Another scenario is running')
+                    try:
+                        from scripts.build_regional_network import build
+                        result=build(json.loads((ROOT/'configs/regional_network.json').read_text()))
+                    finally:
+                        FLOW_LOCK.release()
+                elif urlsplit(self.path).path.endswith('/screen'):
+                    result = screen(request)
+                else:
+                    result = save(request) if urlsplit(self.path).path.endswith('/save') else profile(request)
+                body = json.dumps(result, allow_nan=False).encode()
+                status = 200
+            except (ValueError, TypeError, KeyError, OverflowError) as exc:
+                body = json.dumps({'error':str(exc)}).encode()
+                status = 400
+            self.send_response(status)
+            self.send_header('Content-Type','application/json')
+            self.send_header('Cache-Control','no-store')
+            self.send_header('Content-Length',str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+            return
+        if urlsplit(self.path).path not in ('/api/transport/simulate','/api/channel-flow/simulate','/api/terrain-flow/simulate'):
             self.send_error(404)
             return
         try:
@@ -76,6 +112,15 @@ class Handler(BaseHTTPRequestHandler):
                 from scripts.build_humanum_flow import build
                 if not FLOW_LOCK.acquire(blocking=False):
                     raise ValueError('A flow scenario is already running; try again after it finishes')
+                try:
+                    result = build(config)
+                finally:
+                    FLOW_LOCK.release()
+            elif urlsplit(self.path).path == '/api/terrain-flow/simulate':
+                from scripts.build_terrain_flow import build
+                if float(config.get('duration_s',900)) > 86400 or float(config.get('duration_s',900))/float(config.get('output_interval_s',60)) > 200 or int(config.get('maximum_cells',10000)) > 10000:
+                    raise ValueError('Terrain pilot limited to 10000 cells, one day and 200 output intervals')
+                if not FLOW_LOCK.acquire(blocking=False):raise ValueError('A flow scenario is already running')
                 try:
                     result = build(config)
                 finally:
@@ -97,8 +142,46 @@ class Handler(BaseHTTPRequestHandler):
     def do_HEAD(self):
         self.respond(True)
 
+    def regional_native_response(self, head):
+        import re
+        from hydraulics import regional_view as view
+        parsed=urlsplit(self.path);path=parsed.path;query=parse_qs(parsed.query)
+        content_type='application/json; charset=utf-8'
+        try:
+            if path=='/api/regional-native/status':result=view.status()
+            elif path=='/api/regional-native/point':
+                result=view.point(float(query.get('lon',[''])[0]),float(query.get('lat',[''])[0]),query.get('snapshot',['final'])[0])
+            elif path=='/api/regional-native/vectors':
+                bounds=[float(v) for v in query.get('bounds',[''])[0].split(',')]
+                result=view.vectors(bounds,query.get('snapshot',['final'])[0])
+            else:
+                match=re.fullmatch(r'/api/regional-native/tiles/(height|hillshade|depth|tracer)/(initial|final)/(\d+)/(\d+)/(\d+)\.png',path)
+                if not match:raise FileNotFoundError('Unknown regional derivative')
+                layer,snapshot,z,x,y=match.groups();result=view.tile(layer,snapshot,int(z),int(x),int(y));content_type='image/png'
+            body=result if isinstance(result,bytes) else json.dumps(result,allow_nan=False).encode()
+            status=200
+        except FileNotFoundError:
+            body=json.dumps({'error':'Requested regional derivative is not available yet'}).encode();status=404
+        except (ValueError,TypeError,OverflowError) as exc:
+            body=json.dumps({'error':str(exc)}).encode();status=400
+        self.send_response(status);self.send_header('Content-Type',content_type);self.send_header('Cache-Control','no-store');self.send_header('Content-Length',str(len(body)));self.end_headers()
+        if not head:self.wfile.write(body)
+
     def respond(self, head):
+        if urlsplit(self.path).path.startswith('/api/regional-native/'):
+            self.regional_native_response(head)
+            return
         path = unquote(urlsplit(self.path).path)
+        if path == '/api/channel-review/workspace':
+            from hydraulics.channel_review import workspace
+            body=json.dumps(workspace(),allow_nan=False).encode()
+            self.send_response(200)
+            self.send_header('Content-Type','application/json')
+            self.send_header('Cache-Control','no-store')
+            self.send_header('Content-Length',str(len(body)))
+            self.end_headers()
+            if not head:self.wfile.write(body)
+            return
         if path in ('/api/catalog', '/healthz', '/api/transport/models'):
             try:
                 if path == '/api/transport/models':
@@ -120,13 +203,21 @@ class Handler(BaseHTTPRequestHandler):
             return
         if path.startswith('/api/channel-inspector/'):
             name = path.rsplit('/', 1)[-1]
-            if name not in {'inspector.json', 'overview_height.png', 'overview_depression.png', 'detail_height.png', 'detail_depression.png', 'flow_model.json', 'feature_graph.json', 'regional_flow.json', 'regional_manifest.json'}:
+            if name not in {'inspector.json', 'overview_height.png', 'overview_depression.png', 'detail_height.png', 'detail_depression.png', 'flow_model.json', 'feature_graph.json', 'regional_flow.json', 'regional_manifest.json', 'terrain_flow.json', 'terrain_review_10m.json', 'terrain_review_5m.json', 'terrain_review.json'}:
                 self.send_error(404)
                 return
-            if name in ('feature_graph.json','regional_flow.json','regional_manifest.json'):
+            if name in ('terrain_review_10m.json','terrain_review_5m.json','terrain_review.json'):
+                base = ASSETS / 'private/terrain_refinement'
+                file = base / 'review.json' if name == 'terrain_review.json' else base / ('10m' if name == 'terrain_review_10m.json' else '5m') / 'terrain_flow.json'
+            elif name == 'terrain_flow.json':
+                file = ASSETS / 'private/terrain_flow/terrain_flow.json'
+            elif name in ('feature_graph.json','regional_flow.json','regional_manifest.json'):
                 file = ASSETS / 'private/regional_network' / ('manifest.json' if name == 'regional_manifest.json' else name)
             else:
                 file = ASSETS / ('private/humanum_flow' if name == 'flow_model.json' else 'private/channel_inspector') / name
+            attachment = False
+        elif path == '/regional-terrain':
+            file = WEB / 'regional-terrain.html'
             attachment = False
         elif path == '/channel-inspector':
             file = WEB / 'channel-inspector.html'

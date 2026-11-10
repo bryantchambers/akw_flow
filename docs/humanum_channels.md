@@ -11,7 +11,7 @@ The QGIS project's category labels identify 67 canal polygons, 8 water line feat
 ## First extraction
 
 ```bash
-/tmp/qmodel-gis-env/bin/python scripts/build_humanum_channels.py --config configs/humanum_channels.json
+/maps/projects/caeg/people/gfx654/miniforge3/envs/qmodel/bin/python scripts/build_humanum_channels.py --config configs/humanum_channels.json
 ```
 
 The configurable pilot is 512 x 512 pixels (256 x 256 m) anchored near the mapped canal closest to the configured Angkor Wat target. It is not extraction of the entire 93 km² raster rectangle, nor a catchment boundary. The exact selected source feature, raster window, relevant source hashes and processed-window hash are recorded in `channel_dataset_manifest.json` and each network.

@@ -16,7 +16,7 @@ parameters (`area_m2`, `distance_m`, `dispersion_m2_s`,
 `dt_max_s` controls transport substeps and `max_steps` caps the aggregate run.
 Hydraulic times determine duration and output intervals.
 
-Run `/tmp/qmodel-gis-env/bin/python scripts/build_current_transport.py` to reuse
+Run `/maps/projects/caeg/people/gfx654/miniforge3/envs/qmodel/bin/python scripts/build_current_transport.py` to reuse
 the saved hydraulics and write both conservative examples plus a source-hash
 manifest under `assets/data/transport/`. The workbench's “Load current hydraulic
 scenario” loads the selected model's runnable configuration; “Run transport” uses

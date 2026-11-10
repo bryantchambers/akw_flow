@@ -14,6 +14,7 @@ from shapely.ops import nearest_points
 from pyproj import Transformer
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from hydraulics.model import simulate
+from hydraulics.channel_review import connection_enabled,feature_incision,interface_manning
 ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'assets/private/regional_network'
 
 def polygons(g):
@@ -116,7 +117,14 @@ def build(config):
     contacts=feature_contacts(features,gap);rejected=set(config['rejected_links']);accepted=set(config['accepted_gap_links'])
     known={e['id'] for e in contacts}
     if (rejected|accepted)-known:raise ValueError('Review references unknown feature link')
-    for edge in contacts:edge['scenario_enabled']=edge['id'] not in rejected and (edge['gap_m']<1e-7 or edge['id'] in accepted)
+    review_path=ROOT/'assets/private/channel_review/reviews.json'
+    reviews=json.loads(review_path.read_text()) if review_path.exists() else {'revision':0,'links':{},'features':{}}
+    if set(reviews['links'])-known:raise ValueError('Saved reviews reference missing feature links; reconcile before rebuilding')
+    if set(reviews['features'])-{f['id'] for f in features}:raise ValueError('Saved reach assumptions reference missing features')
+    for edge in contacts:
+        decision=reviews['links'].get(edge['id'],{}).get('decision')
+        edge['review_decision']=decision
+        edge['scenario_enabled']=connection_enabled(edge,accepted,rejected,reviews['links'])
     sizes={str(t):components([f['id'] for f in features],[e for e in contacts if e['gap_m']<=t]) for t in config['sensitivity_gap_m']}
     with rasterio.open(base/'dtm_angkor_center.tif') as src:
         terrain_footprint=box(*src.bounds)
@@ -139,7 +147,7 @@ def build(config):
             nodes.append({'id':cell['id'],'source_id':cell['source_id'],'kind':cell['kind'],
                           'coordinates':list(togeo.transform(point.x,point.y)),
                           'geometry':mapping(transform(g,togeo.transform,interleaved=False)),'geometry_projected':mapping(g),
-                          'terrain_sample_coverage_fraction':coverage,'bed_elevation_m':bed-float(config['bed_incision_m']),'storage_area_m2':float(g.area)})
+                          'terrain_sample_coverage_fraction':coverage,'bed_elevation_m':bed-feature_incision(reviews['features'],cell['source_id'],config['bed_incision_m']),'storage_area_m2':float(g.area)})
     cells=kept;print('Building cell interfaces',len(cells),flush=True);edges=shared_interfaces(cells)
     allowed_pairs={frozenset((e['from'],e['to'])) for e in contacts if e['scenario_enabled']}
     source_ids={c['id']:c['source_id'] for c in cells}
@@ -154,7 +162,12 @@ def build(config):
         i,j=min(((a,b) for a in aa for b in bb),key=lambda ij:cells[ij[0]]['geom'].distance(cells[ij[1]]['geom']))
         a,b=cells[i],cells[j];length=max(1.,a['geom'].centroid.distance(b['geom'].centroid))
         edges.append({'id':'reviewed_gap:'+link['id'],'from':a['id'],'to':b['id'],'length_m':length,'width_m':float(config['water_trace_width_m']),'connection_status':'explicitly_accepted_gap_assumed_width'})
+    for edge in edges:
+        source_a=source_ids[edge['from']];source_b=source_ids[edge['to']]
+        reviewed_n=interface_manning(reviews['features'],source_a,source_b,config['roughness']['manning_n'])
+        if reviewed_n is not None:edge['reviewed_manning_n']=reviewed_n
     scenario={k:config[k] for k in ['duration_s','dt_max_s','output_interval_s','initial_depth_m','max_steps','roughness','groundwater']}
+    scenario['edge_overrides']={e['id']:{'manning_n':e['reviewed_manning_n']} for e in edges if 'reviewed_manning_n' in e}
     if scenario['groundwater'].get('enabled'):raise ValueError('Regional groundwater footprint requires separate column parameterization; use pilot groundwater controls')
     network={'nodes':nodes,'edges':edges,'assumptions':['Feature graph covers supplied water inventory, not all historical Angkor or both barays.',
         'Mapped geometry contacts are provisional; gap links disabled until explicitly accepted.',
@@ -168,8 +181,8 @@ def build(config):
     frames=[{'time_s':s['time_s'],'depth_m':[v/n['storage_area_m2'] for v,n in zip(s['volumes_m3'],nodes)],'flows_m3_s':s['flows_m3_s']} for s in simulation['samples']]
     feature_nodes=[{'id':f['id'],'kind':f['kind'],'coordinates':list(togeo.transform(f['geom'].representative_point().x,f['geom'].representative_point().y)),'area_m2':f['geom'].area} for f in features]
     for e in contacts:e['connection_coordinates']=[list(togeo.transform(*p)) for p in e['connection_xy_m']]
-    graph={'nodes':feature_nodes,'edges':contacts,'sensitivity_component_sizes':sizes,'status':'Source-feature contact graph; proposals are not established channels'}
-    summary={'source_counts':dict(collections.Counter(f['kind'] for f in features)),'feature_nodes':len(features),'feature_links':len(contacts),
+    graph={'review_revision':reviews['revision'],'nodes':feature_nodes,'edges':contacts,'sensitivity_component_sizes':sizes,'status':'Source-feature contact graph; proposals are not established channels'}
+    summary={'review_revision':reviews['revision'],'feature_assumptions':reviews['features'],'source_counts':dict(collections.Counter(f['kind'] for f in features)),'feature_nodes':len(features),'feature_links':len(contacts),
         'enabled_feature_links':sum(e['scenario_enabled'] for e in contacts),'cell_nodes':len(nodes),'cell_links':len(edges),
         'excluded_area_m2':sum(x['area_m2'] for x in excluded),'represented_water_area_m2':sum(n['storage_area_m2'] for n in nodes),
         'cell_components':components([n['id'] for n in nodes],edges),'excluded':excluded,'budget':simulation['budget'],

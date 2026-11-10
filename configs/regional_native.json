@@ -1,0 +1,22 @@
+{
+  "spacing_m": 0.5,
+  "duration_s": 30,
+  "dt_max_s": 0.1,
+  "manning_n": 0.05,
+  "cfl": 0.35,
+  "threads": 40,
+  "initial_mapped_water_depth_m": 0.1,
+  "initial_unit_tracer_concentration": 1,
+  "rainfall_mm_hr": 30,
+  "infiltration_mm_hr": 0,
+  "dry_depth_m": 1e-06,
+  "groundwater": {
+    "enabled": false
+  },
+  "max_steps": 100000,
+  "progress_interval_wall_s": 15,
+  "scenario_label": "30-second native-grid startup check; hypothetical low-water levels and rainfall, not a flood/drought forecast",
+  "initialization": "connected_mapped_water_minimum_plus_offset",
+  "terrain_modifications": [],
+  "initial_water_levels": []
+}

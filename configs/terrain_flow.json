@@ -1,0 +1,52 @@
+{
+  "center_utm_m": [
+    376650,
+    1483680
+  ],
+  "extent_m": 640,
+  "grid_spacing_m": 10,
+  "storage_samples": 32,
+  "maximum_cells": 10000,
+  "elevation_scale_to_m": 1,
+  "elevation_units_status": "Metres assumed; source vertical units, datum and accuracy unverified",
+  "terrain_modifications": [],
+  "initial_water_depth_above_mapped_bed_m": 0.15,
+  "initial_water_stage_percentile": 25,
+  "duration_s": 900,
+  "dt_max_s": 1,
+  "output_interval_s": 60,
+  "manning_n": 0.05,
+  "cfl": 0.35,
+  "rainfall_mm_hr": 0,
+  "infiltration_mm_hr": 0,
+  "groundwater": {
+    "enabled": false,
+    "conductance_m2_s_per_cell": 0,
+    "head_m": 0
+  },
+  "boundary_hydrograph": {
+    "side": "north",
+    "mapped_water_only": true,
+    "stage_offsets_m": [
+      [
+        0,
+        0
+      ],
+      [
+        300,
+        1.5
+      ],
+      [
+        600,
+        1.5
+      ],
+      [
+        900,
+        0
+      ]
+    ],
+    "tracer_concentration": 1
+  },
+  "max_steps": 100000,
+  "face_controls": []
+}

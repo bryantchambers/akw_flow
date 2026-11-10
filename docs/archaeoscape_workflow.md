@@ -17,13 +17,13 @@ Request description (append after EFEO's generated standardized message):
 ## Implementation ready for authorized inputs
 
 ```bash
-/tmp/qmodel-gis-env/bin/python scripts/extract_archaeoscape_network.py --input private_data/archaeoscape/PARCEL.tif --inspect
+/maps/projects/caeg/people/gfx654/miniforge3/envs/qmodel/bin/python scripts/extract_archaeoscape_network.py --input private_data/archaeoscape/PARCEL.tif --inspect
 ```
 
 Copy `configs/archaeoscape_extraction.json` to a local private config. Set the documented DTM band, pixel size, and elevation conversion to metres. Verify the nDTM transform preserves metric relative elevations and only then set `relative_elevations_verified` true. A simple elevation offset does not change slopes. Spatial detrending requires further methodological work; do not label its gradients observed hydraulic slopes.
 
 ```bash
-/tmp/qmodel-gis-env/bin/python scripts/extract_archaeoscape_network.py --input private_data/archaeoscape/PARCEL.tif --config private_data/archaeoscape/extraction.json
+/maps/projects/caeg/people/gfx654/miniforge3/envs/qmodel/bin/python scripts/extract_archaeoscape_network.py --input private_data/archaeoscape/PARCEL.tif --config private_data/archaeoscape/extraction.json
 ```
 
 Start with 512 x 512 pixels (256 m square at 0.5 m). The whole 888 km² archive is not necessary for the pilot. Inputs are read as windows. Exported coordinates are an arbitrary window-local Cartesian system; never import these as WGS84 into the existing geographic viewer.

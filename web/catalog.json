@@ -259,6 +259,30 @@
       "supports": "Explains concepts used in the optional groundwater pilot.",
       "limitation": "No Angkor calibration. Local PDF unavailable: official download returned HTTP403.",
       "related": []
+    },
+    {
+      "id": "hec_ras_cross_sections",
+      "title": "HEC-RAS Mapper: Cross Sections",
+      "citation": "USACE HEC-RAS Mapper User\u2019s Manual",
+      "category": "Hydraulic geometry",
+      "scope": "General hydraulic methods",
+      "kind": "Technical reference",
+      "description": "Cross-section orientation, terrain profiles, bank stations and geometry editing.",
+      "supports": "Connection review and terrain cross-section workflow.",
+      "limitation": "General guidance, not evidence of Angkor bathymetry, terrain processing or historical channel connectivity.",
+      "related": []
+    },
+    {
+      "id": "usgs_hydro_flattening",
+      "title": "LiDAR hydro-flattening and hydraulic terrain",
+      "citation": "USGS Lidar Base Specification, Appendix 2",
+      "category": "Hydraulic geometry",
+      "scope": "General hydraulic methods",
+      "kind": "Technical reference",
+      "description": "Distinguishes cartographic water-surface flattening from hydrologic conditioning; explains why bridges and culverts require interpretation.",
+      "supports": "Connection review and terrain cross-section workflow.",
+      "limitation": "General guidance, not evidence of Angkor bathymetry, terrain processing or historical channel connectivity.",
+      "related": []
     }
   ],
   "needs": [

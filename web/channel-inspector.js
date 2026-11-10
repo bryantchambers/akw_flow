@@ -24,7 +24,7 @@ function terrain(fit=true){
 fetch('/api/channel-inspector/inspector.json').then(r=>{if(!r.ok)throw Error('Inspection data unavailable');return r.json();}).then(d=>{
  data=d;
  for(const [key,kind,color] of [['canals','Canal','#00eced'],['water','Water','#ff941f'],['moats','Temple Moat','#c67bff'],['ponds','Pond','#318eff'],['banks','Pond Bank','#ffff4f'],['raised','Raised Linear','#ff70a8']]){
-  const features=data.features.filter(f=>f.properties.kind===kind);const s=specs[key];s.layer=L.geoJSON(features,{pane:'mappedFeatures',style:{pane:'mappedFeatures',color,weight:3,opacity:s.opacity},onEachFeature:(f,l)=>{l.bindTooltip(kind+' · '+f.properties.fid);l.on('click',()=>{$('#selection').textContent=`${f.properties.kind} · original ID ${f.properties.id}. Source mapped geometry; no measured depth or dated hydraulic connection.`;});}});if(s.enabled&&!networkMode)s.layer.addTo(map);
+  const features=data.features.filter(f=>f.properties.kind===kind);const s=specs[key];s.layer=L.geoJSON(features,{pane:'mappedFeatures',style:{pane:'mappedFeatures',color,weight:3,opacity:s.opacity},onEachFeature:(f,l)=>{l.bindTooltip(kind+' · '+f.properties.fid);l.on('click',()=>{$('#selection').textContent=`${f.properties.kind} · original ID ${f.properties.id}. Source mapped geometry; no measured depth or dated hydraulic connection.`;if(!drawingGuide&&typeof selectReviewFeature==='function')selectReviewFeature(f.properties.id);});}});if(s.enabled&&!networkMode)s.layer.addTo(map);
   s.count=features.length;
  }
  terrain();$('#status').textContent=`${specs.canals.count} canals · ${specs.water.count} water traces · ${specs.moats.count} moats · ${specs.ponds.count} ponds · ${specs.banks.count} pond banks · ${specs.raised.count} raised linear features. Toggle layers to compare.`;
@@ -34,7 +34,7 @@ fetch('/api/channel-inspector/inspector.json').then(r=>{if(!r.ok)throw Error('In
 let featureGraph=null;let flowData,flowGroup=L.layerGroup().addTo(map);
 function renderFlow(){
  if(featureGraph){renderFeatureGraph();return;}
- if(!flowData)return;flowGroup.clearLayers();
+ if(!flowData)return;if(flowData.version===2){renderTerrainFlow();return;}flowGroup.clearLayers();
  const frame=flowData.frames[Number($('#flow-time').value)],alpha=Number($('#flow-alpha').value)/100;
  $('#flow-time-label').textContent=frame.time_s.toFixed(1)+' s';
  const nodes=new Map(flowData.nodes.map((n,i)=>[n.id,{...n,index:i}]));
@@ -49,15 +49,15 @@ function renderFlow(){
  });
  if(networkMode)flowData.nodes.forEach((n,i)=>L.circleMarker([n.coordinates[1],n.coordinates[0]],{pane:'flowNetwork',radius:3,color:'#194f73',weight:1,fillColor:'#fff',fillOpacity:1}).bindTooltip(`Cell ${n.id}: depth ${frame.depth_m[i].toFixed(3)} m`).addTo(flowGroup));
 }
-function setFlow(data){featureGraph=null;flowData=data;for(const id of ['flow-time','flow-alpha','flow-visible'])$('#'+id).disabled=false;$('#run-flow').disabled=$('#model-scope').value!=='pilot';$('#graph-stats').textContent=data.summary?`${data.summary.feature_nodes} source features → ${data.nodes.length} terrain-supported cells. ${data.summary.excluded.length} excluded fragments totalling ${data.summary.excluded_area_m2.toFixed(1)} m² (see manifest). ${data.summary.cell_components.length} disconnected cell components.`:'';$('#flow-config').value=JSON.stringify(data.parameters,null,2);$('#flow-time').max=data.frames.length-1;$('#flow-time').value=data.frames.length-1;$('#flow-budget').textContent=JSON.stringify({surface:data.budget,groundwater:data.groundwater_budget},null,2);renderFlow();$('#flow-status').textContent=`${data.nodes.length} wet cells, ${data.edges.length} links. ${data.status}.`;window.channelFlowReady=true;}
-async function loadFlow(){try{const scope=$('#model-scope').value;$('#quick-model-scope').value=scope;const file=scope==='features'?'feature_graph.json':scope==='regional'?'regional_flow.json':'flow_model.json';$('#flow-status').textContent='Loading '+scope+' model…';const r=await fetch('/api/channel-inspector/'+file);if(!r.ok)throw Error('Selected model unavailable');const result=await r.json();if(scope==='features'){featureGraph=result;flowData=null;$('#flow-visible').checked=true;$('#flow-time-label').textContent='topology only';$('#flow-budget').textContent='No hydraulic result in feature-graph mode. Dashed proposals do not change the solver.';$('#flow-config').value='Regional parameters: configs/regional_network.json; explicit link review before rebuilding cells.';$('#run-flow').disabled=true;$('#flow-time').disabled=true;$('#flow-alpha').disabled=true;renderFeatureGraph();window.channelFlowReady=true;}else setFlow(result);fitFlow();}catch(e){$('#flow-status').textContent=e.message;}};
+function setFlow(data){featureGraph=null;flowData=data;for(const id of ['flow-time','flow-alpha','flow-visible'])$('#'+id).disabled=false;$('#run-flow').disabled=!['pilot','terrain'].includes($('#model-scope').value);$('#graph-stats').textContent=data.summary?`${data.summary.feature_nodes} source features → ${data.nodes.length} terrain-supported cells. ${data.summary.excluded.length} excluded fragments totalling ${data.summary.excluded_area_m2.toFixed(1)} m² (see manifest). ${data.summary.cell_components.length} disconnected cell components.`:'';$('#flow-config').value=JSON.stringify(data.parameters,null,2);$('#flow-time').max=data.frames.length-1;$('#flow-time').value=data.frames.length-1;$('#flow-budget').textContent=JSON.stringify({surface:data.budget,groundwater:data.groundwater_budget},null,2);renderFlow();if(data.version!==2)$('#flow-status').textContent=`${data.nodes.length} wet cells, ${data.edges.length} links. ${data.status}.`;window.channelFlowReady=true;}
+async function loadFlow(){if(typeof clearTerrainReview==='function')clearTerrainReview();try{const scope=$('#model-scope').value;$('#quick-model-scope').value=scope;const file=scope==='terrain5'?'terrain_review_5m.json':scope==='terrain10'?'terrain_review_10m.json':scope==='terrain'?'terrain_flow.json':scope==='features'?'feature_graph.json':scope==='regional'?'regional_flow.json':'flow_model.json';$('#flow-status').textContent='Loading '+scope+' model…';const r=await fetch('/api/channel-inspector/'+file);if(!r.ok)throw Error('Selected model unavailable');const result=await r.json();if(scope==='features'){featureGraph=result;flowData=null;$('#flow-visible').checked=true;$('#flow-time-label').textContent='topology only';$('#flow-budget').textContent='No hydraulic result in feature-graph mode. Dashed proposals do not change the solver.';$('#flow-config').value='Regional parameters: configs/regional_network.json; explicit link review before rebuilding cells.';$('#run-flow').disabled=true;$('#flow-time').disabled=true;$('#flow-alpha').disabled=true;renderFeatureGraph();window.channelFlowReady=true;}else setFlow(result);if(scope.startsWith('terrain')&&typeof reviewGeometry!=='undefined'){reviewGeometry.clearLayers();profileGeometry.clearLayers();}fitFlow();}catch(e){$('#flow-status').textContent=e.message;}};
 $('#load-flow').onclick=loadFlow;
 function fitFlow(){const active=featureGraph||flowData;if(active)map.fitBounds(L.latLngBounds(active.nodes.map(n=>[n.coordinates[1],n.coordinates[0]])).pad(.1));}
 $('#focus-flow').onclick=async()=>{await loadFlow();};
 $('#network-view').onclick=async()=>{if(!flowData&&!featureGraph)await loadFlow();if(!flowData&&!featureGraph)return;networkMode=true;for(const s of Object.values(specs))if(s.layer)map.removeLayer(s.layer);$('#flow-visible').checked=true;renderFlow();fitFlow();$('#view-label').textContent='NETWORK VIEW · selected model';};
 $('#layered-view').onclick=()=>{networkMode=false;for(const s of Object.values(specs))if(s.enabled&&s.layer)s.layer.addTo(map);renderFlow();$('#view-label').textContent='LAYERED VIEW';};
 for(const id of ['flow-time','flow-alpha','flow-visible'])$('#'+id).addEventListener('input',renderFlow);
-$('#run-flow').onclick=async()=>{const button=$('#run-flow');button.disabled=true;$('#flow-status').textContent='Solving edited pilot…';try{const config=JSON.parse($('#flow-config').value);const r=await fetch('/api/channel-flow/simulate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(config)});const data=await r.json();if(!r.ok)throw Error(data.error||'Run failed');setFlow(data);}catch(e){$('#flow-status').textContent=e.message;}finally{button.disabled=false;}};
+$('#run-flow').onclick=async()=>{const button=$('#run-flow');button.disabled=true;$('#flow-status').textContent='Solving edited pilot…';try{const config=JSON.parse($('#flow-config').value);const r=await fetch($('#model-scope').value==='terrain'?'/api/terrain-flow/simulate':'/api/channel-flow/simulate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(config)});const data=await r.json();if(!r.ok)throw Error(data.error||'Run failed');setFlow(data);}catch(e){$('#flow-status').textContent=e.message;}finally{button.disabled=false;}};
 
 function renderFeatureGraph(){
  if(!featureGraph)return;flowGroup.clearLayers();if(!$('#flow-visible').checked)return;
@@ -65,7 +65,7 @@ function renderFeatureGraph(){
  for(const edge of featureGraph.edges){if(edge.scenario_enabled)enabled++;else if(!$('#show-proposals').checked||edge.gap_m>gap)continue;else proposals++;
   const a=nodes.get(edge.from).coordinates,b=nodes.get(edge.to).coordinates;
   const coords=[a,...edge.connection_coordinates,b].map(x=>[x[1],x[0]]);
-  L.polyline(coords,{pane:'flowNetwork',color:edge.scenario_enabled?'#00a96b':'#9b6574',weight:edge.scenario_enabled?2:1,dashArray:edge.scenario_enabled?null:'5 5',opacity:.8}).bindTooltip(`${edge.id}: ${edge.status}; gap ${edge.gap_m.toFixed(2)} m. Schematic link through feature anchors, not a surveyed centreline.`).addTo(flowGroup);
+  L.polyline(coords,{pane:'flowNetwork',color:edge.scenario_enabled?'#00a96b':'#9b6574',weight:edge.scenario_enabled?2:1,dashArray:edge.scenario_enabled?null:'5 5',opacity:.8}).bindTooltip(`${edge.id}: ${edge.status}; gap ${edge.gap_m.toFixed(2)} m. Schematic link through feature anchors, not a surveyed centreline.`).on('click',()=>{if(!drawingGuide&&typeof selectReviewLink==='function')selectReviewLink(edge.id);}).addTo(flowGroup);
  }
  for(const node of featureGraph.nodes)L.circleMarker([node.coordinates[1],node.coordinates[0]],{pane:'flowNetwork',radius:node.kind==='Pond'?2:4,color:node.kind==='Canal'||node.kind==='Water'?'#087e8b':'#6947a5',weight:1,fillOpacity:.8}).bindTooltip(`${node.kind} · ${node.id}; source feature anchor`).addTo(flowGroup);
  $('#graph-stats').textContent=`${featureGraph.nodes.length} source-feature nodes · ${enabled} enabled geometric-contact links · ${proposals} displayed proposals. Proposed connections remain disabled until reviewed in the configuration.`;
@@ -75,3 +75,41 @@ for(const id of ['show-proposals','gap-distance'])$('#'+id).oninput=()=>{if(feat
 $('#model-scope').onchange=()=>loadFlow();
 
 $('#quick-model-scope').onchange=()=>{$('#model-scope').value=$('#quick-model-scope').value;loadFlow();};
+
+const terrainDepthCanvas=L.canvas({pane:'flowDepth'}),terrainFaceCanvas=L.canvas({pane:'flowNetwork'});
+function renderTerrainFlow(){
+ flowGroup.clearLayers();if(!flowData||!$('#flow-visible').checked)return;
+ const f=flowData.frames[Number($('#flow-time').value)],alpha=Number($('#flow-alpha').value)/100;
+ $('#flow-time-label').textContent=(f.time_s/60).toFixed(1)+' min';
+ const metric=$('#terrain-metric').value;
+ const values=metric==='tracer'?f.tracer_concentration:metric==='maximum'?flowData.maximum_depth_m:metric==='stage'?f.stage_m:f.depth_m;
+ const visible=values.filter((v,i)=>metric==='maximum'?v>.001:f.depth_m[i]>.001);
+ const low=metric==='stage'&&visible.length?Math.min(...visible):0;
+ const high=metric==='tracer'?1:metric==='stage'&&visible.length?Math.max(...visible):Math.max(1,...visible);
+ $('#terrain-legend').textContent=metric==='tracer'?'Purple: dimensionless conservative unit tracer, 0–1; not bacterial concentration.':metric==='stage'?`Water level colours ${low.toFixed(2)}–${high.toFixed(2)} m (unverified datum).`:`Blue: ${metric==='maximum'?'maximum':'current'} volume / whole cell area, 0–${high.toFixed(2)} m. Dry cells hidden. Local depth varies within each cell.`;
+ const indices=new Map(flowData.nodes.map((n,i)=>[n.id,i]));
+ flowData.nodes.forEach((n,i)=>{
+  if((metric==='maximum'?values[i]:f.depth_m[i])<=.001)return;
+  const v=Math.max(0,Math.min(1,(values[i]-low)/Math.max(1e-9,high-low)));
+  const fill=metric==='tracer'?`rgb(${Math.round(245-130*v)},${Math.round(235-205*v)},${Math.round(250-70*v)})`:`rgb(${Math.round(225-210*v)},${Math.round(245-160*v)},${Math.round(255-100*v)})`;
+  L.geoJSON(n.geometry,{renderer:terrainDepthCanvas,pane:'flowDepth',style:{weight:.2,color:'#305a7a',fillColor:fill,fillOpacity:alpha,opacity:alpha},onEachFeature:(g,l)=>l.on('click',()=>{$('#selection').textContent=`${n.id}: mean depth ${f.depth_m[i].toFixed(3)} m; stage ${f.stage_m[i].toFixed(3)} m; mapped-water fraction ${(100*n.water_fraction).toFixed(0)}%; unit tracer ${f.tracer_concentration[i].toFixed(4)}. Fixed present-terrain scenario; bathymetry unverified.`;})}).addTo(flowGroup);
+ });
+ const maximum=Math.max(1e-8,...f.flows_m3_s.map(Math.abs)),displayThreshold=Math.max(1e-5,maximum*.01);const active=f.flows_m3_s.filter(q=>Math.abs(q)>=1e-5).length;
+ flowData.edges.forEach((e,i)=>{
+  const q=f.flows_m3_s[i],wet=f.active_width_m[i],showAll=$('#terrain-faces').checked;
+  if(Math.abs(q)<displayThreshold&&!showAll)return;
+  const coords=e.face_geometry.coordinates.map(p=>[p[1],p[0]]);
+  L.polyline(coords,{renderer:terrainFaceCanvas,pane:'flowNetwork',color:Math.abs(q)>=1e-5?'#ed791a':'#777',weight:Math.abs(q)>=1e-5?1+3*Math.abs(q)/maximum:.6,opacity:Math.abs(q)>=1e-5?alpha:.35}).bindTooltip(`${e.id}: signed Q ${q.toExponential(3)} m³/s; crest ${e.crest_min_m.toFixed(2)}–${e.crest_max_m.toFixed(2)} m; wetted face width ${wet.toFixed(1)} m. A wet face need not carry net flow.`).addTo(flowGroup);
+  if(Math.abs(q)<Math.max(1e-5,maximum*.02))return;
+  const aa=flowData.nodes[indices.get(q>=0?e.from:e.to)].coordinates,bb=flowData.nodes[indices.get(q>=0?e.to:e.from)].coordinates;
+  const x=(aa[0]+bb[0])/2,y=(aa[1]+bb[1])/2,dx=(bb[0]-aa[0])*.3,dy=(bb[1]-aa[1])*.3;
+  L.polyline([[y-dy,x-dx],[y+dy,x+dx]],{renderer:terrainFaceCanvas,pane:'flowNetwork',color:'#be4d00',weight:1.5,opacity:alpha}).addTo(flowGroup);
+  L.polyline([[y+dy*.3+dx*.35,x+dx*.3-dy*.35],[y+dy,x+dx],[y+dy*.3-dx*.35,x+dx*.3+dy*.35]],{renderer:terrainFaceCanvas,pane:'flowNetwork',color:'#be4d00',weight:1.5,opacity:alpha}).addTo(flowGroup);
+ });
+ $('#graph-stats').textContent=`Fixed-terrain 2D pilot · ${flowData.nodes.length} cells at ${flowData.parameters.grid_spacing_m} m · ${flowData.edges.length} actual shared faces · ${active} flowing at this time. 0.5 m source terrain.`;
+ $('#flow-budget').textContent=JSON.stringify({water:flowData.budget,unit_tracer:flowData.tracer_budget},null,2);
+ if(typeof renderTerrainReview==='function')renderTerrainReview();
+ $('#flow-status').textContent=`${flowData.parameters.duration_s}-second hypothetical rise and recession. No erosion. ${['terrain10','terrain5'].includes($('#model-scope').value)?'Saved comparison run; rebuild with scripts/build_terrain_refinement.py.':'Edit the configuration below and run, or use configs/terrain_flow.json.'} Local-inertial research prototype; not calibrated.`;
+}
+$('#terrain-metric').onchange=renderFlow;
+$('#terrain-faces').onchange=renderFlow;

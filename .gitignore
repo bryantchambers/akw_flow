@@ -19,3 +19,6 @@ private_outputs/
 
 # Restricted survey downloads: never commit.
 assets/private/
+
+# Private survey inspection captures and derived review PDFs.
+knowledge/RegionalModelInspections/

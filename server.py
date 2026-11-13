@@ -148,7 +148,7 @@ class Handler(BaseHTTPRequestHandler):
         parsed=urlsplit(self.path);query=parse_qs(parsed.query);parts=parsed.path.split('/')
         try:
             if len(parts)==5 and parts[3]=='download':
-                file,mime=view.download(unquote(parts[4]))
+                file,mime=view.download(unquote(parts[4]),query.get('case',[None])[0])
                 # Open before fstat: an atomic GeoPackage replacement must not
                 # change the file between Content-Length and streamed content.
                 with file.open('rb') as source:
@@ -160,10 +160,10 @@ class Handler(BaseHTTPRequestHandler):
                         try:shutil.copyfileobj(source,self.wfile,1024*1024)
                         except (BrokenPipeError,ConnectionResetError):pass
                 return
-            if parsed.path=='/api/water-network/status':result=view.status()
+            if parsed.path=='/api/water-network/status':result=view.status(query.get('case',[None])[0])
             elif len(parts)==5 and parts[3]=='layers':
                 bounds=[float(v) for v in query['bounds'][0].split(',')] if 'bounds' in query else None
-                result=view.layer(parts[4],bounds)
+                result=view.layer(parts[4],bounds,query.get('case',[None])[0])
             else:raise FileNotFoundError('Unknown water-system derivative')
             body=json.dumps(result,allow_nan=False).encode();code=200
         except (FileNotFoundError,KeyError):body=json.dumps({'error':'Water-system derivative not ready'}).encode();code=404
@@ -174,8 +174,15 @@ class Handler(BaseHTTPRequestHandler):
 
     def regional_native_response(self, head):
         from hydraulics import regional_view as view
-        from hydraulics.water_case import active_directory
-        token=view.CASE_DIRECTORY.set(active_directory())
+        from hydraulics.water_case import case_directory
+        query=parse_qs(urlsplit(self.path).query)
+        try:directory=case_directory(query.get('case',[None])[0])
+        except (ValueError,FileNotFoundError) as exc:
+            body=json.dumps({'error':str(exc)}).encode();self.send_response(400 if isinstance(exc,ValueError) else 404)
+            self.send_header('Content-Type','application/json');self.send_header('Content-Length',str(len(body)));self.end_headers()
+            if not head:self.wfile.write(body)
+            return
+        token=view.CASE_DIRECTORY.set(directory)
         try:self._regional_native_response(head)
         finally:view.CASE_DIRECTORY.reset(token)
 
@@ -214,6 +221,12 @@ class Handler(BaseHTTPRequestHandler):
         if not head:self.wfile.write(body)
 
     def respond(self, head):
+        if urlsplit(self.path).path=='/api/rainfall-scenarios/status':
+            from hydraulics.rainfall_scenarios import status
+            body=json.dumps(status(),allow_nan=False).encode();self.send_response(200)
+            self.send_header('Content-Type','application/json');self.send_header('Cache-Control','no-store');self.send_header('Content-Length',str(len(body)));self.end_headers()
+            if not head:self.wfile.write(body)
+            return
         if urlsplit(self.path).path.startswith('/api/water-network/'):
             self.water_network_response(head)
             return

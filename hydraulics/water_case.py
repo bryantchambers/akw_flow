@@ -31,3 +31,16 @@ def activate(directory):
     record={'directory':directory.name,'backend':m.get('execution',{}).get('backend','cpu'),'activated_utc':datetime.now(timezone.utc).isoformat(),
         'manifest_state':{'size':manifest.stat().st_size,'mtime_ns':manifest.stat().st_mtime_ns},'scientific_validation':'exploratory; not calibrated'}
     temp=BASE/'active_case.tmp.json';temp.write_text(json.dumps(record,indent=2));temp.replace(BASE/'active_case.json');return record
+
+
+def case_directory(name=None):
+    """A query may select only a verified, completed independent scenario."""
+    active=active_directory()
+    if not name or name==active.name:return active
+    if not allowed(name):raise ValueError('Unknown regional case')
+    directory=BASE/name
+    if directory.resolve().parent!=BASE.resolve():raise ValueError('Regional case escapes the private case directory')
+    for file,key,value in [('manifest.json','status','complete'),('verification.json','status','passed'),('scenario_summary.json','status','complete'),('network/coupling.json','status','complete')]:
+        path=directory/file
+        if not path.exists() or json.loads(path.read_text()).get(key)!=value:raise FileNotFoundError('Scenario is not ready for inspection')
+    return directory

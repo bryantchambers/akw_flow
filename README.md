@@ -75,3 +75,6 @@ See [the review workflow](docs/connection_review_and_profiles.md) and [the dated
 ## Interface focus
 
 The fixed-terrain 2D workflow is the main dashboard entry. The pilot page retains only the original fixed-terrain run and matched 10 m / 5 m checks. Feature graphs, legacy regional storage cells, the 256 m pilot, gap-link proposals, connection/junction review and old 3D demo loaders have been removed from active controls. Literature, source GIS, historical outputs and analysis implementations are preserved. The 3D page is a supporting terrain-context preview.
+
+
+The [rainfall sensitivity screen](docs/rainfall_scenarios.md) compares six matched 10-minute GPU cases, with case selection and reach-flow changes in the regional dashboard. Submit with `python scripts/submit_rainfall_scenarios.py`; progress and private per-case outputs are retained independently of the main reference.

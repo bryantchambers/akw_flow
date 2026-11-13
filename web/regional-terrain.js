@@ -7,7 +7,11 @@ const arrowGroup=L.layerGroup().addTo(map),gridGroup=L.layerGroup().addTo(map),r
 const faceCanvas=L.canvas({pane:'nativeArrows'}),gridCanvas=L.canvas({pane:'nativeGrid'}),referenceCanvas=L.canvas({pane:'referenceFlow'}),referenceDepthCanvas=L.canvas({pane:'referenceDepth'});
 let preflightQuality='';
 const endpoint='/api/regional-native/';
-async function request(path,signal){const r=await fetch(endpoint+path,{cache:'no-store',signal});if(!r.ok){let error;try{error=(await r.json()).error;}catch{}throw Error(error||'Regional data unavailable');}return r.json();}
+function selectedCase(){return $('#rainfall-case').value;}
+function withCase(url){const name=selectedCase();return name?url+(url.includes('?')?'&':'?')+'case='+encodeURIComponent(name):url;}
+function updateDownloadLinks(){for(const a of document.querySelectorAll('a[href^="/api/water-network/download/"]'))a.href=withCase(a.getAttribute('href').split('?')[0]);}
+
+async function request(path,signal){const r=await fetch(withCase(endpoint+path),{cache:'no-store',signal});if(!r.ok){let error;try{error=(await r.json()).error;}catch{}throw Error(error||'Regional data unavailable');}return r.json();}
 function syncBaseLayers(){
  $('#native-imagery').checked?imagery.addTo(map):map.removeLayer(imagery);
  for(const [layer,id] of [[featureLayer,'native-water'],[bankLayer,'native-banks']])if(layer)$('#'+id).checked?layer.addTo(map):map.removeLayer(layer);
@@ -16,14 +20,14 @@ function rebuildLayers(){
  const key=$('#native-snapshot').value;
  if(displayedSnapshot!==key){cellVersion++;if(cellMarker)map.removeLayer(cellMarker);$('#native-cell').textContent='Click the map to inspect a native cell in the selected saved state.';displayedSnapshot=key;}
  if(heightLayer)map.removeLayer(heightLayer);if(outputLayer)map.removeLayer(outputLayer);
- if($('#native-height').checked)heightLayer=L.tileLayer(endpoint+'tiles/'+$('#native-terrain-style').value+'/'+key+'/{z}/{x}/{y}.png',{pane:'nativeHeight',className:'native-layer',maxZoom:24,maxNativeZoom:22,opacity:Number($('#native-height-alpha').value)/100}).addTo(map);
+ if($('#native-height').checked)heightLayer=L.tileLayer(withCase(endpoint+'tiles/'+$('#native-terrain-style').value+'/'+key+'/{z}/{x}/{y}.png'),{pane:'nativeHeight',className:'native-layer',maxZoom:24,maxNativeZoom:22,opacity:Number($('#native-height-alpha').value)/100}).addTo(map);
  const metric=$('#native-metric').value;
- if(metric!=='none')outputLayer=L.tileLayer(endpoint+'tiles/'+metric+'/'+key+'/{z}/{x}/{y}.png',{pane:'nativeOutput',className:'native-layer',maxZoom:24,maxNativeZoom:22,opacity:Number($('#native-output-alpha').value)/100}).addTo(map);
+ if(metric!=='none')outputLayer=L.tileLayer(withCase(endpoint+'tiles/'+metric+'/'+key+'/{z}/{x}/{y}.png'),{pane:'nativeOutput',className:'native-layer',maxZoom:24,maxNativeZoom:22,opacity:Number($('#native-output-alpha').value)/100}).addTo(map);
  $('#native-legend').textContent=metric==='tracer'?'Regional unit tracer: purple raster, 0–1, clipped. Numerical routing check only.':metric==='depth'?'Regional depth: blue, square-root colours 0–1 m; below 1 mm hidden. Mapped outlines remain visible even when dry. Click for exact values.':'Regional raster hidden. Mapped features and computed flow faces remain independently selectable.';
  syncBaseLayers();loadFaces();
 }
 async function refresh(){try{
- const previousCase=state?.case;state=await request('status');const m=state.manifest,p=state.progress;
+ const requestedCase=selectedCase(),previousCase=state?.case,result=await request('status');if(requestedCase!==selectedCase())return;state=result;const m=state.manifest,p=state.progress;
  if(previousCase&&previousCase!==state.case){comparisonData=null;displayedSnapshot=null;rebuildLayers();loadComparison();refreshNetwork();}
  $('#native-progress').textContent=p?`Build: ${p.stage}${p.simulation?' · '+p.simulation.time_s.toFixed(2)+' / '+p.simulation.duration_s+' simulated seconds · '+p.simulation.steps+' steps':''}${p.error?' · '+p.error:''}`:'Build not started';
  if(!m)return;
@@ -74,8 +78,8 @@ async function loadFaces(){
   window.regionalNativeFacesReady=true;window.regionalNativeFaceMode=data.mode;
  }catch(e){if(e.name!=='AbortError')$('#native-face-status').textContent=e.message;}
 }
-async function loadComparison(){try{
- comparisonData=await request('comparison');const c=comparisonData;
+async function loadComparison(){if(selectedCase().startsWith('hydraulics_gpu_rain_')){$('#native-comparison').textContent='Rainfall cases use their matched zero-rain control.';return;}try{
+ const requestedCase=selectedCase(),result=await request('comparison');if(requestedCase!==selectedCase())return;comparisonData=result;const c=comparisonData;
  if(!c.current){$('#native-comparison').textContent='Saved runs changed; rebuild the comparison before using these figures.';$('#native-reference').checked=false;$('#native-reference').disabled=true;referenceGroup.clearLayers();return;}
  $('#native-reference').disabled=false;$('#native-reference-label').textContent=`Original ${c.pilot.spacing_m} m pilot reference · purple · ${c.pilot.duration_s} s`;
  const nf=c.regional.pilot_footprint.final;
@@ -138,13 +142,14 @@ async function loadNetwork(){
   const names=$('#network-reaches').checked?['reaches']:[];
   if(map.getZoom()>=18&&$('#network-nodes').checked)names.push('nodes');
   if(map.getZoom()>=18&&$('#network-ports').checked)names.push('ports');
-  const results=await Promise.all(names.map(async name=>{const r=await fetch('/api/water-network/layers/'+name+'?bounds='+encodeURIComponent(bounds));if(!r.ok)throw Error('Reach extraction is still being prepared');return [name,await r.json()];}));
+  const results=await Promise.all(names.map(async name=>{const r=await fetch(withCase('/api/water-network/layers/'+name+'?bounds='+encodeURIComponent(bounds)));if(!r.ok)throw Error('Reach extraction is still being prepared');return [name,await r.json()];}));
   if(version!==networkVersion)return;
   for(const [name,data] of results){
    if(name==='reaches')for(const f of data.features){const p=f.properties,d=p.flow_direction||0;
-    const tip=`${p.id} · ${p.kind} · ${p.length_m.toFixed(1)} m · ${p.flow_status}. ${p.discharge_m3_s==null?'No hydraulic flux result yet.':'Mid-section Q '+p.discharge_m3_s.toExponential(3)+' m³/s; positive from-node toward to-node.'}`;
-    L.geoJSON(f,{renderer:reachCanvas,pane:'nativeReaches',style:{color:d?'#d66500':'#009eab',weight:d?2.8:1.7,opacity:.9}}).bindTooltip(tip).addTo(reachGroup);
-    if(d){const cs=f.geometry.coordinates,mid=Math.floor(cs.length/2),a=cs[Math.max(0,mid-1)],b=cs[Math.min(cs.length-1,mid+1)];arrow(d>0?a:b,d>0?b:a,'#c44d00',1.5,tip,true,reachGroup,reachCanvas,'nativeReaches');}
+    const changed=$('#rainfall-change-colours').checked&&p.rainfall_comparison,colour=changed&&p.rainfall_comparison==='newly directional'?'#008c62':changed&&p.rainfall_comparison==='reversed direction'?'#a82d99':changed&&p.rainfall_comparison==='lost consistent direction'?'#777':d?'#d66500':'#009eab';
+    const tip=`${p.id} · ${p.kind} · ${p.length_m.toFixed(1)} m · ${p.flow_status}. ${p.discharge_m3_s==null?'No hydraulic flux result yet.':'Mid-section Q '+p.discharge_m3_s.toExponential(3)+' m³/s; positive from-node toward to-node.'}${p.delta_discharge_m3_s==null?'':' Control ΔQ '+p.delta_discharge_m3_s.toExponential(3)+' m³/s; '+p.rainfall_comparison+'.'}`;
+    L.geoJSON(f,{renderer:reachCanvas,pane:'nativeReaches',style:{color:colour,weight:d?2.8:1.7,opacity:.9}}).bindTooltip(tip).addTo(reachGroup);
+    if(d){const cs=f.geometry.coordinates,mid=Math.floor(cs.length/2),a=cs[Math.max(0,mid-1)],b=cs[Math.min(cs.length-1,mid+1)];arrow(d>0?a:b,d>0?b:a,colour,1.5,tip,true,reachGroup,reachCanvas,'nativeReaches');}
    }
    else L.geoJSON(data,{renderer:nodeCanvas,pane:'nativeNodes',pointToLayer:(f,ll)=>L.circleMarker(ll,{renderer:nodeCanvas,pane:'nativeNodes',radius:name==='ports'?4:f.properties.degree>2?3.5:2,color:name==='ports'?'#ed6fce':'#164759',weight:1,fillOpacity:.8}),onEachFeature:(f,l)=>l.bindTooltip(name==='ports'?`${f.properties.id}: contact with ${f.properties.storage_id}; crest unverified`:`${f.properties.id}: ${f.properties.role}; ${f.properties.degree} reaches; geometric connectivity only`)}).addTo(name==='ports'?portGroup:nodeGroup);
   }
@@ -152,11 +157,13 @@ async function loadNetwork(){
  }catch(e){$('#network-status').textContent=e.message;}
 }
 async function refreshNetwork(){try{
- const r=await fetch('/api/water-network/status');if(!r.ok)throw Error('Network unavailable');const data=await r.json(),m=data.network_manifest;
+ const requestedCase=selectedCase(),r=await fetch(withCase('/api/water-network/status'));if(!r.ok)throw Error('Network unavailable');const data=await r.json();if(requestedCase!==selectedCase())return;const m=data.network_manifest;
  if(!m){$('#network-status').textContent='Native centerline extraction still computing.';return;}
  $('#network-status').textContent=`${m.reaches.toLocaleString()} reaches · ${m.nodes.toLocaleString()} nodes · ${m.components.toLocaleString()} geometric components · ${m.waterbodies.toLocaleString()} storage polygons · ${m.ports.toLocaleString()} mapped contacts. Extraction on the native ${m.extraction_resolution_m} m grid. Components are geometric candidates, not verified flow connectivity.`;
  $('#network-flow-status').textContent=data.coupling?`2D flux samples at ${data.coupling.time_s} s: `+Object.entries(data.coupling.flow_status_counts).map(([k,v])=>v.toLocaleString()+' '+k).join('; ')+'. Transient cross-section estimates, not steady 1D flows.':'Reach geometry ready. The corrected water-present 2D run is computing; directions will appear after flux integration.';
- $('#native-report-link').hidden=data.acceptance?.stage!=='complete';
+ $('#native-report-link').hidden=data.acceptance?.stage!=='complete'||!!data.scenario_summary;
+ $('#pilot-comparison-section').hidden=!!data.scenario_summary;$('#rainfall-summary-link').hidden=!data.scenario_summary;updateDownloadLinks();
+ if(data.scenario_summary){const s=data.scenario_summary,c=s.reach_comparison.directional_class_changes,area=s.raster_comparison.area_at_or_above_depth_m_m2;$('#rainfall-comparison').textContent=`${s.rainfall_mm_hr} mm/h × ${s.duration_s/60} min = ${s.total_rainfall_mm.toFixed(2)} mm. Same-duration zero-rain control: ${c.newly_directional} newly consistent reaches; ${c.reversed_direction} reversed. End-of-event area: ≥1 cm ${((area['0.01']||0)/10000).toFixed(2)} ha; ≥5 cm ${((area['0.05']||0)/10000).toFixed(2)} ha; ≥10 cm ${((area['0.1']||0)/10000).toFixed(2)} ha. ${s.raster_comparison.newly_flowing_faces.toLocaleString()} newly qualifying native faces (not a count of spillways).`;}else{$('#rainfall-comparison').textContent='Current reference: 60 s without rain. Rainfall comparisons use their separate, same-duration zero-rain control.';}
  if(data.preflight){const p=data.preflight;preflightQuality=`Native pilot-window preflight: conservation and finite-state checks passed; ${p.faces_froude_over_1_at_depth_at_least_1cm.toLocaleString()} of ${p.faces_depth_at_least_1cm.toLocaleString()} faces at least 1 cm deep exceed Froude 1. Regime review required; regional export checks remain pending.`;if(!state?.verification)$('#native-quality').textContent=preflightQuality;}
  const stamp=JSON.stringify([m.reaches,data.coupling]);if(stamp!==networkStamp){networkStamp=stamp;loadNetwork();}
  }catch(e){$('#network-status').textContent=e.message;}}
@@ -164,3 +171,16 @@ for(const id of ['network-reaches','network-nodes','network-ports'])$('#'+id).on
 map.on('moveend',loadNetwork);
 $('#native-export-cells').onclick=async()=>{const label=$('#native-export-status');label.textContent='Preparing native cell export…';try{const b=map.getBounds(),bounds=[b.getWest(),b.getSouth(),b.getEast(),b.getNorth()].join(',');const data=await request('cells?bounds='+encodeURIComponent(bounds)+'&snapshot='+$('#native-snapshot').value);const url=URL.createObjectURL(new Blob([JSON.stringify(data)],{type:'application/geo+json'})),a=document.createElement('a');a.href=url;a.download='native_cells_'+$('#native-snapshot').value+'.geojson';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);label.textContent=`Exported ${data.features.length.toLocaleString()} native cells.`;}catch(e){label.textContent=e.message;}};
 refreshNetwork();setInterval(refreshNetwork,15000);loadNetwork();
+
+async function refreshRainfall(){try{
+ const r=await fetch('/api/rainfall-scenarios/status',{cache:'no-store'});if(!r.ok)throw Error('Rainfall catalog unavailable');const data=await r.json(),s=data.suite;
+ if(!s){$('#rainfall-status').textContent='No rainfall sweep prepared.';return;}
+ const completed=s.cases.filter(c=>c.status==='complete').length,p=s.current_progress,sim=p?.simulation,current=s.cases.find(c=>c.directory===s.current_case);
+ $('#rainfall-status').textContent=`${completed}/${s.cases.length} cases verified · ${s.configuration.duration_s/60}-minute events · batch ${s.status} · Slurm ${s.slurm_job_id||'not submitted'}.${current?' Current: '+current.rainfall_mm_hr+' mm/h.':''}${sim?' '+sim.time_s.toFixed(1)+' / '+sim.duration_s+' simulated seconds.':''}${s.error?' '+s.error:''}`;
+ const select=$('#rainfall-case');
+ for(const c of s.cases){let option=Array.from(select.options).find(o=>o.value===c.directory);if(!option){option=new Option('',c.directory);select.add(option);}option.disabled=c.status!=='complete';option.textContent=`${c.rainfall_mm_hr} mm/h · ${c.duration_s/60} min · ${c.total_rainfall_mm.toFixed(2)} mm${c.status!=='complete'?' · '+c.status:''}`;}
+ window.rainfallCatalogReady=true;
+ }catch(e){$('#rainfall-status').textContent=e.message;}}
+$('#rainfall-case').onchange=()=>{$('#native-reference').checked=false;referenceGroup.clearLayers();faceVersion++;cellVersion++;networkVersion++;networkStamp='';faceAbort?.abort();arrowGroup.clearLayers();gridGroup.clearLayers();reachGroup.clearLayers();nodeGroup.clearLayers();portGroup.clearLayers();comparisonData=null;displayedSnapshot=null;window.waterNetworkReady=false;window.regionalNativeReady=false;preflightQuality='';updateDownloadLinks();refresh();refreshNetwork();};
+$('#rainfall-change-colours').onchange=loadNetwork;
+refreshRainfall();setInterval(refreshRainfall,15000);

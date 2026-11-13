@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "base_configuration": "configs/water_system_gpu.json",
+  "duration_s": 600,
+  "rainfall_intensities_mm_hr": [0, 5, 15, 30, 60, 100],
+  "infiltration_mm_hr": 0,
+  "forcing": "spatially uniform constant rainfall",
+  "interpretation": "Ten-minute rainfall-only sensitivity screen; not a calibrated monsoon event or return-period storm",
+  "comparison_depth_thresholds_m": [0.001, 0.01, 0.05, 0.1],
+  "minimum_face_discharge_m3_s": 0.00001,
+  "minimum_face_depth_m": 0.01,
+  "minimum_reach_discharge_m3_s": 0.00001,
+  "references": [
+    {"doi": "10.1016/j.jasrep.2017.11.014", "use": "Regional archaeological flood context and discussion of 50-60 mm within one hour; not a measured design curve or a return period for this grid"}
+  ],
+  "limits": [
+    "All cases start from the same hypothetical water-present initialization.",
+    "No infiltration is an explicit upper-runoff/saturated-surface bound, not a measured soil property.",
+    "Closed survey perimeter; no upstream river inflows, outflow hydrographs or groundwater coupling.",
+    "Native local-inertial formulation needs review where flow becomes supercritical.",
+    "A monsoon is a season and cannot be defined by one rainfall intensity."
+  ]
+}

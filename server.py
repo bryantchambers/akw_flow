@@ -3,6 +3,7 @@
 import argparse
 import json
 import mimetypes
+import os
 import shutil
 import threading
 from datetime import datetime, timezone
@@ -142,15 +143,60 @@ class Handler(BaseHTTPRequestHandler):
     def do_HEAD(self):
         self.respond(True)
 
+    def water_network_response(self, head):
+        from hydraulics import water_network_view as view
+        parsed=urlsplit(self.path);query=parse_qs(parsed.query);parts=parsed.path.split('/')
+        try:
+            if len(parts)==5 and parts[3]=='download':
+                file,mime=view.download(unquote(parts[4]))
+                # Open before fstat: an atomic GeoPackage replacement must not
+                # change the file between Content-Length and streamed content.
+                with file.open('rb') as source:
+                    size=os.fstat(source.fileno()).st_size
+                    self.send_response(200);self.send_header('Content-Type',mime)
+                    self.send_header('Content-Disposition','attachment; filename="'+file.name+'"')
+                    self.send_header('Content-Length',str(size));self.send_header('Cache-Control','no-store');self.end_headers()
+                    if not head:
+                        try:shutil.copyfileobj(source,self.wfile,1024*1024)
+                        except (BrokenPipeError,ConnectionResetError):pass
+                return
+            if parsed.path=='/api/water-network/status':result=view.status()
+            elif len(parts)==5 and parts[3]=='layers':
+                bounds=[float(v) for v in query['bounds'][0].split(',')] if 'bounds' in query else None
+                result=view.layer(parts[4],bounds)
+            else:raise FileNotFoundError('Unknown water-system derivative')
+            body=json.dumps(result,allow_nan=False).encode();code=200
+        except (FileNotFoundError,KeyError):body=json.dumps({'error':'Water-system derivative not ready'}).encode();code=404
+        except (ValueError,TypeError) as exc:body=json.dumps({'error':str(exc)}).encode();code=400
+        self.send_response(code);self.send_header('Content-Type','application/json; charset=utf-8')
+        self.send_header('Cache-Control','no-store');self.send_header('Content-Length',str(len(body)));self.end_headers()
+        if not head:self.wfile.write(body)
+
     def regional_native_response(self, head):
+        from hydraulics import regional_view as view
+        from hydraulics.water_case import active_directory
+        token=view.CASE_DIRECTORY.set(active_directory())
+        try:self._regional_native_response(head)
+        finally:view.CASE_DIRECTORY.reset(token)
+
+    def _regional_native_response(self, head):
         import re
         from hydraulics import regional_view as view
         parsed=urlsplit(self.path);path=parsed.path;query=parse_qs(parsed.query)
         content_type='application/json; charset=utf-8'
         try:
             if path=='/api/regional-native/status':result=view.status()
+            elif path=='/api/regional-native/cells':
+                result=view.cells([float(v) for v in query.get('bounds',[''])[0].split(',')],query.get('snapshot',['final'])[0])
             elif path=='/api/regional-native/point':
                 result=view.point(float(query.get('lon',[''])[0]),float(query.get('lat',[''])[0]),query.get('snapshot',['final'])[0])
+            elif path=='/api/regional-native/faces':
+                from hydraulics.regional_faces import faces
+                bounds=[float(v) for v in query.get('bounds',[''])[0].split(',')]
+                result=faces(bounds,query.get('snapshot',['final'])[0],float(query.get('minimum_q',['0.00001'])[0]),query.get('include_idle',['false'])[0]=='true')
+            elif path=='/api/regional-native/comparison':
+                from hydraulics.regional_view import comparison
+                result=comparison()
             elif path=='/api/regional-native/vectors':
                 bounds=[float(v) for v in query.get('bounds',[''])[0].split(',')]
                 result=view.vectors(bounds,query.get('snapshot',['final'])[0])
@@ -168,6 +214,9 @@ class Handler(BaseHTTPRequestHandler):
         if not head:self.wfile.write(body)
 
     def respond(self, head):
+        if urlsplit(self.path).path.startswith('/api/water-network/'):
+            self.water_network_response(head)
+            return
         if urlsplit(self.path).path.startswith('/api/regional-native/'):
             self.regional_native_response(head)
             return
@@ -269,6 +318,8 @@ if __name__ == '__main__':
     parser.add_argument('--host', default='0.0.0.0')
     parser.add_argument('--port', type=int, default=9090)
     args = parser.parse_args()
+    # Initialize scientific C extensions before concurrent first requests.
+    from hydraulics import regional_view,water_network_view,regional_faces
     server = ThreadingHTTPServer((args.host, args.port), Handler)
     print(f'Angkor inventory listening on http://{args.host}:{args.port}', flush=True)
     server.serve_forever()

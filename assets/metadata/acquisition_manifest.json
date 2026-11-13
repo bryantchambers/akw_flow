@@ -376,5 +376,35 @@
     "acquisition": "Official HTML reference archived",
     "bytes": 95380,
     "sha256": "dc52a036c281b3cb8da1bc87f3c83715ed4e8f593bc6f46bdb4475886ceed59f"
+  },
+  {
+    "id": "sharifian_2023_lisflood_gpu",
+    "path": "manuscripts/sharifian_2023_lisflood_fp_gpu.pdf",
+    "source_url": "https://gmd.copernicus.org/articles/16/2391/2023/gmd-16-2391-2023.pdf",
+    "retrieved_utc": "2026-11-13T12:31:15.625152+00:00",
+    "acquisition": "downloaded",
+    "status": "available",
+    "bytes": 26529088,
+    "sha256": "fe915ebb81827fa82da9ffdb7bb75a63132da8a017d941291ac07704161b64fa"
+  },
+  {
+    "id": "shaw_2021_lisflood_gpu_swe",
+    "path": "manuscripts/shaw_2021_lisflood_fp_dg_cpu_gpu.pdf",
+    "source_url": "https://gmd.copernicus.org/articles/14/3577/2021/gmd-14-3577-2021.pdf",
+    "retrieved_utc": "2026-11-13T12:31:19.077686+00:00",
+    "acquisition": "downloaded",
+    "status": "available",
+    "bytes": 9958366,
+    "sha256": "7e9ccd43314c458667c7a3922cf5fbabbed2e7834474366311509f2fe97bf77e"
+  },
+  {
+    "id": "chowdhury_2025_lisflood_adaptive_gpu",
+    "path": "manuscripts/chowdhury_2025_lisflood_fp_adaptive_gpu.pdf",
+    "source_url": "https://gmd.copernicus.org/articles/18/9827/2025/gmd-18-9827-2025.pdf",
+    "retrieved_utc": "2026-11-13T12:31:24.707928+00:00",
+    "acquisition": "downloaded",
+    "status": "available",
+    "bytes": 16890406,
+    "sha256": "6fc375ddedc3b6485ed211beff4103272967a45c3758fd1edebd8df1a7bfdd25"
   }
 ]

@@ -21,7 +21,7 @@ def momentum(z,h,qx,qy,dt,dx,n,dry):
             eta=za+h[r,c]
             if c+1<cols and np.isfinite(z[r,c+1]):
                 zb=z[r,c+1]; eb=zb+h[r,c+1]; d=max(eta,eb)-max(za,zb)
-                if d>dry:
+                if d>dry and (eta!=eb or qx[r,c]!=0):
                     q=qx[r,c]
                     predictor=q+G*d*dt*(eta-eb)/dx
                     alpha=G*n*n*dt/d**(7/3)
@@ -30,7 +30,7 @@ def momentum(z,h,qx,qy,dt,dx,n,dry):
             else:qx[r,c]=0
             if r+1<rows and np.isfinite(z[r+1,c]):
                 zb=z[r+1,c]; eb=zb+h[r+1,c]; d=max(eta,eb)-max(za,zb)
-                if d>dry:
+                if d>dry and (eta!=eb or qy[r,c]!=0):
                     q=qy[r,c]
                     predictor=q+G*d*dt*(eta-eb)/dx
                     alpha=G*n*n*dt/d**(7/3)
@@ -95,13 +95,21 @@ def update(z,h,m,qx,qy,hn,mn,dt,dx,rain,infil,rowsums):
         rowsums[r,4]=maxh;rowsums[r,5]=maxspeed;rowsums[r,6]=wet
 
 
-def simulate(z,initial_depth,config,initial_concentration=None,callback=None):
-    if z.ndim!=2 or z.shape!=initial_depth.shape:raise ValueError('Matching 2D terrain/depth required')
+def parameters(config):
     keys={'spacing_m':.5,'duration_s':30.,'dt_max_s':.1,'manning_n':.05,'cfl':.35,'rainfall_mm_hr':0.,'infiltration_mm_hr':0.,'dry_depth_m':1e-6}
     p={k:float(config.get(k,v)) for k,v in keys.items()}
     if not np.isfinite(list(p.values())).all() or min(p[k] for k in ('spacing_m','duration_s','dt_max_s','manning_n','cfl'))<=0 or p['cfl']>.5 or min(p[k] for k in ('rainfall_mm_hr','infiltration_mm_hr','dry_depth_m'))<0:
         raise ValueError('Invalid native simulation parameters')
     if config.get('groundwater',{}).get('enabled') or config.get('stage_boundaries'):raise ValueError('Regional native engine does not yet support groundwater or stage boundaries')
+    threads=int(config.get('threads',8))
+    if not 1<=threads<=40:raise ValueError('Use 1..40 threads')
+    return p
+
+
+def simulate_cpu(z,initial_depth,config,initial_concentration=None,callback=None):
+    total_started=time.monotonic()
+    if z.ndim!=2 or z.shape!=initial_depth.shape or z.size==0:raise ValueError('Matching nonempty 2D terrain/depth required')
+    p=parameters(config)
     threads=int(config.get('threads',8))
     if not 1<=threads<=40:raise ValueError('Use 1..40 threads')
     set_num_threads(threads)
@@ -114,7 +122,7 @@ def simulate(z,initial_depth,config,initial_concentration=None,callback=None):
         c=np.asarray(initial_concentration)
         if c.shape!=h.shape or not np.isfinite(c).all() or np.any(c<0):raise ValueError('Invalid tracer concentration')
         m=h*c
-    qx=np.zeros_like(h);qy=np.zeros_like(h);hn=np.empty_like(h);mn=np.empty_like(h);scale=np.empty(z.shape,np.float32)
+    qx=np.zeros_like(h);qy=np.zeros_like(h);hn=np.empty_like(h);mn=np.empty_like(h);scale=np.empty(z.shape,np.float64)
     rowsums=np.zeros((z.shape[0],7),float)
     dx=p['spacing_m'];da=dx*dx
     initial=float(h.sum(dtype=np.float64)*da); initialmass=float(m.sum(dtype=np.float64)*da)
@@ -139,6 +147,29 @@ def simulate(z,initial_depth,config,initial_concentration=None,callback=None):
             history.append(record)
             if callback:callback(record)
             last_report=time.monotonic()
-    return {'depth':h,'momentum_depth':hn,'face_depth_time_s':t-dt,'mass_per_area':m,'qx_per_width':qx,'qy_per_width':qy,'history':history,'steps':steps,
+    solver_s=time.monotonic()-started
+    return {'execution':{'backend':'cpu','threads':threads,'precision':'float64 hydraulic state and donor scales; float32 terrain','solver_s':solver_s,'setup_s':started-total_started,'total_s':time.monotonic()-total_started},'depth':h,'momentum_depth':hn,'face_depth_time_s':t-dt,'mass_per_area':m,'qx_per_width':qx,'qy_per_width':qy,'history':history,'steps':steps,
         'budget':{'initial_volume_m3':initial,'rainfall_m3':rainnet,'infiltration_loss_m3':infilnet,'final_volume_m3':float(rowsums[:,0].sum()*da),'residual_m3':initial+rainnet-infilnet-float(rowsums[:,0].sum()*da)},
         'tracer_budget':{'initial_mass':initialmass,'infiltration_loss':massloss,'final_mass':float(rowsums[:,1].sum()*da),'residual':initialmass-massloss-float(rowsums[:,1].sum()*da)}}
+
+
+def gpu_available():
+    """Optional maintained CUDA provider; CPU-only installations remain usable."""
+    import importlib.metadata
+    try:
+        importlib.metadata.version('numba-cuda')
+    except importlib.metadata.PackageNotFoundError:
+        return False
+    from numba import cuda
+    return cuda.is_available()
+
+
+def simulate(z,initial_depth,config,initial_concentration=None,callback=None):
+    """Prefer a visible CUDA GPU; explicit GPU requests never fall back to CPU."""
+    backend=config.get('backend','auto')
+    if backend not in ('auto','cpu','gpu'):raise ValueError('backend must be auto, cpu or gpu')
+    if backend=='gpu' or (backend=='auto' and gpu_available()):
+        if not gpu_available():raise RuntimeError('CUDA GPU unavailable; request a Slurm GPU allocation and use the GPU environment')
+        from .native_gpu import simulate as simulate_gpu
+        return simulate_gpu(z,initial_depth,config,initial_concentration,callback)
+    return simulate_cpu(z,initial_depth,config,initial_concentration,callback)

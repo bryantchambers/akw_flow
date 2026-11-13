@@ -89,5 +89,26 @@
     "valid_pdf": true,
     "first_page_excerpt": "\u02a2\u0001\u0001\u0001\u0001\u02a3 RENAISSANCE\nSPECIAL ISSUE\nThe Second International Symposium on the Hydraulic City\nTHE HYDRAULIC  CITY OF THE ANGKOR  EMPIRE\nAND CONSTRUCTION  OF ANGKOR  WAT CULTURELLE DU CA MBODGE\u1d37\u1d37\u082a\n\u0014\u0014\n\u03b7\u03ef\u03bb\u0294\nSophia Asia Center for Research and Human Development, Tokyo2023\u07f8\n2021\u03a7\n\u03b4\u03d8\u03ef\n\u039e\n\u0dee\u053d\u0e08\u0377ISSN\u008a0917\u008a141X\n\u02a2\u0001\u0001\u0001\u02a3\u06b5\n\u0014\u0014 \u0013\u0014\n",
     "visual_identity_checked": false
+  },
+  {
+    "path": "manuscripts/sharifian_2023_lisflood_fp_gpu.pdf",
+    "pages": 23,
+    "valid_pdf": true,
+    "first_page_excerpt": "Geosci. Model Dev., 16, 2391\u20132413, 2023\nhttps://doi.org/10.5194/gmd-16-2391-2023\n\u00a9 Author(s) 2023. This work is distributed under\nthe Creative Commons Attribution 4.0 License.\nModel description paper\nLISFLOOD-FP 8.1: new GPU-accelerated solvers for faster\n\ufb02uvial/pluvial \ufb02ood simulations\nMohammad Kazem Shari\ufb01an1,a, Georges Kesserwani1, Alovya Ahmed ",
+    "visual_identity_checked": false
+  },
+  {
+    "path": "manuscripts/shaw_2021_lisflood_fp_dg_cpu_gpu.pdf",
+    "pages": 26,
+    "valid_pdf": true,
+    "first_page_excerpt": "Geosci. Model Dev., 14, 3577\u20133602, 2021\nhttps://doi.org/10.5194/gmd-14-3577-2021\n\u00a9 Author(s) 2021. This work is distributed under\nthe Creative Commons Attribution 4.0 License.\nLISFLOOD-FP 8.0: the new discontinuous Galerkin shallow-water\nsolver for multi-core CPUs and GPUs\nJames Shaw1, Georges Kesserwani1, Jeffrey Neal2, Paul Bates2, and Mohammad K",
+    "visual_identity_checked": false
+  },
+  {
+    "path": "manuscripts/chowdhury_2025_lisflood_fp_adaptive_gpu.pdf",
+    "pages": 28,
+    "valid_pdf": true,
+    "first_page_excerpt": "Geosci. Model Dev., 18, 9827\u20139854, 2025\nhttps://doi.org/10.5194/gmd-18-9827-2025\n\u00a9 Author(s) 2025. This work is distributed under\nthe Creative Commons Attribution 4.0 License.\nDevelopment and technical paper\nLISFLOOD-FP 8.2: GPU-accelerated multiwavelet discontinuous\nGalerkin solver with dynamic resolution adaptivity for rapid,\nmultiscale \ufb02ood simu",
+    "visual_identity_checked": false
   }
 ]

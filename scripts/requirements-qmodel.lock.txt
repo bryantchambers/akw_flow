@@ -9,7 +9,9 @@ flatbuffers==25.12.19
 fonttools==4.68.0
 greenlet==3.5.6
 idna==3.20
+ImageIO==2.38.1
 kiwisolver==1.5.1
+lazy-loader==0.6
 llvmlite==0.47.0
 matplotlib==3.11.2
 networkx==3.7
@@ -26,6 +28,7 @@ pyee==14.0.0
 pymupdf==2.1
 pymupdf4llm==2.1
 pymupdf_layout==2.1
+pyogrio==0.13.0
 pyparsing==3.3.3
 pypdf==7.0.0
 pyproj==3.8.0
@@ -35,9 +38,13 @@ PyYAML==6.0.3
 rasterio==1.5.2
 reportlab==5.1.0
 requests==2.34.2
+scikit-image==0.26.0
 scipy==1.18.1
+setuptools==84.2.1
 shapely==2.2.0
 tabulate==0.10.0
+tifffile==2026.11.8
 typing_extensions==4.16.0
 tzdata==2026.6
 urllib3==2.8.0
+wheel==0.48.0

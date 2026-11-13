@@ -59,6 +59,16 @@ class NativeGridTests(unittest.TestCase):
         expected=qeq*math.tanh(100/tau)
         self.assertAlmostEqual(float(r['qx_per_width'][0,950:1050].mean())/expected,1.,places=4)
 
+    def test_higher_stage_activates_second_outlet_without_topology_edits(self):
+        z=np.array([[0.,1.,0.,2.,0.]],np.float32)
+        low=np.zeros_like(z,dtype=float);low[0,2]=1.5
+        high=np.zeros_like(z,dtype=float);high[0,2]=2.5
+        cfg=self.config();cfg.update(duration_s=.05)
+        a=simulate(z,low,cfg);b=simulate(z,high,cfg)
+        self.assertGreater(a['depth'][0,1],0);self.assertEqual(a['depth'][0,3],0)
+        self.assertGreater(b['depth'][0,1],0);self.assertGreater(b['depth'][0,3],0)
+        self.assertAlmostEqual(b['budget']['residual_m3'],0,places=10)
+
     def test_unsupported_groundwater_rejected(self):
         with self.assertRaises(ValueError):simulate(np.zeros((2,2)),np.ones((2,2)),self.config(groundwater={'enabled':True}))
 

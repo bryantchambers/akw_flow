@@ -48,3 +48,11 @@ No authors or institutions were contacted, accounts created, or restricted-data 
 - `SHA256SUMS`: checksums for all collected and extracted files, excluding the checksum file itself. Verify from this directory with `sha256sum -c SHA256SUMS`.
 
 PDF signatures and structure were checked; ZIP and DOCX archives passed integrity checks. These checks establish file integrity and identity, not archaeological or hydraulic validation. Source-specific copyrights and licences remain applicable.
+
+## GPU hydraulic modelling references
+
+Research and the measured project baseline are described in [the GPU assessment](../docs/gpu_hydraulics_assessment.md). Open-access reference papers:
+
+- [LISFLOOD-FP 8.1 GPU local-inertial solvers (2023)](manuscripts/sharifian_2023_lisflood_fp_gpu.pdf)
+- [LISFLOOD-FP 8.0 CPU/GPU shallow-water solvers (2021)](manuscripts/shaw_2021_lisflood_fp_dg_cpu_gpu.pdf)
+- [LISFLOOD-FP 8.2 adaptive GPU solver (2025)](manuscripts/chowdhury_2025_lisflood_fp_adaptive_gpu.pdf)

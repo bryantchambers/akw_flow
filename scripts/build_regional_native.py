@@ -19,7 +19,9 @@ def write_json(path,value):
     tmp=path.with_suffix(path.suffix+'.tmp');tmp.write_text(json.dumps(value,allow_nan=False,indent=2));tmp.replace(path)
 
 
-def build(config):
+def build(config, output_directory=None):
+    global OUT
+    if output_directory is not None: OUT=Path(output_directory)
     OUT.mkdir(parents=True,exist_ok=True)
     lock=OUT/'build.lock'
     try:fd=os.open(lock,os.O_CREAT|os.O_EXCL|os.O_WRONLY)
@@ -31,7 +33,7 @@ def build(config):
         write_json(OUT/'progress.json',record);print(json.dumps(record),flush=True)
     try:
         if float(config['spacing_m'])!=.5:raise ValueError('This build preserves native 0.5 m solver spacing')
-        if config.get('initialization','connected_mapped_water_minimum_plus_offset')!='connected_mapped_water_minimum_plus_offset':raise ValueError('Unknown regional initialization mode')
+        if config.get('initialization','connected_mapped_water_minimum_plus_offset') not in ('connected_mapped_water_minimum_plus_offset','separate_storage_and_conduits'):raise ValueError('Unknown regional initialization mode')
         progress('preparing',message='Reading full native terrain and mapped water inventory')
         with rasterio.open(SOURCE) as src:
             if src.crs.to_epsg()!=32648 or src.res!=(.5,.5):raise ValueError('Require native EPSG:32648, 0.5 m terrain')
@@ -53,15 +55,19 @@ def build(config):
         water[~valid]=0;wetcount=int(water.sum())
         depth=float(config['initial_mapped_water_depth_m']);concentration=float(config['initial_unit_tracer_concentration'])
         if not np.isfinite([depth,concentration]).all() or min(depth,concentration)<0:raise ValueError('Invalid initial water / tracer')
-        from scipy.ndimage import label, minimum
-        progress('preparing',message='Computing level low-water starts within connected mapped waterbodies')
-        labels,components=label(water)
-        minima=minimum(z,labels=labels,index=np.arange(1,components+1))
-        levels=np.zeros(components+1,dtype=np.float64);levels[1:]=minima+depth
-        initial=np.maximum(levels[labels]-z,0.)
-        initial[water==0]=0;initial[~valid]=0
-        wetcount=int(np.count_nonzero(initial>0))
-        del labels,minima,levels
+        if config.get('initialization')=='separate_storage_and_conduits':
+            from hydraulics.water_initialization import initialize_mapped_water
+            initial, initialization_report=initialize_mapped_water(z,tf,base,config)
+            write_json(OUT/'initialization.json',initialization_report)
+        else:
+            from scipy.ndimage import label, minimum
+            progress('preparing',message='Computing level low-water starts within connected mapped waterbodies')
+            labels,components=label(water)
+            minima=minimum(z,labels=labels,index=np.arange(1,components+1))
+            levels=np.zeros(components+1,dtype=np.float64);levels[1:]=minima+depth
+            initial=np.maximum(levels[labels]-z,0.)
+            initial[water==0]=0;initial[~valid]=0
+            del labels,minima,levels
         apply_initial_levels(initial,z,water,tf,config.get('initial_water_levels',[]))
         wetcount=int(np.count_nonzero(initial>0))
         profile.update(driver='GTiff',count=1,dtype='float32',nodata=-9999.,tiled=True,blockxsize=512,blockysize=512,compress='deflate',predictor=3,zlevel=1,BIGTIFF='IF_SAFER',NUM_THREADS='4')
@@ -100,16 +106,17 @@ def build(config):
                 'Continuous hydraulic raster; output/display tiling introduces no internal closed boundaries.',
                 'Fixed terrain; no erosion, automatic channel burning, breach development or sediment. Evidence-labelled fixed edits, if configured, are scenario assumptions.',
                 'Current DTM is not verified submerged bathymetry; vertical metres/datum/accuracy unverified.',
-                'Low-water initialization: each mapped connected component starts at its minimum DTM elevation plus configured depth offset; higher pixels are dry. Not observed water levels.',
+                'Initialization: '+config.get('initialization','connected_mapped_water_minimum_plus_offset')+'. See initialization.json for per-body levels. All water levels are assumptions, not observations.',
                 'Closed survey perimeter and impermeable no-data cells; no regional inflow/outflow calibration.',
                 'Local-inertial wide-flow approximation omits advective momentum and explicit structure equations.',
                 'Conservative unit tracer starts in mapped water; rainfall has zero tracer. Not a pathogen model.',
                 'No regional groundwater coupling. Infiltration, if configured, exports dissolved tracer.',
                 'Native raster outputs are float32; solver state and conservation sums use float64.'],
+            'initialization_inputs':{str(p):{'size':p.stat().st_size,'mtime_ns':p.stat().st_mtime_ns,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in ([ROOT/config['conduit_stage_file'],ROOT/'assets/private/water_system/conduit_stages.json'] if config.get('initialization')=='separate_storage_and_conduits' else [])},
             'friction_treatment':'fully implicit quadratic Manning friction','velocity_depth_timing':'Face velocity uses the predictor depth used for final-step discharge; depth raster is end-of-step.',
-            'code_sha256':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in [Path(__file__),ROOT/'hydraulics/native_grid.py',ROOT/'hydraulics/fixed_geometry.py']}}
+            'code_sha256':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in [Path(__file__),ROOT/'hydraulics/native_grid.py',ROOT/'hydraulics/fixed_geometry.py',ROOT/'hydraulics/water_initialization.py',ROOT/'hydraulics/native_gpu.py']}}
         snapshots=OUT/'code_snapshots';snapshots.mkdir(exist_ok=True)
-        for source in [Path(__file__),ROOT/'hydraulics/native_grid.py',ROOT/'hydraulics/fixed_geometry.py']:
+        for source in [Path(__file__),ROOT/'hydraulics/native_grid.py',ROOT/'hydraulics/fixed_geometry.py',ROOT/'hydraulics/water_initialization.py',ROOT/'hydraulics/native_gpu.py']:
             (snapshots/(manifest['code_sha256'][source.name]+'_'+source.name)).write_bytes(source.read_bytes())
         write_json(OUT/'manifest.json',manifest)
         h=initial
@@ -143,15 +150,30 @@ def build(config):
         from hydraulics.regional_pyramids import build_pyramids
         progress('preparing_display',message='Building display-only pyramids; native grid retained')
         build_pyramids(OUT)
+        from scripts.build_regional_face_index import build as build_face_index
+        build_face_index(OUT)
         manifest.update(status='complete',display_pyramid_factors=[2,4,8,16,32,64,128],snapshots=[{'key':'initial','time_s':0},{'key':'final','time_s':float(config['duration_s'])}],
-            budget=result['budget'],tracer_budget=result['tracer_budget'],history=result['history'],steps=result['steps'],wall_s=time.monotonic()-started,
+            execution=result['execution'],budget=result['budget'],tracer_budget=result['tracer_budget'],history=result['history'],steps=result['steps'],wall_s=time.monotonic()-started,
             maximum_depth_m=float(np.max(result['depth'])))
-        write_json(OUT/'manifest.json',manifest);progress('complete',budget=result['budget'],tracer_budget=result['tracer_budget'],steps=result['steps'])
+        write_json(OUT/'manifest.json',manifest)
+        if OUT==ROOT/'assets/private/regional_native' and (ROOT/'assets/private/terrain_flow/terrain_flow.json').exists():
+            from scripts.build_regional_view_comparison import build as build_view_comparison
+            build_view_comparison()
+        progress('complete',budget=result['budget'],tracer_budget=result['tracer_budget'],steps=result['steps'])
         return manifest
     except BaseException as exc:
         progress('failed',error=str(exc));raise
     finally:lock.unlink(missing_ok=True)
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--config',default=str(ROOT/'configs/regional_native.json'));args=p.parse_args()
-    build(json.loads(Path(args.config).read_text()))
+    p=argparse.ArgumentParser()
+    p.add_argument('--config',default=str(ROOT/'configs/water_system_gpu.json'))
+    p.add_argument('--output')
+    p.add_argument('--backend',choices=('gpu','cpu','auto'))
+    args=p.parse_args();config=json.loads(Path(args.config).read_text())
+    if args.backend is not None:config['backend']=args.backend
+    if config.get('backend')=='gpu' and not os.environ.get('SLURM_JOB_ID'):
+        p.error('GPU is the preferred regional backend. Submit with python scripts/submit_regional_gpu.py; GPU environment creation and execution must occur inside Slurm.')
+    output=Path(args.output) if args.output else ROOT/'assets/private/water_system'/('hydraulics_gpu' if config.get('backend')=='gpu' else 'hydraulics')
+    if (output/'manifest.json').exists():p.error('Output already exists; use a fresh --output directory to preserve the previous case')
+    build(config,output)

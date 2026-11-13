@@ -22,3 +22,5 @@ assets/private/
 
 # Private survey inspection captures and derived review PDFs.
 knowledge/RegionalModelInspections/
+
+knowledge/Fixed-terrain model/

@@ -1,3 +1,5 @@
+> Historical method: the feature-adjacency and connection-editing UI was retired on 12 November 2026. Active modelling uses fixed-terrain 2D; this document and its artifacts are retained for provenance.
+
 # Connection review and terrain geometry workspace
 
 ## What is implemented

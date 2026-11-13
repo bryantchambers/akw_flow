@@ -68,6 +68,7 @@ function updateTerrain() {
   renderPending=true;
 }
 function setLegend() {
+  $('.results').hidden=currentMode()!=='imported';
   const mode=currentMode();
   if(mode==='screening') {
     $('#legend-title').textContent='Upstream contributing area';$('#legend-unit').textContent='km² · logarithmic colour scale';
@@ -79,7 +80,7 @@ function setLegend() {
   } else if(mode==='elevation') {
     $('#legend-title').textContent='Surface elevation';$('#legend-unit').textContent=terrainId==='copernicus'?'metres · EGM2008':'metres · WGS84 ellipsoid (provisional)';$('#legend-min').textContent=data.terrain.min_m.toFixed(0)+' m';$('#legend-max').textContent=data.terrain.max_m.toFixed(0)+' m';
     $('#result-label').textContent=terrainId==='copernicus'?'MODERN DSM':'PROVISIONAL RADAR DEM';$('#output-status').textContent=terrainId==='copernicus'?'Modern surface elevations include vegetation and structures. This is not historical canal bathymetry.':'TOPSAR preview: metadata-derived position, provisional fill mask and no independent ground-control validation. Heights are not EGM2008.';
-    $('#hotspot-heading').textContent='Output locations';$('#results-note').textContent='Select drainage screening or import spatial model output to inspect candidate locations.';$('#scene-title').textContent='Surface elevation';
+    $('#hotspot-heading').textContent='Output locations';$('#results-note').textContent='Terrain context preview; use fixed-terrain 2D for hydraulic inspection.';$('#scene-title').textContent='Surface elevation';
     $('#ramp-colors').style.background='linear-gradient(90deg,#b9cba1,#859866)';
   } else {
     const {metric,unit,name,scenario}=imported.model;
@@ -176,7 +177,7 @@ async function init() {
     const response=await fetch(TERRAIN_SOURCES[terrainId]);if(!response.ok)throw new Error('Terrain scene is unavailable.');data=await response.json();
     $('#terrain-source').value=terrainId;
     $('#terrain-source').addEventListener('change',e=>{const url=new URL(location.href);url.searchParams.set('terrain',e.target.value);location.assign(url);});
-    if(!data.screening){$('#output-mode option[value=screening]').disabled=true;$('#output-mode option[value=screening]').textContent='Drainage screening unavailable (QC pending)';$('#output-mode').value='elevation';}
+    if(!data.screening&&$('#output-mode option[value=screening]')){$('#output-mode option[value=screening]').disabled=true;$('#output-mode').value='elevation';}
     if(terrainId==='topsar_detail'){$('#exaggeration').value='3';$('#exaggeration-label').textContent='3×';}
     $('#terrain-status').textContent=terrainId==='copernicus'?'Regional context: ~30 m source, ~270 m display.':terrainId==='topsar_detail'?'Approximately 2 × 2 km around Angkor Wat; ~5 m source and display. Gaps remain holes.':'Survey-strip coverage; 5 m source sampled at ~80 m for this overview. Gaps remain holes.';
     scene=new THREE.Scene();scene.background=new THREE.Color('#e6ede2');
@@ -203,7 +204,7 @@ async function init() {
     $('#water-count').textContent=data.waterways.features.length.toLocaleString()+' ways';
     $('#fence-bounds').textContent=`${w.toFixed(4)}–${e.toFixed(4)}° E / ${s.toFixed(4)}–${n.toFixed(4)}° N`;
     $('#mesh-info').textContent=`~${Math.round(data.terrain.native_pixel_metres_approx[0])} m source · ~${Math.round(data.terrain.display_pixel_metres_approx[0])} m display`;
-    $('#source-info').textContent=`${data.terrain.source}. ${data.terrain.vertical_reference}. Horizontal coordinates: WGS84. ${data.screening?'Native routing uses '+data.screening.native_cells.toLocaleString()+' cells.':'No drainage or bacterial screening is inferred from this provisional terrain layer.'}`;
+    $('#source-info').textContent=`${data.terrain.source}. ${data.terrain.vertical_reference}. Horizontal coordinates: WGS84. Terrain context only; hydraulic results are in the fixed-terrain 2D workspace.`;
     $('#terrain-qc').textContent=terrainId==='copernicus'?data.terrain.aggregation:`${data.terrain.status}. Header-corner residual ≤ ${data.terrain.geolocation_check_max_residual_m.toFixed(2)} m is an internal metadata check, not ground accuracy. ${data.terrain.mask_note} Nominal along-track resolution: ~${data.terrain.nominal_azimuth_resolution_m} m.`;
     $('#terrain-provenance').href=terrainId==='copernicus'?'/assets/data/context/viewer_provenance.json':'/assets/data/context/topsar/conversion_provenance.json';
     $('#terrain-attribution').textContent=(terrainId==='copernicus'?'Copernicus GLO-30':'NASA/JPL AIRSAR TOPSAR · 2000')+' · © OpenStreetMap contributors, ODbL 1.0';
@@ -221,32 +222,6 @@ async function init() {
     renderer.domElement.addEventListener('pointerup',e=>{
       if(!down||Math.hypot(e.clientX-down[0],e.clientY-down[1])>5||!points.visible)return;
       const rect=renderer.domElement.getBoundingClientRect();pointer.set((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1);raycaster.setFromCamera(pointer,camera);raycaster.params.Points.threshold=.45;const hits=raycaster.intersectObject(points);if(hits.length)selectPoint(hits[0].index);
-    });
-    $('#load-candidate-flow').addEventListener('click',async e=>{
-      const button=e.currentTarget;button.disabled=true;
-      try {
-        const response=await fetch('/assets/data/hydraulics/flow_output.geojson');
-        if(!response.ok)throw new Error('Candidate flow layer is unavailable.');
-        imported=validateImport(await response.json());imported.builtin=true;
-        let option=$('#output-mode option[value=imported]');
-        if(!option){option=document.createElement('option');option.value='imported';$('#output-mode').append(option);}
-        option.textContent='Exploratory candidate flow';$('#output-mode').value='imported';
-        $('#import-message').textContent=`${imported.visibleFeatures.length} of ${imported.features.length} core flow reaches visible. Uncalibrated; reservoir bathymetry and links unresolved.`;
-        updateTerrain();setLegend();makeHotspots();
-      }catch(error){$('#import-message').textContent=error.message;}finally{button.disabled=false;}
-    });
-    for(const model of ['biological','chemical']) $('#load-'+model).addEventListener('click',async e=>{
-      const button=e.currentTarget;button.disabled=true;
-      try {
-        const response=await fetch('/assets/data/transport/current_'+model+'_output.geojson');
-        if(!response.ok)throw new Error('Transport output is unavailable.');
-        imported=validateImport(await response.json());imported.builtin=true;
-        let option=$('#output-mode option[value=imported]');
-        if(!option){option=document.createElement('option');option.value='imported';$('#output-mode').append(option);}
-        option.textContent=model+' conservative demonstration';$('#output-mode').value='imported';
-        $('#import-message').textContent=`${imported.visibleFeatures.length} of ${imported.features.length} locations visible. Arbitrary tracer at 30 s; reactions disabled; no baray simulation.`;
-        updateTerrain();setLegend();makeHotspots();
-      }catch(error){$('#import-message').textContent=error.message;}finally{button.disabled=false;}
     });
     $('#model-file').addEventListener('change',async e=>{
       const file=e.target.files[0];if(!file)return;

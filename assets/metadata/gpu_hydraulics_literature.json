@@ -1,0 +1,20 @@
+[
+  {
+    "id": "sharifian_2023_lisflood_gpu",
+    "path": "manuscripts/sharifian_2023_lisflood_fp_gpu.pdf",
+    "pages": 23,
+    "bytes": 26529088
+  },
+  {
+    "id": "shaw_2021_lisflood_gpu_swe",
+    "path": "manuscripts/shaw_2021_lisflood_fp_dg_cpu_gpu.pdf",
+    "pages": 26,
+    "bytes": 9958366
+  },
+  {
+    "id": "chowdhury_2025_lisflood_adaptive_gpu",
+    "path": "manuscripts/chowdhury_2025_lisflood_fp_adaptive_gpu.pdf",
+    "pages": 28,
+    "bytes": 16890406
+  }
+]

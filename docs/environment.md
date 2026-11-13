@@ -35,3 +35,8 @@ Keep the old environment available until any calculation using it has finished a
 The durable environment passed all 101 tests. A native solver smoke test accepted 40 threads. The managed dashboard was restarted with the Miniforge interpreter and its HTTP health check passed. The already-running 32-thread regional calculation was preserved until completion; its original interpreter/version remain part of that run's provenance.
 
 Migration is complete: the retired `/tmp/qmodel-gis-env` was removed after its final process exited. The fourteen checksum-verified scratch originals were removed after recovery. The active dashboard and validation tools use Miniforge; unrelated temporary files were preserved.
+
+
+## A100 environment
+
+The preferred regional GPU environment is `qmodel-gpu-a100`, created inside an A100 Slurm allocation under the user Miniforge tree. Keep the existing CPU `qmodel` environment. Use `scripts/submit_regional_gpu.py` to allocate the GPU and execute the node-local bootstrap; do not install or resolve the GPU environment on the CPU/dashboard host. See [the tested GPU workflow](gpu_backend.md) and `environment-gpu.yml`.

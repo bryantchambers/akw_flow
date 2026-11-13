@@ -1,5 +1,7 @@
 # Regional native-resolution flow model
 
+The active dashboard now uses the [water-system rebuild](water_system_rebuild.md), with extracted GIS reaches/storage geometry and cross-section-derived initial channel stages. The low-water/rainfall run described below is retained as a diagnostic; it is not the active revised water scenario.
+
 ## Coverage and resolution
 
 Open `/regional-terrain` from the dashboard's **Regional flow · 0.5 m** link.
@@ -122,3 +124,7 @@ Water residual: -8e-11 m³; unit-tracer residual: -4.73e-11. Float32 export volu
 The corrected maximum exported face velocity is 0.826 m/s. There are 85 faces exceeding Froude 1 at face depths of at least 1 cm. Many thinner films also exceed that regime. Those locations require review; the local-inertial approximation is not a validated prediction there. The startup case does not establish hotspot locations or regional flood/drought accuracy.
 
 Hillshade is now computed at native 0.5 m spacing with a halo across storage blocks, then resampled for display. It does not recompute slope from enlarged screen pixels. The durable Miniforge environment and browser views were checked after migration; the retired temporary environment was removed only after its calculation/export process ended.
+
+## Regional/pilot display review
+
+The fixed point-sampled vector display has been replaced by actual native face selection and local grid inspection. See [the November 12 comparison](regional_flow_view_comparison.md) for controls, measured differences, and the outstanding regional forcing/scenario gap.

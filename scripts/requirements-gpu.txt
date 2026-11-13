@@ -1,0 +1,2 @@
+# Installed inside the allocated A100 node, alongside project GIS/native deps.
+numba-cuda[cu12]>=0.20,<1
